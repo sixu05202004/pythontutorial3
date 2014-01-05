@@ -58,7 +58,7 @@ Python 标准库概览
 通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 :mod:`sys` 模块的 *argv*  变量。例如在命令行中执行 ``python demo.py one two three`` 后可以得到以下输出结果 ::
 
    >>> import sys
-   >>> print sys.argv
+   >>> print(sys.argv)
    ['demo.py', 'one', 'two', 'three']
 
 :mod:`getopt` 模块使用 Unix :func:`getopt` 函处理 *sys.argv* 。更多的复杂命令行处理由 :mod:`argparse` 模块提供。
@@ -225,7 +225,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
    def average(values):
        """Computes the arithmetic mean of a list of numbers.
 
-       >>> print average([20, 30, 70])
+       >>> print(average([20, 30, 70]))
        40.0
        """
        return sum(values, 0.0) / len(values)
@@ -255,7 +255,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
 
 Python 展现了“瑞士军刀”的哲学。 这可以通过它更大的包的高级和健壮的功能来得到最好的展现。 列如:
 
-* :mod:`xmlrpc.client` 和 :mod:`xmlrpc.server` 模块让远程过程调用变得轻而易举。 尽管模块有这样的名字，用户无需拥有XML的知识或处理XML。
+* :mod:`xmlrpc.client` 和 :mod:`xmlrpc.server` 模块让远程过程调用变得轻而易举。 尽管模块有这样的名字，用户无需拥有 XML 的知识或处理 XML。
 
 * :mod:`email` 包是一个管理邮件信息的库，包括MIME和其它基于RFC 2822的信息文档。 不同于实际发送和接收信息的 :mod:`smtplib` 和 :mod:`poplib` 模块， email 包包含一个构造或解析复杂消息结构（包括附件）及实现互联网编码和头协议的完整工具集。
 

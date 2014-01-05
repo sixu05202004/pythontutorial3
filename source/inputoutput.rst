@@ -102,7 +102,7 @@
    >>> print('{1} and {0}'.format('spam', 'eggs'))
    eggs and spam
 
-如果在 :meth:`str.format` 调用时使用关键字参数，可以通过参数名来引用值。::
+如果在 :meth:`str.format` 调用时使用关键字参数，可以通过参数名来引用值::
 
    >>> print('This {food} is {adjective}.'.format(
    ...       food='spam', adjective='absolutely horrible'))
