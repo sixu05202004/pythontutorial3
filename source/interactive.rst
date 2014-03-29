@@ -30,19 +30,19 @@
 快捷键绑定
 ============
 
-Readline 库的快捷键绑定和其它一些参数可以通过名为 :file:`~/.inputrc`  的初始化文件的替换命名来定制。快捷键绑定如下形式 ::
+Readline 库的快捷键绑定和其它一些参数可以通过名为 :file:`~/.inputrc`  的初始化文件的替换命名来定制。快捷键绑定如下形式::
 
    key-name: function-name
 
-或者 ::
+或者::
 
    "string": function-name
 
-选项可以如下设置 ::
+选项可以如下设置::
 
    set option-name value
 
-例如 ::
+例如::
 
    # I prefer vi-style editing:
    set editing-mode vi
@@ -55,24 +55,24 @@ Readline 库的快捷键绑定和其它一些参数可以通过名为 :file:`~/.
    "\C-u": universal-argument
    "\C-x\C-r": re-read-init-file
 
-需要注意的是 Python 中默认 :kbd:`Tab` 绑定为插入一个 :kbd:`Tab` 字符而不是 Readline 库的默认文件名完成函数，如果你想用这个，可以将以下内容插入 ::
+需要注意的是 Python 中默认 :kbd:`Tab` 绑定为插入一个 :kbd:`Tab` 字符而不是 Readline 库的默认文件名完成函数，如果你想用这个，可以将以下内容插入::
 
    Tab: complete
 
-到你的 :file:`~/.inputrc` 中来覆盖它。（当然，如果你真的把 :kbd:`Tab`  设置成这样，就很难在后继行中插入缩进。） ::
+到你的 :file:`~/.inputrc` 中来覆盖它。（当然，如果你真的把 :kbd:`Tab`  设置成这样，就很难在后继行中插入缩进。）
 
 .. index::
    module: rlcompleter
    module: readline
 
-自动完成变量和模块名也可以激活生效。要使之在解释器交互模式中可用，在你的启动文件中加入下面内容: [#]_  ::
+自动完成变量和模块名也可以激活生效。要使之在解释器交互模式中可用，在你的启动文件中加入下面内容: [#]_ ::
 
    import rlcompleter, readline
    readline.parse_and_bind('tab: complete')
 
 这个操作将 :kbd:`Tab` 绑定到完成函数，故按 Tab 键两次会给出建议的完成内容；它查找　Python 命名、当前的局部变量、有效的模块名。对于类似 ``string.a`` 这样的文件名，它会解析 ``'.'`` 相关的表达式，从返回的结果对象中获取属性，以提供完成建议。需要注意的是，如果对象的 :meth:`__getattr__` 方法是此表达式的一部分，这可能会执行应用程序定义代码。 
 
-更有用的初始化文件可能是下面这个例子这样的。要注意一旦创建的名字没用了，它会删掉它们；因为初始化文件作为解释命令与之在同一个命名空间执行，在交互环境中删除命名带来了边际效应。可能你发现了它体贴的保留了一些导入模块，类似 :mod:`os` ，在解释器的大多数使用场合中都会用到它们。::
+更有用的初始化文件可能是下面这个例子这样的。要注意一旦创建的名字没用了，它会删掉它们；因为初始化文件作为解释命令与之在同一个命名空间执行，在交互环境中删除命名带来了边际效应。可能你发现了它体贴的保留了一些导入模块，类似 :mod:`os` ，在解释器的大多数使用场合中都会用到它们。 ::
 
    # Add auto-completion and a stored history file of commands to your Python
    # interactive interpreter. Requires Python 2.0+, readline. Autocomplete is

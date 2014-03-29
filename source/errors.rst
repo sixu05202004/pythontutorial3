@@ -57,7 +57,7 @@
 异常处理
 ===================
 
-通过编程处理选择的异常是可行的。 看一下下面的例子：它会一直要求用户输入，直到输入一个合法的整数为止，但允许用户终端这个程序（使用 :kbd:`Control-C` 或系统支持的任何方法）。 注意：用户产生的终端会引发一个 :exc:`KeyboardInterrupt` 异常。 ::
+通过编程处理选择的异常是可行的。 看一下下面的例子：它会一直要求用户输入，直到输入一个合法的整数为止，但允许用户中断这个程序（使用 :kbd:`Control-C` 或系统支持的任何方法）。 注意：用户产生的中断会引发一个 :exc:`KeyboardInterrupt` 异常。 ::
 
    >>> while True:
    ...     try:
@@ -98,7 +98,7 @@
        print("Unexpected error:", sys.exc_info()[0])
        raise
 
-:keyword:`try` ... :keyword:`except` 语句可以带有一个 *else子句* ，该子句只能出现在所有 except 子句之后。当 try 语句没有抛出异常时，需要执行一些代码，可以使用这个子句。例如 ::
+:keyword:`try` ... :keyword:`except` 语句可以带有一个 *else子句* ，该子句只能出现在所有 except 子句之后。当 try 语句没有抛出异常时，需要执行一些代码，可以使用这个子句。例如::
 
    for arg in sys.argv[1:]:
        try:
@@ -244,7 +244,7 @@
 定义清理行为
 =========================
 
-:keyword:`try` 语句还有另一个可选的子句，目的在于定义在任何情况下都一定要执行的功能。例如 ::
+:keyword:`try` 语句还有另一个可选的子句，目的在于定义在任何情况下都一定要执行的功能。例如::
 
    >>> try:
    ...     raise KeyboardInterrupt
@@ -256,7 +256,7 @@
      File "<stdin>", line 2, in ?
    KeyboardInterrupt
 
-不管有没有发生异常， *finally子句* 在程序离开 :keyword:`try` 后都一定会被执行。当 :keyword:`try` 语句中发生了未被 :keyword:`except` 捕获的异常（或者它发生在 :keyword:`except` 或 :keyword:`else` 子句中），在 :keyword:`finally` 子句执行完后它会被重新抛出。 :keyword:`try` 语句经由 :keyword:`break` ，:keyword:`continue` 或 :keyword:`return` 语句退 出也一样会执行 :keyword:`finally` 子句。以下是一个更复杂些的例子（在同 一个 :keyword:`try` 语句中的 :keyword:`except` 和 :keyword:`finally` 子句的工作方式与 Python 2.5 一样） ::
+不管有没有发生异常， *finally子句* 在程序离开 :keyword:`try` 后都一定会被执行。当 :keyword:`try` 语句中发生了未被 :keyword:`except` 捕获的异常（或者它发生在 :keyword:`except` 或 :keyword:`else` 子句中），在 :keyword:`finally` 子句执行完后它会被重新抛出。 :keyword:`try` 语句经由 :keyword:`break` ，:keyword:`continue` 或 :keyword:`return` 语句退 出也一样会执行 :keyword:`finally` 子句。以下是一个更复杂些的例子（在同 一个 :keyword:`try` 语句中的 :keyword:`except` 和 :keyword:`finally` 子句的工作方式与 Python 2.5 一样）::
 
    >>> def divide(x, y):
    ...     try:
@@ -291,12 +291,12 @@
 预定义清理行为
 ===========================
 
-有些对象定义了标准的清理行为，无论对象操作是否成功，不再需要该对象的时 候就会起作用。以下示例尝试打开文件并把内容打印到屏幕上。::
+有些对象定义了标准的清理行为，无论对象操作是否成功，不再需要该对象的时 候就会起作用。以下示例尝试打开文件并把内容打印到屏幕上。 ::
 
    for line in open("myfile.txt"):
        print(line)
 
-这段代码的问题在于在代码执行完后没有立即关闭打开的文件。这在简单的脚本 里没什么，但是大型应用程序就会出问题。 :keyword:`with` 语句使得文件之类的对象可以 确保总能及时准确地进行清理。::
+这段代码的问题在于在代码执行完后没有立即关闭打开的文件。这在简单的脚本 里没什么，但是大型应用程序就会出问题。 :keyword:`with` 语句使得文件之类的对象可以 确保总能及时准确地进行清理。 ::
 
    with open("myfile.txt") as f:
        for line in f:

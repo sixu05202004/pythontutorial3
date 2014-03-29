@@ -12,7 +12,7 @@
 格式化输出
 =========================
 
-我们有两种大相径庭的输出值方法： 表达式语句 和 :keyword:`print` 语句。（第三种访求是使用文件对象的 :meth:`write` 方法，标准文件输出可以参考 ``sys.stdout``  。详细内容参见库参考手册。） 
+我们有两种大相径庭地输出值方法：表达式语句 和 :func:`print` 函数。（第三种访求是使用文件对象的 :meth:`write` 方法，标准文件输出可以参考 ``sys.stdout`` 。详细内容参见库参考手册。） 
 
 通常，你想要对输出做更多的格式控制，而不是简单的打印使用空格分隔的值。 有两种方法可以格式化你的输出： 第一种方法是由你自己处理整个字符串，通过使用字符串切割和连接操作可以创建任何你想要的输出形式。string 类型包含一些将字符串填充到指定列宽度的有用操作，随后就会讨论这些。 第二种方法是使用 :meth:`str.format` 方法。
 
@@ -95,20 +95,24 @@
    >>> print('We are the {} who say "{}!"'.format('knights', 'Ni'))
    We are the knights who say "Ni!"
 
-大括号和其中的字符会被替换成传入 :meth:`str.format` 的参数。大括号中的数值指明使用传入 :meth:`str.format` 方法的对象中的哪一个。::
+大括号和其中的字符会被替换成传入 :meth:`str.format` 的参数。大括号中的数值指明使用传入 :meth:`str.format` 方法的对象中的哪一个。 ::
 
    >>> print('{0} and {1}'.format('spam', 'eggs'))
    spam and eggs
    >>> print('{1} and {0}'.format('spam', 'eggs'))
    eggs and spam
 
+<<<<<<< HEAD:source/inputoutput.rst
+如果在 :meth:`str.format` 调用时使用关键字参数，可以通过参数名来引用值。 ::
+=======
 如果在 :meth:`str.format` 调用时使用关键字参数，可以通过参数名来引用值::
+>>>>>>> FETCH_HEAD:source/inputoutput.rst
 
    >>> print('This {food} is {adjective}.'.format(
    ...       food='spam', adjective='absolutely horrible'))
    This spam is absolutely horrible.
 
-定位和关键字参数可以组合使用 ::
+定位和关键字参数可以组合使用::
 
    >>> print('The story of {0}, {1}, and {other}.'.format('Bill', 'Manfred',
                                                           other='Georg'))
@@ -138,7 +142,7 @@
    Dcab       ==>       7678
    Sjoerd     ==>       4127
 
-如果你有个实在是很长的格式化字符串，不想分割它。如果你可以用命名来引用被格式化的变量而不是位置就好了。有个简单的方法，可以传入一个字典，用中括号访问它的键 ::
+如果你有个实在是很长的格式化字符串，不想分割它。如果你可以用命名来引用被格式化的变量而不是位置就好了。有个简单的方法，可以传入一个字典，用中括号访问它的键::
 
    >>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
    >>> print('Jack: {0[Jack]:d}; Sjoerd: {0[Sjoerd]:d}; '
@@ -262,7 +266,7 @@
 
 在文本文件中（那些没有使用 ``b`` 模式选项打开的文件），只允许从文件头开始计算相对位置（使用 ``seek(0, 2)``  从文件尾计算时就会引发异常）。
 
-当你使用完一个文件时，调用 ``f.close()`` 方法就可以关闭它并释放其占用的所有系统资源。 在调用 ``f.close()`` 方法后，试图再次使用文件对象将会自动失败。::
+当你使用完一个文件时，调用 ``f.close()`` 方法就可以关闭它并释放其占用的所有系统资源。 在调用 ``f.close()`` 方法后，试图再次使用文件对象将会自动失败。 ::
 
    >>> f.close()
    >>> f.read()

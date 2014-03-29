@@ -55,7 +55,7 @@ Python 标准库概览
 命令行参数
 ======================
 
-通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 :mod:`sys` 模块的 *argv*  变量。例如在命令行中执行 ``python demo.py one two three`` 后可以得到以下输出结果 ::
+通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 :mod:`sys` 模块的 *argv*  变量。例如在命令行中执行 ``python demo.py one two three`` 后可以得到以下输出结果::
 
    >>> import sys
    >>> print(sys.argv)
@@ -69,7 +69,7 @@ Python 标准库概览
 错误输出重定向和程序终止
 ================================================
 
-:mod:`sys` 还有 *stdin* ， *stdout* 和 *stderr* 属性，即使在 *stdout* 被重定向时，后者也可以用于显示警告和错误信息 ::
+:mod:`sys` 还有 *stdin* ， *stdout* 和 *stderr* 属性，即使在 *stdout* 被重定向时，后者也可以用于显示警告和错误信息::
 
    >>> sys.stderr.write('Warning, log file not found starting a new one\n')
    Warning, log file not found starting a new one
@@ -82,7 +82,7 @@ Python 标准库概览
 字符串正则匹配
 =======================
 
-:mod:`re` 模块为高级字符串处理提供了正则表达式工具。对于复杂的匹配和处理，正则表达式提供了简洁、优化的解决方案 ::
+:mod:`re` 模块为高级字符串处理提供了正则表达式工具。对于复杂的匹配和处理，正则表达式提供了简洁、优化的解决方案::
 
    >>> import re
    >>> re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
@@ -90,7 +90,7 @@ Python 标准库概览
    >>> re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')
    'cat in the hat'
 
-只需简单的操作时，字符串方法最好用，因为它们易读，又容易调试 ::
+只需简单的操作时，字符串方法最好用，因为它们易读，又容易调试::
 
    >>> 'tea for too'.replace('too', 'two')
    'tea for two'
@@ -101,7 +101,7 @@ Python 标准库概览
 数学
 ===========
 
-:mod:`math` 模块为浮点运算提供了对底层C函数库的访问 ::
+:mod:`math` 模块为浮点运算提供了对底层C函数库的访问::
 
    >>> import math
    >>> math.cos(math.pi / 4.0)
@@ -109,7 +109,7 @@ Python 标准库概览
    >>> math.log(1024, 2)
    10.0
 
-:mod:`random` 提供了生成随机数的工具 ::
+:mod:`random` 提供了生成随机数的工具::
 
    >>> import random
    >>> random.choice(['apple', 'pear', 'banana'])
@@ -129,7 +129,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
 互联网访问
 ===============
 
-有几个模块用于访问互联网以及处理网络通信协议。其中最简单的两个是用于处理从 urls 接收的数据的 :mod:`urllib.request` 以及用于发送电子邮件的 :mod:`smtplib` ::
+有几个模块用于访问互联网以及处理网络通信协议。其中最简单的两个是用于处理从 urls 接收的数据的 :mod:`urllib.request` 以及用于发送电子邮件的 :mod:`smtplib`::
 
    >>> from urllib.request import urlopen
    >>> for line in urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl'):
@@ -157,7 +157,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
 日期和时间
 ===============
 
-:mod:`datetime` 模块为日期和时间处理同时提供了简单和复杂的方法。支持日期和时间算法的同时，实现的重点放在更有效的处理和格式化输出。该模块还支持时区处理。::
+:mod:`datetime` 模块为日期和时间处理同时提供了简单和复杂的方法。支持日期和时间算法的同时，实现的重点放在更有效的处理和格式化输出。该模块还支持时区处理。 ::
 
    >>> # dates are easily constructed and formatted
    >>> from datetime import date
@@ -180,7 +180,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
 ================
 
 以下模块直接支持通用的数据打包和压缩格式： :mod:`zlib`, :mod:`gzip`, :mod:`bz2`, :mod:`zipfile` 以及 
-:mod:`tarfile`。::
+:mod:`tarfile`。 ::
 
    >>> import zlib
    >>> s = b'witch which has which witches wrist watch'
@@ -202,7 +202,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
 
 有些用户对了解解决同一问题的不同方法之间的性能差异很感兴趣。Python 提供了一个度量工具，为这些问题提供了直接答案。
 
-例如，使用元组封装和拆封来交换元素看起来要比使用传统的方法要诱人的多。 :mod:`timeit`  证明了后者更快一些 ::
+例如，使用元组封装和拆封来交换元素看起来要比使用传统的方法要诱人的多。 :mod:`timeit`  证明了后者更快一些::
 
    >>> from timeit import Timer
    >>> Timer('t=a; a=b; b=t', 'a=1; b=2').timeit()
@@ -220,7 +220,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
 
 开发高质量软件的方法之一是为每一个函数开发测试代码，并且在开发过程中经常进行测试。 
 
-:mod:`doctest` 模块提供了一个工具，扫描模块并根据程序中内嵌的文档字符串执行测试。测试构造如同简单的将它的输出结果剪切并粘贴到文档字符串中。通过用户提供的例子，它发展了文档，允许 doctest 模块确认代码的结果是否与文档一致 ::
+:mod:`doctest` 模块提供了一个工具，扫描模块并根据程序中内嵌的文档字符串执行测试。测试构造如同简单的将它的输出结果剪切并粘贴到文档字符串中。通过用户提供的例子，它发展了文档，允许 doctest 模块确认代码的结果是否与文档一致::
 
    def average(values):
        """Computes the arithmetic mean of a list of numbers.
@@ -233,7 +233,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
    import doctest
    doctest.testmod()   # automatically validate the embedded tests
 
-:mod:`unittest` 模块不像 :mod:`doctest`  模块那么容易使用，不过它可以在一个独立的文件里提供一个更全面的测试集 ::
+:mod:`unittest` 模块不像 :mod:`doctest`  模块那么容易使用，不过它可以在一个独立的文件里提供一个更全面的测试集::
 
    import unittest
 
