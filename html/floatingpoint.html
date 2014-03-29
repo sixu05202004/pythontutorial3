@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>14. 浮点数算法：争议和限制 &mdash; Python tutorial 3.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Python tutorial 3.4 documentation" href="index.html" />
+    <link rel="prev" title="13. 交互式输入行编辑历史回溯" href="interactive.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="interactive.html" title="13. 交互式输入行编辑历史回溯"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Python tutorial 3.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tut-fp-issues">
+<span id="id1"></span><h1>14. 浮点数算法：争议和限制<a class="headerlink" href="#tut-fp-issues" title="Permalink to this headline">¶</a></h1>
+<p>浮点数在计算机中表达为二进制（binary）小数。例如：十进制小数:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.125</span>
+</pre></div>
+</div>
+<p>是 1/10 + 2/100 + 5/1000 的值，同样二进制小数:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.001</span>
+</pre></div>
+</div>
+<p>是 0/2 + 0/4 + 1/8。这两个数值相同。唯一的实质区别是第一个写为十进制小数记法，第二个是二进制。</p>
+<p>遗憾的是，大多数十进制小数不能精确的表达二进制小数。</p>
+<p>这个问题更早的时候首先在十进制中发现。考虑小数形式的 1/3 ，你可以来个十进制的近似值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.3</span>
+</pre></div>
+</div>
+<p>或者更进一步的,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.33</span>
+</pre></div>
+</div>
+<p>或者更进一步的,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.333</span>
+</pre></div>
+</div>
+<p>诸如此类。如果你写多少位，这个结果永远不是精确的 1/3 ，但是可以无限接近 1/3 。</p>
+<p>同样，无论在二进制中写多少位，十进制数 0.1 都不能精确表达为二进制小数。二进制来表达 1/10 是一个无限循环小数:</p>
+<div class="highlight-python"><div class="highlight"><pre>0.0001100110011001100110011001100110011001100110011...
+</pre></div>
+</div>
+<p>在任意无限位数值中中止，你可以得到一个近似。</p>
+<p>在一个典型的机器上运行Python，一共有53位的精度来表示一个浮点数，所以当你输入十进制的 <tt class="docutils literal"><span class="pre">0.1</span></tt> 的时候，看到是一个二进制的小数:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.00011001100110011001100110011001100110011001100110011010</span>
+</pre></div>
+</div>
+<p>非常接近，但是不完全等于， 1/10。</p>
+<p>这是很容易忘记，存储的值是一个近似的原小数，由于浮体的方式，显示在提示符的解释。 Python 中只打印一个小数近似的真实机器所存储的二进制近似的十进制值。如果 Python
+要打印存储的二进制近似真实的十进制值0.1，那就要显示:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span>
+<span class="go">0.1000000000000000055511151231257827021181583404541015625</span>
+</pre></div>
+</div>
+<p>认识到这个幻觉的真相很重要：机器不能精确表达 1/10，你可以简单的截断 显示 真正的机器值。 这里还有另一个惊奇之处。例如，下面:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
+<span class="go">0.30000000000000004</span>
+</pre></div>
+</div>
+<p>需要注意的是这在二进制浮点数是非常自然的：它不是 Python 的 bug，也不是你的代码的 bug。你会看到只要你的硬件支持浮点数算法，所有的语言都会有这个现象（尽管有些语言可能默认或完全不 <em>显示</em> 这个差异）。</p>
+<p>由于小数 2.675 是 2.67 和 2.68 的正中间，你可能期望的结果（二进制近似）2.68。这不是，因为当十进制字符串 “2.675” 转换为二进制浮点数，再换成一个二进制近似，其精确值:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">2.67499999999999982236431605997495353221893310546875</span>
+</pre></div>
+</div>
+<p>这个问题在于存储 “0.1” 的浮点值已经达到 1/10 的最佳精度了，所以尝试截断它不能改善：它已经尽可能的好了。 另一个影响是因为　0.1 不能精确的表达 1/10，对10个 0.1 的值求和不能精确的得到 1.0，即:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">sum</span> <span class="o">+=</span> <span class="mf">0.1</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span>
+<span class="go">0.9999999999999999</span>
+</pre></div>
+</div>
+<p>浮点数据算法产生了很多诸如此类的惊奇。在“表现错误”一节中，这个 “0.1” 问题详细表达了精度问问题。更完整的其它常见的惊奇请参见 <a class="reference external" href="http://www.lahey.com/float.htm">浮点数危害</a> 。 最后我要说，“没有简单的答案”。还是不要过度的敌视浮点数！</p>
+<p>Python 浮点数操作的错误来自于浮点数硬件，大多数机器上同类的问题每次计算误差不超过 2**53 分之一。对于大多数任务这已经足够让人满意了。但是你要在心中记住这不是十进制算法，每个浮点数计算可能会带来一个新的精度错误。</p>
+<p>问题已经存在了，对于大多数偶发的浮点数错误，你应该比对你期待的最终显示结果是否符合你的期待。 <tt class="xref py py-func docutils literal"><span class="pre">str()</span></tt> 通常够用了，完全的控制参见字符串格式化中 <tt class="xref py py-meth docutils literal"><span class="pre">str.format()</span></tt> 方法的格式化方式。</p>
+<div class="section" id="tut-fp-error">
+<span id="id3"></span><h2>14.1. 表达错误<a class="headerlink" href="#tut-fp-error" title="Permalink to this headline">¶</a></h2>
+<p>这一节详细说明 “0.1” 示例，教你怎样自己去精确的分析此类案例。假设这里你已经对浮点数表示有基本的了解。</p>
+<p><em class="dfn">Representation error</em>  提及事实上有些（实际是大多数）十进制小数不能精确的表示为二进制小数。这是 Python （或 Perl，C，C++，Java，Fortran 以及其它很多）语言往往不能按你期待的样子显示十进制数值的根本原因:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
+<span class="go">0.30000000000000004</span>
+</pre></div>
+</div>
+<p>这 是为什么？ 1/10 不能精确的表示为二进制小数。大多数今天的机器（2000年十一月）使用 IEEE-754 浮点数算法，大多数平台上 Python 将浮点数映射为 IEEE-754 “双精度浮点数”。754 双精度包含 53 位精度，所以计算机努力将输入的 0.1 转为 J/2**N 最接近的二进制小数。<em>J</em> 是一个 53 位的整数。改写:</p>
+<div class="highlight-python"><div class="highlight"><pre>1 / 10 ~= J / (2**N)
+</pre></div>
+</div>
+<p>为:</p>
+<div class="highlight-python"><div class="highlight"><pre>J ~= 2**N / 10
+</pre></div>
+</div>
+<p>J 重现时正是 53 位（是 &gt;= 2**52 而非 &lt; 2**53 ）， N 的最佳值是 56:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">52</span>
+<span class="go">4503599627370496</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">53</span>
+<span class="go">9007199254740992</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">56</span><span class="o">/</span><span class="mi">10</span>
+<span class="go">7205759403792793</span>
+</pre></div>
+</div>
+<p>因此，56 是保持 J 精度的唯一 N 值。 J 最好的近似值是整除的商:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">56</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+<p>因为余数大于 10 的一半，最好的近似是取上界:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">+</span><span class="mi">1</span>
+<span class="go">7205759403792794</span>
+</pre></div>
+</div>
+<p>因此在 754 双精度中 1/10 最好的近似值是是 2**56，或:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mi">7205759403792794</span> <span class="o">/</span> <span class="mi">72057594037927936</span>
+</pre></div>
+</div>
+<p>要注意因为我们向上舍入，它其实比 1/10 稍大一点点。如果我们没有向上舍入，它会比 1/10 稍小一点。但是没办法让它 恰好 是 1/10！</p>
+<p>所以计算机永远也不 “知道” 1/10：它遇到上面这个小数，给出它所能得到的最佳的 754 双精度实数:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">.</span><span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="mi">56</span>
+<span class="go">7205759403792794.0</span>
+</pre></div>
+</div>
+<p>如果我们用 10**30 除这个小数，会看到它最大30位（截断后的）的十进制值:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">7205759403792794</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">30</span> <span class="o">//</span> <span class="mi">2</span><span class="o">**</span><span class="mi">56</span>
+<span class="go">100000000000000005551115123125L</span>
+</pre></div>
+</div>
+<p>这表示存储在计算机中的实际值近似等于十进制值 0.100000000000000005551115123125。 Python 显示时取 17 位精度为 0.10000000000000001（是的，在任何符合754的平台上，都会由其C库转换为这个最佳近似——你的可能不一样！）。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">14. 浮点数算法：争议和限制</a><ul>
+<li><a class="reference internal" href="#tut-fp-error">14.1. 表达错误</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="interactive.html"
+                        title="previous chapter">13. 交互式输入行编辑历史回溯</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/floatingpoint.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="interactive.html" title="13. 交互式输入行编辑历史回溯"
+             >previous</a> |</li>
+        <li><a href="index.html">Python tutorial 3.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, D.D.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

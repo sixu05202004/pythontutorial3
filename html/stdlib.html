@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>10. Python 标准库概览 &mdash; Python tutorial 3.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Python tutorial 3.4 documentation" href="index.html" />
+    <link rel="next" title="11. 标准库浏览 – Part II" href="stdlib2.html" />
+    <link rel="prev" title="9. 类" href="classes.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="stdlib2.html" title="11. 标准库浏览 – Part II"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="classes.html" title="9. 类"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Python tutorial 3.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="python">
+<span id="tut-brieftour"></span><h1>10. Python 标准库概览<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tut-os-interface">
+<span id="id1"></span><h2>10.1. 操作系统接口<a class="headerlink" href="#tut-os-interface" title="Permalink to this headline">¶</a></h2>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">os</span></tt> 模块提供了很多与操作系统交互的函数:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>      <span class="c"># Return the current working directory</span>
+<span class="go">&#39;C:\\Python33&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s">&#39;/server/accesslogs&#39;</span><span class="p">)</span>   <span class="c"># Change current working directory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&#39;mkdir today&#39;</span><span class="p">)</span>   <span class="c"># Run the command mkdir in the system shell</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>应该用 <tt class="docutils literal"><span class="pre">import</span> <span class="pre">os</span></tt> 风格而非 <tt class="docutils literal"><span class="pre">from</span> <span class="pre">os</span> <span class="pre">import</span> <span class="pre">*</span></tt> 。这样可以保证随操作系统不同而有所变化的 <tt class="xref py py-func docutils literal"><span class="pre">os.open()</span></tt> 不会覆盖内置函数 <tt class="xref py py-func docutils literal"><span class="pre">open()</span></tt></p>
+<p id="index-0">在使用一些像 os 这样的大型模块时内置的 <tt class="xref py py-func docutils literal"><span class="pre">dir()</span></tt> 和 <tt class="xref py py-func docutils literal"><span class="pre">help()</span></tt> 函数非常有用:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+<span class="go">&lt;returns a list of all module functions&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+<span class="go">&lt;returns an extensive manual page created from the module&#39;s docstrings&gt;</span>
+</pre></div>
+</div>
+<p>针对日常的文件和目录管理任务，<tt class="xref py py-mod docutils literal"><span class="pre">shutil</span></tt> 模块提供了一个易于使用的高级接口:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s">&#39;data.db&#39;</span><span class="p">,</span> <span class="s">&#39;archive.db&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s">&#39;/build/executables&#39;</span><span class="p">,</span> <span class="s">&#39;installdir&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tut-file-wildcards">
+<span id="id2"></span><h2>10.2. 文件通配符<a class="headerlink" href="#tut-file-wildcards" title="Permalink to this headline">¶</a></h2>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">glob</span></tt> 模块提供了一个函数用于从目录通配符搜索中生成文件列表:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.py&#39;</span><span class="p">)</span>
+<span class="go">[&#39;primes.py&#39;, &#39;random.py&#39;, &#39;quote.py&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tut-command-line-arguments">
+<span id="id3"></span><h2>10.3. 命令行参数<a class="headerlink" href="#tut-command-line-arguments" title="Permalink to this headline">¶</a></h2>
+<p>通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 <tt class="xref py py-mod docutils literal"><span class="pre">sys</span></tt> 模块的 <em>argv</em>  变量。例如在命令行中执行 <tt class="docutils literal"><span class="pre">python</span> <span class="pre">demo.py</span> <span class="pre">one</span> <span class="pre">two</span> <span class="pre">three</span></tt> 后可以得到以下输出结果:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
+<span class="go">[&#39;demo.py&#39;, &#39;one&#39;, &#39;two&#39;, &#39;three&#39;]</span>
+</pre></div>
+</div>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">getopt</span></tt> 模块使用 Unix <tt class="xref py py-func docutils literal"><span class="pre">getopt()</span></tt> 函处理 <em>sys.argv</em> 。更多的复杂命令行处理由 <tt class="xref py py-mod docutils literal"><span class="pre">argparse</span></tt> 模块提供。</p>
+</div>
+<div class="section" id="tut-stderr">
+<span id="id4"></span><h2>10.4. 错误输出重定向和程序终止<a class="headerlink" href="#tut-stderr" title="Permalink to this headline">¶</a></h2>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">sys</span></tt> 还有 <em>stdin</em> ， <em>stdout</em> 和 <em>stderr</em> 属性，即使在 <em>stdout</em> 被重定向时，后者也可以用于显示警告和错误信息:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Warning, log file not found starting a new one</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="go">Warning, log file not found starting a new one</span>
+</pre></div>
+</div>
+<p>大多脚本的定向终止都使用 <tt class="docutils literal"><span class="pre">sys.exit()</span></tt> 。</p>
+</div>
+<div class="section" id="tut-string-pattern-matching">
+<span id="id5"></span><h2>10.5. 字符串正则匹配<a class="headerlink" href="#tut-string-pattern-matching" title="Permalink to this headline">¶</a></h2>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">re</span></tt> 模块为高级字符串处理提供了正则表达式工具。对于复杂的匹配和处理，正则表达式提供了简洁、优化的解决方案:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\bf[a-z]*&#39;</span><span class="p">,</span> <span class="s">&#39;which foot or hand fell fastest&#39;</span><span class="p">)</span>
+<span class="go">[&#39;foot&#39;, &#39;fell&#39;, &#39;fastest&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;(\b[a-z]+) \1&#39;</span><span class="p">,</span> <span class="s">r&#39;\1&#39;</span><span class="p">,</span> <span class="s">&#39;cat in the the hat&#39;</span><span class="p">)</span>
+<span class="go">&#39;cat in the hat&#39;</span>
+</pre></div>
+</div>
+<p>只需简单的操作时，字符串方法最好用，因为它们易读，又容易调试:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;tea for too&#39;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;too&#39;</span><span class="p">,</span> <span class="s">&#39;two&#39;</span><span class="p">)</span>
+<span class="go">&#39;tea for two&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tut-mathematics">
+<span id="id6"></span><h2>10.6. 数学<a class="headerlink" href="#tut-mathematics" title="Permalink to this headline">¶</a></h2>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt> 模块为浮点运算提供了对底层C函数库的访问:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="go">0.70710678118654757</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">10.0</span>
+</pre></div>
+</div>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">random</span></tt> 提供了生成随机数的工具:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;apple&#39;</span><span class="p">,</span> <span class="s">&#39;pear&#39;</span><span class="p">,</span> <span class="s">&#39;banana&#39;</span><span class="p">])</span>
+<span class="go">&#39;apple&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>   <span class="c"># sampling without replacement</span>
+<span class="go">[30, 83, 16, 4, 8, 81, 41, 50, 18, 33]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>    <span class="c"># random float</span>
+<span class="go">0.17970987693706186</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>    <span class="c"># random integer chosen from range(6)</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>SciPy &lt;<a class="reference external" href="http://scipy.org">http://scipy.org</a>&gt; 项目提供了许多数值计算的模块。</p>
+</div>
+<div class="section" id="tut-internet-access">
+<span id="id7"></span><h2>10.7. 互联网访问<a class="headerlink" href="#tut-internet-access" title="Permalink to this headline">¶</a></h2>
+<p>有几个模块用于访问互联网以及处理网络通信协议。其中最简单的两个是用于处理从 urls 接收的数据的 <tt class="xref py py-mod docutils literal"><span class="pre">urllib.request</span></tt> 以及用于发送电子邮件的 <tt class="xref py py-mod docutils literal"><span class="pre">smtplib</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://tycho.usno.navy.mil/cgi-bin/timer.pl&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>  <span class="c"># Decoding the binary data to text.</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="s">&#39;EST&#39;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s">&#39;EDT&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>  <span class="c"># look for Eastern Time</span>
+<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="go">&lt;BR&gt;Nov. 25, 09:43:32 PM EST</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="s">&#39;soothsayer@example.org&#39;</span><span class="p">,</span> <span class="s">&#39;jcaesar@example.org&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="sd">&quot;&quot;&quot;To: jcaesar@example.org</span>
+<span class="gp">... </span><span class="sd">From: soothsayer@example.org</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">... </span><span class="sd">Beware the Ides of March.</span>
+<span class="gp">... </span><span class="sd">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(注意第二个例子需要在 localhost 运行一个邮件服务器。)</p>
+</div>
+<div class="section" id="tut-dates-and-times">
+<span id="id8"></span><h2>10.8. 日期和时间<a class="headerlink" href="#tut-dates-and-times" title="Permalink to this headline">¶</a></h2>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">datetime</span></tt> 模块为日期和时间处理同时提供了简单和复杂的方法。支持日期和时间算法的同时，实现的重点放在更有效的处理和格式化输出。该模块还支持时区处理。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># dates are easily constructed and formatted</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">now</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">now</span>
+<span class="go">datetime.date(2003, 12, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%m-</span><span class="si">%d</span><span class="s">-%y. </span><span class="si">%d</span><span class="s"> %b %Y is a %A on the </span><span class="si">%d</span><span class="s"> day of %B.&quot;</span><span class="p">)</span>
+<span class="go">&#39;12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December.&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># dates support calendar arithmetic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">birthday</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">1964</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">age</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">birthday</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">age</span><span class="o">.</span><span class="n">days</span>
+<span class="go">14368</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tut-data-compression">
+<span id="id9"></span><h2>10.9. 数据压缩<a class="headerlink" href="#tut-data-compression" title="Permalink to this headline">¶</a></h2>
+<p>以下模块直接支持通用的数据打包和压缩格式： <tt class="xref py py-mod docutils literal"><span class="pre">zlib</span></tt>, <tt class="xref py py-mod docutils literal"><span class="pre">gzip</span></tt>, <tt class="xref py py-mod docutils literal"><span class="pre">bz2</span></tt>, <tt class="xref py py-mod docutils literal"><span class="pre">zipfile</span></tt> 以及
+<tt class="xref py py-mod docutils literal"><span class="pre">tarfile</span></tt>。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">zlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">b</span><span class="s">&#39;witch which has which witches wrist watch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">41</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">37</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zlib</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">b&#39;witch which has which witches wrist watch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zlib</span><span class="o">.</span><span class="n">crc32</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">226805979</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tut-performance-measurement">
+<span id="id10"></span><h2>10.10. 性能度量<a class="headerlink" href="#tut-performance-measurement" title="Permalink to this headline">¶</a></h2>
+<p>有些用户对了解解决同一问题的不同方法之间的性能差异很感兴趣。Python 提供了一个度量工具，为这些问题提供了直接答案。</p>
+<p>例如，使用元组封装和拆封来交换元素看起来要比使用传统的方法要诱人的多。 <tt class="xref py py-mod docutils literal"><span class="pre">timeit</span></tt>  证明了后者更快一些:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;t=a; a=b; b=t&#39;</span><span class="p">,</span> <span class="s">&#39;a=1; b=2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="go">0.57535828626024577</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;a,b = b,a&#39;</span><span class="p">,</span> <span class="s">&#39;a=1; b=2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="go">0.54962537085770791</span>
+</pre></div>
+</div>
+<p>相对于 <tt class="xref py py-mod docutils literal"><span class="pre">timeit</span></tt> 的细粒度，<tt class="xref py py-mod docutils literal"><span class="pre">profile</span></tt> 和 <tt class="xref py py-mod docutils literal"><span class="pre">pstats</span></tt>  模块提供了针对更大代码块的时间度量工具。</p>
+</div>
+<div class="section" id="tut-quality-control">
+<span id="id11"></span><h2>10.11. 质量控制<a class="headerlink" href="#tut-quality-control" title="Permalink to this headline">¶</a></h2>
+<p>开发高质量软件的方法之一是为每一个函数开发测试代码，并且在开发过程中经常进行测试。</p>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt> 模块提供了一个工具，扫描模块并根据程序中内嵌的文档字符串执行测试。测试构造如同简单的将它的输出结果剪切并粘贴到文档字符串中。通过用户提供的例子，它发展了文档，允许 doctest 模块确认代码的结果是否与文档一致:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes the arithmetic mean of a list of numbers.</span>
+
+<span class="sd">    &gt;&gt;&gt; print average([20, 30, 70])</span>
+<span class="sd">    40.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">doctest</span>
+<span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>   <span class="c"># automatically validate the embedded tests</span>
+</pre></div>
+</div>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt> 模块不像 <tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt>  模块那么容易使用，不过它可以在一个独立的文件里提供一个更全面的测试集:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="k">class</span> <span class="nc">TestStatisticalFunctions</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_average</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">average</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">]),</span> <span class="mf">40.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]),</span> <span class="mi">1</span><span class="p">),</span> <span class="mf">4.3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span> <span class="c"># Calling from the command line invokes all tests</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tut-batteries-included">
+<span id="id12"></span><h2>10.12. “瑞士军刀”<a class="headerlink" href="#tut-batteries-included" title="Permalink to this headline">¶</a></h2>
+<p>Python 展现了“瑞士军刀”的哲学。 这可以通过它更大的包的高级和健壮的功能来得到最好的展现。 列如:</p>
+<ul class="simple">
+<li><tt class="xref py py-mod docutils literal"><span class="pre">xmlrpc.client</span></tt> 和 <tt class="xref py py-mod docutils literal"><span class="pre">xmlrpc.server</span></tt> 模块让远程过程调用变得轻而易举。 尽管模块有这样的名字，用户无需拥有XML的知识或处理XML。</li>
+<li><tt class="xref py py-mod docutils literal"><span class="pre">email</span></tt> 包是一个管理邮件信息的库，包括MIME和其它基于RFC 2822的信息文档。 不同于实际发送和接收信息的 <tt class="xref py py-mod docutils literal"><span class="pre">smtplib</span></tt> 和 <tt class="xref py py-mod docutils literal"><span class="pre">poplib</span></tt> 模块， email 包包含一个构造或解析复杂消息结构（包括附件）及实现互联网编码和头协议的完整工具集。</li>
+<li><tt class="xref py py-mod docutils literal"><span class="pre">xml.dom</span></tt> 和 <tt class="xref py py-mod docutils literal"><span class="pre">xml.sax</span></tt> 包为流行的信息交换格式提供了强大的支持。同样， <tt class="xref py py-mod docutils literal"><span class="pre">csv</span></tt>  模块支持在通用数据库格式中直接读写。综合起来，这些模块和包大大简化了 Python 应用程序和其它工具之间的数据交换。</li>
+<li>国际化由 <tt class="xref py py-mod docutils literal"><span class="pre">gettext</span></tt> ， <tt class="xref py py-mod docutils literal"><span class="pre">locale</span></tt> 和 <tt class="xref py py-mod docutils literal"><span class="pre">codecs</span></tt> 包支持。</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">10. Python 标准库概览</a><ul>
+<li><a class="reference internal" href="#tut-os-interface">10.1. 操作系统接口</a></li>
+<li><a class="reference internal" href="#tut-file-wildcards">10.2. 文件通配符</a></li>
+<li><a class="reference internal" href="#tut-command-line-arguments">10.3. 命令行参数</a></li>
+<li><a class="reference internal" href="#tut-stderr">10.4. 错误输出重定向和程序终止</a></li>
+<li><a class="reference internal" href="#tut-string-pattern-matching">10.5. 字符串正则匹配</a></li>
+<li><a class="reference internal" href="#tut-mathematics">10.6. 数学</a></li>
+<li><a class="reference internal" href="#tut-internet-access">10.7. 互联网访问</a></li>
+<li><a class="reference internal" href="#tut-dates-and-times">10.8. 日期和时间</a></li>
+<li><a class="reference internal" href="#tut-data-compression">10.9. 数据压缩</a></li>
+<li><a class="reference internal" href="#tut-performance-measurement">10.10. 性能度量</a></li>
+<li><a class="reference internal" href="#tut-quality-control">10.11. 质量控制</a></li>
+<li><a class="reference internal" href="#tut-batteries-included">10.12. “瑞士军刀”</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="classes.html"
+                        title="previous chapter">9. 类</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="stdlib2.html"
+                        title="next chapter">11. 标准库浏览 &#8211; Part II</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/stdlib.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="stdlib2.html" title="11. 标准库浏览 – Part II"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="classes.html" title="9. 类"
+             >previous</a> |</li>
+        <li><a href="index.html">Python tutorial 3.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, D.D.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

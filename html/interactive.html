@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>13. 交互式输入行编辑历史回溯 &mdash; Python tutorial 3.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Python tutorial 3.4 documentation" href="index.html" />
+    <link rel="next" title="14. 浮点数算法：争议和限制" href="floatingpoint.html" />
+    <link rel="prev" title="12. 接下来？" href="whatnow.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="floatingpoint.html" title="14. 浮点数算法：争议和限制"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="whatnow.html" title="12. 接下来？"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Python tutorial 3.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tut-interacting">
+<span id="id1"></span><h1>13. 交互式输入行编辑历史回溯<a class="headerlink" href="#tut-interacting" title="Permalink to this headline">¶</a></h1>
+<p>有些版本的 Python 解释器支持输入行编辑和历史回溯，类似 Korn shell 和 GNU bash shell 的功能。这是通过 <a class="reference external" href="http://tiswww.case.edu/php/chet/readline/rltop.html">GNU Readline</a> 库实现的。它支持 Emacs 风格和 vi 风格的编辑。这个库有它自己的文档，在此不重复了。不过，基本的东西很容易演示。交互式编辑和历史查阅在 Unix 和 Cygwin 版中是可选项。</p>
+<p>本章 <em>不是</em> 马克 哈密尔顿的 PythonWin 包和随 Python 发布的基于 TK 的 IDLE 环境的文档。 NT 系统和其它 DOS、Windows 系统上的 DOS 窗中的命令行历史回调，属于另一个话题。</p>
+<div class="section" id="tut-lineediting">
+<span id="id2"></span><h2>13.1. 行编辑<a class="headerlink" href="#tut-lineediting" title="Permalink to this headline">¶</a></h2>
+<p>如果支持，无论解释器打印主提示符或从属提示符，行编辑都会激活。当前行可以用 Emacs 风格的快捷键编辑。其中最重要的是： <tt class="kbd docutils literal"><span class="pre">C-A</span></tt> （Control-A）将光标移动到行首，　<tt class="kbd docutils literal"><span class="pre">C-E</span></tt> 移动到行尾， <tt class="kbd docutils literal"><span class="pre">C-B</span></tt> 向左移一个字符， <tt class="kbd docutils literal"><span class="pre">C-F</span></tt> 向右移一位。退格向左删除一个符串， <tt class="kbd docutils literal"><span class="pre">C-D</span></tt> 向右删除一个字符。 <tt class="kbd docutils literal"><span class="pre">C-K</span></tt> 删掉光标右边直到行尾的所有字符， <tt class="kbd docutils literal"><span class="pre">C-Y</span></tt> 将最后一次删除的字符串粘贴到光标位置。 <tt class="kbd docutils literal"><span class="pre">C-underscore</span></tt> （underscores 即下划线，译注）撤销最后一次修改，它可以因积累作用重复。</p>
+</div>
+<div class="section" id="tut-history">
+<span id="id3"></span><h2>13.2. 历史回溯<a class="headerlink" href="#tut-history" title="Permalink to this headline">¶</a></h2>
+<p>历史代替可以工作。所有非空的输入行都被保存在历史缓存中，获得一个新的提示符的时候，你处于这个缓存的最底的空行。 <tt class="kbd docutils literal"><span class="pre">C-P</span></tt> 在历史缓存中上溯一行， <tt class="kbd docutils literal"><span class="pre">C-N</span></tt> 向下移一行。历史缓存中的任一行都可以编辑；按下　<tt class="kbd docutils literal"><span class="pre">Return</span></tt> 键时将当前行传入解释器。 <tt class="kbd docutils literal"><span class="pre">C-R</span></tt> 开始一个增量向前搜索；<tt class="kbd docutils literal"><span class="pre">C-S</span></tt> 开始一个向后搜索。</p>
+</div>
+<div class="section" id="tut-keybindings">
+<span id="id4"></span><h2>13.3. 快捷键绑定<a class="headerlink" href="#tut-keybindings" title="Permalink to this headline">¶</a></h2>
+<p>Readline 库的快捷键绑定和其它一些参数可以通过名为 <tt class="file docutils literal"><span class="pre">~/.inputrc</span></tt>  的初始化文件的替换命名来定制。快捷键绑定如下形式:</p>
+<div class="highlight-python"><div class="highlight"><pre>key-name: function-name
+</pre></div>
+</div>
+<p>或者:</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;string&quot;: function-name
+</pre></div>
+</div>
+<p>选项可以如下设置:</p>
+<div class="highlight-python"><div class="highlight"><pre>set option-name value
+</pre></div>
+</div>
+<p>例如:</p>
+<div class="highlight-python"><div class="highlight"><pre># I prefer vi-style editing:
+set editing-mode vi
+
+# Edit using a single line:
+set horizontal-scroll-mode On
+
+# Rebind some keys:
+Meta-h: backward-kill-word
+&quot;\C-u&quot;: universal-argument
+&quot;\C-x\C-r&quot;: re-read-init-file
+</pre></div>
+</div>
+<p>需要注意的是 Python 中默认 <tt class="kbd docutils literal"><span class="pre">Tab</span></tt> 绑定为插入一个 <tt class="kbd docutils literal"><span class="pre">Tab</span></tt> 字符而不是 Readline 库的默认文件名完成函数，如果你想用这个，可以将以下内容插入:</p>
+<div class="highlight-python"><div class="highlight"><pre>Tab: complete
+</pre></div>
+</div>
+<p>到你的 <tt class="file docutils literal"><span class="pre">~/.inputrc</span></tt> 中来覆盖它。（当然，如果你真的把 <tt class="kbd docutils literal"><span class="pre">Tab</span></tt>  设置成这样，就很难在后继行中插入缩进。）</p>
+<p id="index-0">自动完成变量和模块名也可以激活生效。要使之在解释器交互模式中可用，在你的启动文件中加入下面内容: <a class="footnote-reference" href="#id7" id="id5">[1]</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">rlcompleter</span><span class="o">,</span> <span class="nn">readline</span>
+<span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s">&#39;tab: complete&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这个操作将 <tt class="kbd docutils literal"><span class="pre">Tab</span></tt> 绑定到完成函数，故按 Tab 键两次会给出建议的完成内容；它查找　Python 命名、当前的局部变量、有效的模块名。对于类似 <tt class="docutils literal"><span class="pre">string.a</span></tt> 这样的文件名，它会解析 <tt class="docutils literal"><span class="pre">'.'</span></tt> 相关的表达式，从返回的结果对象中获取属性，以提供完成建议。需要注意的是，如果对象的 <tt class="xref py py-meth docutils literal"><span class="pre">__getattr__()</span></tt> 方法是此表达式的一部分，这可能会执行应用程序定义代码。</p>
+<p>更有用的初始化文件可能是下面这个例子这样的。要注意一旦创建的名字没用了，它会删掉它们；因为初始化文件作为解释命令与之在同一个命名空间执行，在交互环境中删除命名带来了边际效应。可能你发现了它体贴的保留了一些导入模块，类似 <tt class="xref py py-mod docutils literal"><span class="pre">os</span></tt> ，在解释器的大多数使用场合中都会用到它们。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Add auto-completion and a stored history file of commands to your Python</span>
+<span class="c"># interactive interpreter. Requires Python 2.0+, readline. Autocomplete is</span>
+<span class="c"># bound to the Esc key by default (you can change it - see readline docs).</span>
+<span class="c">#</span>
+<span class="c"># Store the file in ~/.pystartup, and set an environment variable to point</span>
+<span class="c"># to it:  &quot;export PYTHONSTARTUP=~/.pystartup&quot; in bash.</span>
+
+<span class="kn">import</span> <span class="nn">atexit</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">readline</span>
+<span class="kn">import</span> <span class="nn">rlcompleter</span>
+
+<span class="n">historyPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">&quot;~/.pyhistory&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">save_history</span><span class="p">(</span><span class="n">historyPath</span><span class="o">=</span><span class="n">historyPath</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">readline</span>
+    <span class="n">readline</span><span class="o">.</span><span class="n">write_history_file</span><span class="p">(</span><span class="n">historyPath</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">historyPath</span><span class="p">):</span>
+    <span class="n">readline</span><span class="o">.</span><span class="n">read_history_file</span><span class="p">(</span><span class="n">historyPath</span><span class="p">)</span>
+
+<span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">save_history</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">os</span><span class="p">,</span> <span class="n">atexit</span><span class="p">,</span> <span class="n">readline</span><span class="p">,</span> <span class="n">rlcompleter</span><span class="p">,</span> <span class="n">save_history</span><span class="p">,</span> <span class="n">historyPath</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tut-commentary">
+<span id="id6"></span><h2>13.4. 其它交互式解释器<a class="headerlink" href="#tut-commentary" title="Permalink to this headline">¶</a></h2>
+<p>跟早先版本的解释器比，现在已经有了很大的进步。不过，还是有些期待没有完成：它应该在后继行中优美的提供缩进（解释器知道下一行是否需要缩进）建议。完成机制可以使用解释器的符号表。命名检查（或进一步建议）匹配括号、引号等等。</p>
+<p>另有一个强化交互式解释器已经存在一段时间了，它就是 <a class="reference external" href="http://ipython.scipy.org/">IPython</a>，它支持 tab 完成，对象浏览和高级历史管理。它也可以完全定制或嵌入到其它应用程序中。另一个类似的强化交互环境是　<a class="reference external" href="http://www.bpython-interpreter.org/">bpython</a> 。</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td>启动交互解释器时，Python 可以执行 <span class="target" id="index-1"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PYTHONSTARTUP</span></tt> 环境变量所指定的文件内容。</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">13. 交互式输入行编辑历史回溯</a><ul>
+<li><a class="reference internal" href="#tut-lineediting">13.1. 行编辑</a></li>
+<li><a class="reference internal" href="#tut-history">13.2. 历史回溯</a></li>
+<li><a class="reference internal" href="#tut-keybindings">13.3. 快捷键绑定</a></li>
+<li><a class="reference internal" href="#tut-commentary">13.4. 其它交互式解释器</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="whatnow.html"
+                        title="previous chapter">12. 接下来？</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="floatingpoint.html"
+                        title="next chapter">14. 浮点数算法：争议和限制</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/interactive.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="floatingpoint.html" title="14. 浮点数算法：争议和限制"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="whatnow.html" title="12. 接下来？"
+             >previous</a> |</li>
+        <li><a href="index.html">Python tutorial 3.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, D.D.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>
