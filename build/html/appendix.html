@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>15. Appendix &mdash; Python tutorial 3.4.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.4.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Python tutorial 3.4.2 documentation" href="index.html" />
+    <link rel="prev" title="14. 浮点数算法：争议和限制" href="floatingpoint.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="floatingpoint.html" title="14. 浮点数算法：争议和限制"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Python tutorial 3.4.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix">
+<span id="tut-appendix"></span><h1>15. Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="interactive-mode">
+<span id="tut-interac"></span><h2>15.1. Interactive Mode<a class="headerlink" href="#interactive-mode" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="error-handling">
+<span id="tut-error"></span><h3>15.1.1. Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h3>
+<p>When an error occurs, the interpreter prints an error message and a stack trace.
+In interactive mode, it then returns to the primary prompt; when input came from
+a file, it exits with a nonzero exit status after printing the stack trace.
+(Exceptions handled by an <code class="xref std std-keyword docutils literal"><span class="pre">except</span></code> clause in a <code class="xref std std-keyword docutils literal"><span class="pre">try</span></code> statement
+are not errors in this context.)  Some errors are unconditionally fatal and
+cause an exit with a nonzero exit; this applies to internal inconsistencies and
+some cases of running out of memory.  All error messages are written to the
+standard error stream; normal output from executed commands is written to
+standard output.</p>
+<p>Typing the interrupt character (usually Control-C or DEL) to the primary or
+secondary prompt cancels the input and returns to the primary prompt. <a class="footnote-reference" href="#id2" id="id1">[1]</a>
+Typing an interrupt while a command is executing raises the
+<code class="xref py py-exc docutils literal"><span class="pre">KeyboardInterrupt</span></code> exception, which may be handled by a <code class="xref std std-keyword docutils literal"><span class="pre">try</span></code>
+statement.</p>
+</div>
+<div class="section" id="executable-python-scripts">
+<span id="tut-scripts"></span><h3>15.1.2. Executable Python Scripts<a class="headerlink" href="#executable-python-scripts" title="Permalink to this headline">¶</a></h3>
+<p>On BSD&#8217;ish Unix systems, Python scripts can be made directly executable, like
+shell scripts, by putting the line</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python3.4</span>
+</pre></div>
+</div>
+<p>(assuming that the interpreter is on the user&#8217;s <span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal"><span class="pre">PATH</span></code>) at the beginning
+of the script and giving the file an executable mode.  The <code class="docutils literal"><span class="pre">#!</span></code> must be the
+first two characters of the file.  On some platforms, this first line must end
+with a Unix-style line ending (<code class="docutils literal"><span class="pre">'\n'</span></code>), not a Windows (<code class="docutils literal"><span class="pre">'\r\n'</span></code>) line
+ending.  Note that the hash, or pound, character, <code class="docutils literal"><span class="pre">'#'</span></code>, is used to start a
+comment in Python.</p>
+<p>The script can be given an executable mode, or permission, using the
+<strong class="program">chmod</strong> command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>chmod +x myscript.py
+</pre></div>
+</div>
+<p>On Windows systems, there is no notion of an &#8220;executable mode&#8221;.  The Python
+installer automatically associates <code class="docutils literal"><span class="pre">.py</span></code> files with <code class="docutils literal"><span class="pre">python.exe</span></code> so that
+a double-click on a Python file will run it as a script.  The extension can
+also be <code class="docutils literal"><span class="pre">.pyw</span></code>, in that case, the console window that normally appears is
+suppressed.</p>
+</div>
+<div class="section" id="the-interactive-startup-file">
+<span id="tut-startup"></span><h3>15.1.3. The Interactive Startup File<a class="headerlink" href="#the-interactive-startup-file" title="Permalink to this headline">¶</a></h3>
+<p>When you use Python interactively, it is frequently handy to have some standard
+commands executed every time the interpreter is started.  You can do this by
+setting an environment variable named <span class="target" id="index-1"></span><code class="xref std std-envvar docutils literal"><span class="pre">PYTHONSTARTUP</span></code> to the name of a
+file containing your start-up commands.  This is similar to the <code class="file docutils literal"><span class="pre">.profile</span></code>
+feature of the Unix shells.</p>
+<p>This file is only read in interactive sessions, not when Python reads commands
+from a script, and not when <code class="file docutils literal"><span class="pre">/dev/tty</span></code> is given as the explicit source of
+commands (which otherwise behaves like an interactive session).  It is executed
+in the same namespace where interactive commands are executed, so that objects
+that it defines or imports can be used without qualification in the interactive
+session. You can also change the prompts <code class="docutils literal"><span class="pre">sys.ps1</span></code> and <code class="docutils literal"><span class="pre">sys.ps2</span></code> in this
+file.</p>
+<p>If you want to read an additional start-up file from the current directory, you
+can program this in the global start-up file using code like <code class="docutils literal"><span class="pre">if</span>
+<span class="pre">os.path.isfile('.pythonrc.py'):</span> <span class="pre">exec(open('.pythonrc.py').read())</span></code>.
+If you want to use the startup file in a script, you must do this explicitly
+in the script:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;PYTHONSTARTUP&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">filename</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
+       <span class="n">startup_file</span> <span class="o">=</span> <span class="n">fobj</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">exec</span><span class="p">(</span><span class="n">startup_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-customization-modules">
+<span id="tut-customize"></span><h3>15.1.4. The Customization Modules<a class="headerlink" href="#the-customization-modules" title="Permalink to this headline">¶</a></h3>
+<p>Python provides two hooks to let you customize it: <code class="xref py py-mod docutils literal"><span class="pre">sitecustomize</span></code> and
+<code class="xref py py-mod docutils literal"><span class="pre">usercustomize</span></code>.  To see how it works, you need first to find the location
+of your user site-packages directory.  Start Python and run this code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">site</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">site</span><span class="o">.</span><span class="n">getusersitepackages</span><span class="p">()</span>
+<span class="go">&#39;/home/user/.local/lib/python3.4/site-packages&#39;</span>
+</pre></div>
+</div>
+<p>Now you can create a file named <code class="file docutils literal"><span class="pre">usercustomize.py</span></code> in that directory and
+put anything you want in it.  It will affect every invocation of Python, unless
+it is started with the <code class="xref std std-option docutils literal"><span class="pre">-s</span></code> option to disable the automatic import.</p>
+<p><code class="xref py py-mod docutils literal"><span class="pre">sitecustomize</span></code> works in the same way, but is typically created by an
+administrator of the computer in the global site-packages directory, and is
+imported before <code class="xref py py-mod docutils literal"><span class="pre">usercustomize</span></code>.  See the documentation of the <code class="xref py py-mod docutils literal"><span class="pre">site</span></code>
+module for more details.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>A problem with the GNU Readline package may prevent this.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">15. Appendix</a><ul>
+<li><a class="reference internal" href="#interactive-mode">15.1. Interactive Mode</a><ul>
+<li><a class="reference internal" href="#error-handling">15.1.1. Error Handling</a></li>
+<li><a class="reference internal" href="#executable-python-scripts">15.1.2. Executable Python Scripts</a></li>
+<li><a class="reference internal" href="#the-interactive-startup-file">15.1.3. The Interactive Startup File</a></li>
+<li><a class="reference internal" href="#the-customization-modules">15.1.4. The Customization Modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="floatingpoint.html"
+                        title="previous chapter">14. 浮点数算法：争议和限制</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/appendix.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 首页侧边 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:200px;height:200px"
+     data-ad-client="ca-pub-3421553373953599"
+     data-ad-slot="3551838308"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="floatingpoint.html" title="14. 浮点数算法：争议和限制"
+             >previous</a> |</li>
+        <li><a href="index.html">Python tutorial 3.4.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    <p>
+ © Copyright Translate by march.liu, Reorganize by D.D 2013. Created using
+<a href="http://sphinx.pocoo.org/">Sphinx</a>
+1.2. 
+</p>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9adc7a1c86496c8e2bc61c4f8fc92d30";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<p><a href="http://www.miitbeian.gov.cn/">京ICP备14002119号-1</a></p>
+<hr/>
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- pythondoc 首页下方 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-3421553373953599"
+     data-ad-slot="6985889234"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+</div>
+
+
+
+
+  </body>
+</html>
