@@ -19,7 +19,7 @@ Python 标准库概览
    >>> os.system('mkdir today')   # Run the command mkdir in the system shell
    0
 
-应该用 ``import os`` 风格而非 ``from os import *`` 。这样可以保证随操作系统不同而有所变化的 :func:`os.open` 不会覆盖内置函数 :func:`open`
+应该用 ``import os`` 风格而非 ``from os import *``。这样可以保证随操作系统不同而有所变化的 :func:`os.open` 不会覆盖内置函数 :func:`open`。
 
 .. index:: builtin: help
 
@@ -55,13 +55,13 @@ Python 标准库概览
 命令行参数
 ======================
 
-通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 :mod:`sys` 模块的 *argv*  变量。例如在命令行中执行 ``python demo.py one two three`` 后可以得到以下输出结果::
+通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 :mod:`sys` 模块的 *argv* 变量。例如在命令行中执行 ``python demo.py one two three`` 后可以得到以下输出结果::
 
    >>> import sys
-   >>> print sys.argv
+   >>> print(sys.argv)
    ['demo.py', 'one', 'two', 'three']
 
-:mod:`getopt` 模块使用 Unix :func:`getopt` 函处理 *sys.argv* 。更多的复杂命令行处理由 :mod:`argparse` 模块提供。
+:mod:`getopt` 模块使用 Unix :func:`getopt` 函处理 *sys.argv*。更多的复杂命令行处理由 :mod:`argparse` 模块提供。
 
 
 .. _tut-stderr:
@@ -69,12 +69,12 @@ Python 标准库概览
 错误输出重定向和程序终止
 ================================================
 
-:mod:`sys` 还有 *stdin* ， *stdout* 和 *stderr* 属性，即使在 *stdout* 被重定向时，后者也可以用于显示警告和错误信息::
+:mod:`sys` 还有 *stdin*， *stdout* 和 *stderr* 属性，即使在 *stdout* 被重定向时，后者也可以用于显示警告和错误信息::
 
    >>> sys.stderr.write('Warning, log file not found starting a new one\n')
    Warning, log file not found starting a new one
 
-大多脚本的定向终止都使用 ``sys.exit()`` 。
+大多脚本的定向终止都使用 ``sys.exit()``。
 
 
 .. _tut-string-pattern-matching:
@@ -179,7 +179,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
 数据压缩
 ================
 
-以下模块直接支持通用的数据打包和压缩格式： :mod:`zlib`, :mod:`gzip`, :mod:`bz2`, :mod:`zipfile` 以及 
+以下模块直接支持通用的数据打包和压缩格式：:mod:`zlib`， :mod:`gzip`， :mod:`bz2`， :mod:`zipfile` 以及 
 :mod:`tarfile`。 ::
 
    >>> import zlib
@@ -202,7 +202,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
 
 有些用户对了解解决同一问题的不同方法之间的性能差异很感兴趣。Python 提供了一个度量工具，为这些问题提供了直接答案。
 
-例如，使用元组封装和拆封来交换元素看起来要比使用传统的方法要诱人的多。 :mod:`timeit`  证明了后者更快一些::
+例如，使用元组封装和拆封来交换元素看起来要比使用传统的方法要诱人的多。:mod:`timeit` 证明了后者更快一些::
 
    >>> from timeit import Timer
    >>> Timer('t=a; a=b; b=t', 'a=1; b=2').timeit()
@@ -225,7 +225,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
    def average(values):
        """Computes the arithmetic mean of a list of numbers.
 
-       >>> print average([20, 30, 70])
+       >>> print(average([20, 30, 70]))
        40.0
        """
        return sum(values, 0.0) / len(values)
@@ -233,7 +233,7 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
    import doctest
    doctest.testmod()   # automatically validate the embedded tests
 
-:mod:`unittest` 模块不像 :mod:`doctest`  模块那么容易使用，不过它可以在一个独立的文件里提供一个更全面的测试集::
+:mod:`unittest` 模块不像 :mod:`doctest` 模块那么容易使用，不过它可以在一个独立的文件里提供一个更全面的测试集::
 
    import unittest
 
@@ -253,14 +253,14 @@ SciPy <http://scipy.org> 项目提供了许多数值计算的模块。
 “瑞士军刀”
 ==================
 
-Python 展现了“瑞士军刀”的哲学。 这可以通过它更大的包的高级和健壮的功能来得到最好的展现。 列如:
+Python 展现了“瑞士军刀”的哲学。这可以通过它更大的包的高级和健壮的功能来得到最好的展现。列如:
 
-* :mod:`xmlrpc.client` 和 :mod:`xmlrpc.server` 模块让远程过程调用变得轻而易举。 尽管模块有这样的名字，用户无需拥有XML的知识或处理XML。
+* :mod:`xmlrpc.client` 和 :mod:`xmlrpc.server` 模块让远程过程调用变得轻而易举。尽管模块有这样的名字，用户无需拥有 XML 的知识或处理 XML。
 
-* :mod:`email` 包是一个管理邮件信息的库，包括MIME和其它基于RFC 2822的信息文档。 不同于实际发送和接收信息的 :mod:`smtplib` 和 :mod:`poplib` 模块， email 包包含一个构造或解析复杂消息结构（包括附件）及实现互联网编码和头协议的完整工具集。
+* :mod:`email` 包是一个管理邮件信息的库，包括MIME和其它基于 RFC2822 的信息文档。不同于实际发送和接收信息的 :mod:`smtplib` 和 :mod:`poplib` 模块，email 包包含一个构造或解析复杂消息结构（包括附件）及实现互联网编码和头协议的完整工具集。
 
 * :mod:`xml.dom` 和 :mod:`xml.sax` 包为流行的信息交换格式提供了强大的支持。同样， :mod:`csv`  模块支持在通用数据库格式中直接读写。综合起来，这些模块和包大大简化了 Python 应用程序和其它工具之间的数据交换。
 
-* 国际化由 :mod:`gettext` ， :mod:`locale` 和 :mod:`codecs` 包支持。
+* 国际化由 :mod:`gettext`， :mod:`locale` 和 :mod:`codecs` 包支持。
 
 
