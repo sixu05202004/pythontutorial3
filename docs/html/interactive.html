@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>13. 交互式输入行编辑历史回溯 &mdash; Python tutorial 3.4.2 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Python tutorial 3.4.2 documentation" href="index.html"/>
+        <link rel="next" title="14. 浮点数算法：争议和限制" href="floatingpoint.html"/>
+        <link rel="prev" title="12. 接下来？" href="whatnow.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python tutorial</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="appetite.html">1. 开胃菜</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpreter.html">2. 使用 Python 解释器</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interpreter.html#tut-invoking">2.1. 调用 Python 解释器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpreter.html#tut-interp">2.2. 解释器及其环境</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">3. Python 简介</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#tut-calculator">3.1. 将 Python 当做计算器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#tut-firststeps">3.2. 编程的第一步</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="controlflow.html">4. 深入 Python 流程控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#if">4.1. <tt class="docutils literal"><span class="pre">if</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#for">4.2. <tt class="docutils literal"><span class="pre">for</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#range">4.3. <tt class="docutils literal"><span class="pre">range()</span></tt> 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#break-continue-else">4.4. <tt class="docutils literal"><span class="pre">break</span></tt> 和 <tt class="docutils literal"><span class="pre">continue</span></tt> 语句, 以及循环中的 <tt class="docutils literal"><span class="pre">else</span></tt> 子句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#pass">4.5. <tt class="docutils literal"><span class="pre">pass</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-functions">4.6. 定义函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-defining">4.7. 深入 Python 函数定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-codingstyle">4.8. 插曲：编码风格</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datastructures.html">5. 数据结构</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-morelists">5.1. 关于列表更多的内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#del">5.2. <tt class="docutils literal"><span class="pre">del</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-tuples">5.3. 元组和序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-sets">5.4. 集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-dictionaries">5.5. 字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-loopidioms">5.6. 循环技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-conditions">5.7. 深入条件控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-comparing">5.8. 比较序列和其它类型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">6. 模块</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tut-moremodules">6.1. 深入模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tut-standardmodules">6.2. 标准模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#dir">6.3. <tt class="docutils literal"><span class="pre">dir()</span></tt> 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tut-packages">6.4. 包</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inputoutput.html">7. 输入和输出</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inputoutput.html#tut-formatting">7.1. 格式化输出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputoutput.html#tut-files">7.2. 文件读写</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">8. 错误和异常</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-syntaxerrors">8.1. 语法错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-exceptions">8.2. 异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-handling">8.3. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-raising">8.4. 抛出异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-userexceptions">8.5. 用户自定义异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-cleanup">8.6. 定义清理行为</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-cleanup-with">8.7. 预定义清理行为</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">9. 类</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-object">9.1. 术语相关</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#python">9.2. Python 作用域和命名空间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-firstclasses">9.3. 初识类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-remarks">9.4. 一些说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-inheritance">9.5. 继承</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-private">9.6. 私有变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-odds">9.7. 补充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-exceptionclasses">9.8. 异常也是类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-iterators">9.9. 迭代器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-generators">9.10. 生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-genexps">9.11. 生成器表达式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stdlib.html">10. Python 标准库概览</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-os-interface">10.1. 操作系统接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-file-wildcards">10.2. 文件通配符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-command-line-arguments">10.3. 命令行参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-stderr">10.4. 错误输出重定向和程序终止</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-string-pattern-matching">10.5. 字符串正则匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-mathematics">10.6. 数学</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-internet-access">10.7. 互联网访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-dates-and-times">10.8. 日期和时间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-data-compression">10.9. 数据压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-performance-measurement">10.10. 性能度量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-quality-control">10.11. 质量控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-batteries-included">10.12. “瑞士军刀”</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 &#8211; Part II</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-output-formatting">11.1. 输出格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-templating">11.2. 模板</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-binary-formats">11.3. 使用二进制数据记录布局</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-multi-threading">11.4. 多线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-logging">11.5. 日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-weak-references">11.6. 弱引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-list-tools">11.7. 列表工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-decimal-fp">11.8. 十进制浮点数算法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="whatnow.html">12. 接下来？</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">13. 交互式输入行编辑历史回溯</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tut-lineediting">13.1. 行编辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tut-history">13.2. 历史回溯</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tut-keybindings">13.3. 快捷键绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tut-commentary">13.4. 其它交互式解释器</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="floatingpoint.html">14. 浮点数算法：争议和限制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">14.1. 表达错误</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. 附录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">15.1. 交互模式</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python tutorial</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>13. 交互式输入行编辑历史回溯</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/interactive.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="tut-interacting">
+<span id="id1"></span><h1>13. 交互式输入行编辑历史回溯<a class="headerlink" href="#tut-interacting" title="Permalink to this headline">¶</a></h1>
+<p>有些版本的 Python 解释器支持输入行编辑和历史回溯，类似 Korn shell 和 GNU bash shell 的功能。这是通过 <a class="reference external" href="http://tiswww.case.edu/php/chet/readline/rltop.html">GNU Readline</a> 库实现的。它支持 Emacs 风格和 vi 风格的编辑。这个库有它自己的文档，在此不重复了。不过，基本的东西很容易演示。交互式编辑和历史查阅在 Unix 和 Cygwin 版中是可选项。</p>
+<p>本章 <em>不是</em> 马克 哈密尔顿的 PythonWin 包和随 Python 发布的基于 TK 的 IDLE 环境的文档。 NT 系统和其它 DOS、Windows 系统上的 DOS 窗中的命令行历史回调，属于另一个话题。</p>
+<div class="section" id="tut-lineediting">
+<span id="id2"></span><h2>13.1. 行编辑<a class="headerlink" href="#tut-lineediting" title="Permalink to this headline">¶</a></h2>
+<p>如果支持，无论解释器打印主提示符或从属提示符，行编辑都会激活。当前行可以用 Emacs 风格的快捷键编辑。其中最重要的是： <tt class="kbd docutils literal"><span class="pre">C-A</span></tt> （Control-A）将光标移动到行首，　<tt class="kbd docutils literal"><span class="pre">C-E</span></tt> 移动到行尾， <tt class="kbd docutils literal"><span class="pre">C-B</span></tt> 向左移一个字符， <tt class="kbd docutils literal"><span class="pre">C-F</span></tt> 向右移一位。退格向左删除一个符串， <tt class="kbd docutils literal"><span class="pre">C-D</span></tt> 向右删除一个字符。 <tt class="kbd docutils literal"><span class="pre">C-K</span></tt> 删掉光标右边直到行尾的所有字符， <tt class="kbd docutils literal"><span class="pre">C-Y</span></tt> 将最后一次删除的字符串粘贴到光标位置。 <tt class="kbd docutils literal"><span class="pre">C-underscore</span></tt> （underscores 即下划线，译注）撤销最后一次修改，它可以因积累作用重复。</p>
+</div>
+<div class="section" id="tut-history">
+<span id="id3"></span><h2>13.2. 历史回溯<a class="headerlink" href="#tut-history" title="Permalink to this headline">¶</a></h2>
+<p>历史代替可以工作。所有非空的输入行都被保存在历史缓存中，获得一个新的提示符的时候，你处于这个缓存的最底的空行。 <tt class="kbd docutils literal"><span class="pre">C-P</span></tt> 在历史缓存中上溯一行， <tt class="kbd docutils literal"><span class="pre">C-N</span></tt> 向下移一行。历史缓存中的任一行都可以编辑；按下　<tt class="kbd docutils literal"><span class="pre">Return</span></tt> 键时将当前行传入解释器。 <tt class="kbd docutils literal"><span class="pre">C-R</span></tt> 开始一个增量向前搜索；<tt class="kbd docutils literal"><span class="pre">C-S</span></tt> 开始一个向后搜索。</p>
+</div>
+<div class="section" id="tut-keybindings">
+<span id="id4"></span><h2>13.3. 快捷键绑定<a class="headerlink" href="#tut-keybindings" title="Permalink to this headline">¶</a></h2>
+<p>Readline 库的快捷键绑定和其它一些参数可以通过名为 <tt class="file docutils literal"><span class="pre">~/.inputrc</span></tt>  的初始化文件的替换命名来定制。快捷键绑定如下形式:</p>
+<div class="highlight-python"><div class="highlight"><pre>key-name: function-name
+</pre></div>
+</div>
+<p>或者:</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;string&quot;: function-name
+</pre></div>
+</div>
+<p>选项可以如下设置:</p>
+<div class="highlight-python"><div class="highlight"><pre>set option-name value
+</pre></div>
+</div>
+<p>例如:</p>
+<div class="highlight-python"><div class="highlight"><pre># I prefer vi-style editing:
+set editing-mode vi
+
+# Edit using a single line:
+set horizontal-scroll-mode On
+
+# Rebind some keys:
+Meta-h: backward-kill-word
+&quot;\C-u&quot;: universal-argument
+&quot;\C-x\C-r&quot;: re-read-init-file
+</pre></div>
+</div>
+<p>需要注意的是 Python 中默认 <tt class="kbd docutils literal"><span class="pre">Tab</span></tt> 绑定为插入一个 <tt class="kbd docutils literal"><span class="pre">Tab</span></tt> 字符而不是 Readline 库的默认文件名完成函数，如果你想用这个，可以将以下内容插入:</p>
+<div class="highlight-python"><div class="highlight"><pre>Tab: complete
+</pre></div>
+</div>
+<p>到你的 <tt class="file docutils literal"><span class="pre">~/.inputrc</span></tt> 中来覆盖它。（当然，如果你真的把 <tt class="kbd docutils literal"><span class="pre">Tab</span></tt>  设置成这样，就很难在后继行中插入缩进。）</p>
+<p id="index-0">自动完成变量和模块名也可以激活生效。要使之在解释器交互模式中可用，在你的启动文件中加入下面内容: <a class="footnote-reference" href="#id7" id="id5">[1]</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">rlcompleter</span><span class="o">,</span> <span class="nn">readline</span>
+<span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s">&#39;tab: complete&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这个操作将 <tt class="kbd docutils literal"><span class="pre">Tab</span></tt> 绑定到完成函数，故按 Tab 键两次会给出建议的完成内容；它查找　Python 命名、当前的局部变量、有效的模块名。对于类似 <tt class="docutils literal"><span class="pre">string.a</span></tt> 这样的文件名，它会解析 <tt class="docutils literal"><span class="pre">'.'</span></tt> 相关的表达式，从返回的结果对象中获取属性，以提供完成建议。需要注意的是，如果对象的 <tt class="xref py py-meth docutils literal"><span class="pre">__getattr__()</span></tt> 方法是此表达式的一部分，这可能会执行应用程序定义代码。</p>
+<p>更有用的初始化文件可能是下面这个例子这样的。要注意一旦创建的名字没用了，它会删掉它们；因为初始化文件作为解释命令与之在同一个命名空间执行，在交互环境中删除命名带来了边际效应。可能你发现了它体贴的保留了一些导入模块，类似 <tt class="xref py py-mod docutils literal"><span class="pre">os</span></tt> ，在解释器的大多数使用场合中都会用到它们。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Add auto-completion and a stored history file of commands to your Python</span>
+<span class="c"># interactive interpreter. Requires Python 2.0+, readline. Autocomplete is</span>
+<span class="c"># bound to the Esc key by default (you can change it - see readline docs).</span>
+<span class="c">#</span>
+<span class="c"># Store the file in ~/.pystartup, and set an environment variable to point</span>
+<span class="c"># to it:  &quot;export PYTHONSTARTUP=~/.pystartup&quot; in bash.</span>
+
+<span class="kn">import</span> <span class="nn">atexit</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">readline</span>
+<span class="kn">import</span> <span class="nn">rlcompleter</span>
+
+<span class="n">historyPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">&quot;~/.pyhistory&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">save_history</span><span class="p">(</span><span class="n">historyPath</span><span class="o">=</span><span class="n">historyPath</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">readline</span>
+    <span class="n">readline</span><span class="o">.</span><span class="n">write_history_file</span><span class="p">(</span><span class="n">historyPath</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">historyPath</span><span class="p">):</span>
+    <span class="n">readline</span><span class="o">.</span><span class="n">read_history_file</span><span class="p">(</span><span class="n">historyPath</span><span class="p">)</span>
+
+<span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">save_history</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">os</span><span class="p">,</span> <span class="n">atexit</span><span class="p">,</span> <span class="n">readline</span><span class="p">,</span> <span class="n">rlcompleter</span><span class="p">,</span> <span class="n">save_history</span><span class="p">,</span> <span class="n">historyPath</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tut-commentary">
+<span id="id6"></span><h2>13.4. 其它交互式解释器<a class="headerlink" href="#tut-commentary" title="Permalink to this headline">¶</a></h2>
+<p>跟早先版本的解释器比，现在已经有了很大的进步。不过，还是有些期待没有完成：它应该在后继行中优美的提供缩进（解释器知道下一行是否需要缩进）建议。完成机制可以使用解释器的符号表。命名检查（或进一步建议）匹配括号、引号等等。</p>
+<p>另有一个强化交互式解释器已经存在一段时间了，它就是 <a class="reference external" href="http://ipython.scipy.org/">IPython</a>，它支持 tab 完成，对象浏览和高级历史管理。它也可以完全定制或嵌入到其它应用程序中。另一个类似的强化交互环境是　<a class="reference external" href="http://www.bpython-interpreter.org/">bpython</a> 。</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td>启动交互解释器时，Python 可以执行 <span class="target" id="index-1"></span><tt class="xref std std-envvar docutils literal"><span class="pre">PYTHONSTARTUP</span></tt> 环境变量所指定的文件内容。</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="floatingpoint.html" class="btn btn-neutral float-right" title="14. 浮点数算法：争议和限制">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="whatnow.html" class="btn btn-neutral" title="12. 接下来？"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, D.D.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.4.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
