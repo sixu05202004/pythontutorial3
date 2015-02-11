@@ -14,7 +14,7 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link href='_static/fonts/googleapis' rel='stylesheet' type='text/css'>
 
   
   
@@ -33,7 +33,7 @@
         <link rel="prev" title="13. 交互式输入行编辑历史回溯" href="interactive.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -74,11 +74,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="controlflow.html">4. 深入 Python 流程控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#if">4.1. <code class="docutils literal"><span class="pre">if</span></code> 语句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#for">4.2. <code class="docutils literal"><span class="pre">for</span></code> 语句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#range">4.3. <code class="docutils literal"><span class="pre">range()</span></code> 函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#break-continue-else">4.4. <code class="docutils literal"><span class="pre">break</span></code> 和 <code class="docutils literal"><span class="pre">continue</span></code> 语句, 以及循环中的 <code class="docutils literal"><span class="pre">else</span></code> 子句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#pass">4.5. <code class="docutils literal"><span class="pre">pass</span></code> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#if">4.1. <tt class="docutils literal"><span class="pre">if</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#for">4.2. <tt class="docutils literal"><span class="pre">for</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#range">4.3. <tt class="docutils literal"><span class="pre">range()</span></tt> 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#break-continue-else">4.4. <tt class="docutils literal"><span class="pre">break</span></tt> 和 <tt class="docutils literal"><span class="pre">continue</span></tt> 语句, 以及循环中的 <tt class="docutils literal"><span class="pre">else</span></tt> 子句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#pass">4.5. <tt class="docutils literal"><span class="pre">pass</span></tt> 语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-functions">4.6. 定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-defining">4.7. 深入 Python 函数定义</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-codingstyle">4.8. 插曲：编码风格</a></li>
@@ -86,7 +86,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datastructures.html">5. 数据结构</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-morelists">5.1. 关于列表更多的内容</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datastructures.html#del">5.2. <code class="docutils literal"><span class="pre">del</span></code> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#del">5.2. <tt class="docutils literal"><span class="pre">del</span></tt> 语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-tuples">5.3. 元组和序列</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-sets">5.4. 集合</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-dictionaries">5.5. 字典</a></li>
@@ -98,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="modules.html">6. 模块</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tut-moremodules">6.1. 深入模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tut-standardmodules">6.2. 标准模块</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#dir">6.3. <code class="docutils literal"><span class="pre">dir()</span></code> 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#dir">6.3. <tt class="docutils literal"><span class="pre">dir()</span></tt> 函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tut-packages">6.4. 包</a></li>
 </ul>
 </li>
@@ -190,6 +190,7 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
 
+
         <!--百度统计代码-->
 
           <script>
@@ -262,7 +263,7 @@
 </pre></div>
 </div>
 <p>在任意无限位数值中中止，你可以得到一个近似。</p>
-<p>在一个典型的机器上运行 Python，一共有53位的精度来表示一个浮点数，所以当你输入十进制的 <code class="docutils literal"><span class="pre">0.1</span></code> 的时候，看到是一个二进制的小数:</p>
+<p>在一个典型的机器上运行 Python，一共有53位的精度来表示一个浮点数，所以当你输入十进制的 <tt class="docutils literal"><span class="pre">0.1</span></tt> 的时候，看到是一个二进制的小数:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="mf">0.00011001100110011001100110011001100110011001100110011010</span>
 </pre></div>
 </div>
@@ -279,8 +280,8 @@
 </pre></div>
 </div>
 <p>只要记住即使打印的结果看上去是精确的 1/10，真正存储的值是最近似的二进制小数。</p>
-<p>有趣地是，存在许多不同的十进制数共享着相同的近似二进制小数。例如，数字 <code class="docutils literal"><span class="pre">0.1</span></code> 和 <code class="docutils literal"><span class="pre">0.10000000000000001</span></code> 以及 <code class="docutils literal"><span class="pre">0.1000000000000000055511151231257827021181583404541015625</span></code> 都是 <code class="docutils literal"><span class="pre">3602879701896397</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">**</span> <span class="pre">55</span></code> 的近似值。因为所有这些十进制数共享相同的近似值，在保持恒等式 <code class="docutils literal"><span class="pre">eval(repr(x))</span> <span class="pre">==</span> <span class="pre">x</span></code> 的同时，显示的可能是它们中的任何一个。</p>
-<p>历史上，Python 提示符和内置的 <code class="xref py py-func docutils literal"><span class="pre">repr()</span></code> 函数选择一个 17 位精度的数字，<code class="docutils literal"><span class="pre">0.10000000000000001</span></code>。从 Python 3.1 开始，Python（在大多数系统上）能够从这些数字当中选择最短的一个并简单地显示 <code class="docutils literal"><span class="pre">0.1</span></code>。</p>
+<p>有趣地是，存在许多不同的十进制数共享着相同的近似二进制小数。例如，数字 <tt class="docutils literal"><span class="pre">0.1</span></tt> 和 <tt class="docutils literal"><span class="pre">0.10000000000000001</span></tt> 以及 <tt class="docutils literal"><span class="pre">0.1000000000000000055511151231257827021181583404541015625</span></tt> 都是 <tt class="docutils literal"><span class="pre">3602879701896397</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">**</span> <span class="pre">55</span></tt> 的近似值。因为所有这些十进制数共享相同的近似值，在保持恒等式 <tt class="docutils literal"><span class="pre">eval(repr(x))</span> <span class="pre">==</span> <span class="pre">x</span></tt> 的同时，显示的可能是它们中的任何一个。</p>
+<p>历史上，Python 提示符和内置的 <tt class="xref py py-func docutils literal"><span class="pre">repr()</span></tt> 函数选择一个 17 位精度的数字，<tt class="docutils literal"><span class="pre">0.10000000000000001</span></tt>。从 Python 3.1 开始，Python（在大多数系统上）能够从这些数字当中选择最短的一个并简单地显示 <tt class="docutils literal"><span class="pre">0.1</span></tt>。</p>
 <p>注意，这是二进制浮点数的自然性质：它不是 Python 中的一个 bug，也不是你的代码中的 bug。你会看到所有支持硬件浮点数算法的语言都会有这个现象（尽管有些语言默认情况下或者在所有输出模式下可能不会 <em>显示</em> 出差异）。</p>
 <p>为了输出更好看，你可能想用字符串格式化来生成固定位数的有效数字:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="s">&#39;.12g&#39;</span><span class="p">)</span>  <span class="c"># give 12 significant digits</span>
@@ -299,23 +300,23 @@
 <span class="go">False</span>
 </pre></div>
 </div>
-<p>另外，既然 0.1 不能更接近 1/10 的精确值而且 0.3 不能更接近 3/10 的精确值，使用 <code class="xref py py-func docutils literal"><span class="pre">round()</span></code> 函数提前舍入也没有帮助:</p>
+<p>另外，既然 0.1 不能更接近 1/10 的精确值而且 0.3 不能更接近 3/10 的精确值，使用 <tt class="xref py py-func docutils literal"><span class="pre">round()</span></tt> 函数提前舍入也没有帮助:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="go">False</span>
 </pre></div>
 </div>
-<p>虽然这些数字不可能再更接近它们想要的精确值，<code class="xref py py-func docutils literal"><span class="pre">round()</span></code> 函数可以用于在计算之后进行舍入，这样的话不精确的结果就可以和另外一个相比较了:</p>
+<p>虽然这些数字不可能再更接近它们想要的精确值，<tt class="xref py py-func docutils literal"><span class="pre">round()</span></tt> 函数可以用于在计算之后进行舍入，这样的话不精确的结果就可以和另外一个相比较了:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 <p>二进制浮点数计算有很多这样意想不到的结果。“0.1”的问题在下面&#8221;误差的表示&#8221;一节中有准确详细的解释。更完整的常见怪异现象请参见 <a class="reference external" href="http://www.lahey.com/float.htm">浮点数的危险</a>。</p>
 <p>最后我要说，“没有简单的答案”。也不要过分小心浮点数！Python 浮点数计算中的误差源之于浮点数硬件，大多数机器上每次计算误差不超过 2**53 分之一。对于大多数任务这已经足够了，但是你要在心中记住这不是十进制算法，每个浮点数计算可能会带来一个新的舍入错误。</p>
-<p>虽然确实有问题存在，对于大多数平常的浮点数运算，你只要简单地将最终显示的结果舍入到你期望的十进制位数，你就会得到你期望的最终结果。<code class="xref py py-func docutils literal"><span class="pre">str()</span></code> 通常已经足够用了，对于更好的控制可以参阅 <a class="reference external" href="http://python.usyiyi.cn/python_341/library/string.html#formatstrings">格式化字符串语法</a> 中 <code class="xref py py-meth docutils literal"><span class="pre">str.format()</span></code> 方法的格式说明符。</p>
-<p>对于需要精确十进制表示的情况，可以尝试使用 <code class="xref py py-mod docutils literal"><span class="pre">decimal</span></code> 模块，它实现的十进制运算适合会计方面的应用和高精度要求的应用。</p>
-<p><code class="xref py py-mod docutils literal"><span class="pre">fractions</span></code> 模块支持另外一种形式的运算，它实现的运算基于有理数（因此像1/3这样的数字可以精确地表示）。</p>
+<p>虽然确实有问题存在，对于大多数平常的浮点数运算，你只要简单地将最终显示的结果舍入到你期望的十进制位数，你就会得到你期望的最终结果。<tt class="xref py py-func docutils literal"><span class="pre">str()</span></tt> 通常已经足够用了，对于更好的控制可以参阅 <a class="reference external" href="http://python.usyiyi.cn/python_341/library/string.html#formatstrings">格式化字符串语法</a> 中 <tt class="xref py py-meth docutils literal"><span class="pre">str.format()</span></tt> 方法的格式说明符。</p>
+<p>对于需要精确十进制表示的情况，可以尝试使用 <tt class="xref py py-mod docutils literal"><span class="pre">decimal</span></tt> 模块，它实现的十进制运算适合会计方面的应用和高精度要求的应用。</p>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">fractions</span></tt> 模块支持另外一种形式的运算，它实现的运算基于有理数（因此像1/3这样的数字可以精确地表示）。</p>
 <p>如果你是浮点数操作的重度使用者，你应该看一下由 SciPy 项目提供的 Numerical Python 包和其它用于数学和统计学的包。参看 &lt;<a class="reference external" href="http://scipy.org">http://scipy.org</a>&gt;。</p>
-<p>当你真的 <em>真</em> 想要知道浮点数精确值的时候，Python 提供这样的工具可以帮助你。<code class="xref py py-meth docutils literal"><span class="pre">float.as_integer_ratio()</span></code> 方法以分数的形式表示一个浮点数的值:</p>
+<p>当你真的 <em>真</em> 想要知道浮点数精确值的时候，Python 提供这样的工具可以帮助你。<tt class="xref py py-meth docutils literal"><span class="pre">float.as_integer_ratio()</span></tt> 方法以分数的形式表示一个浮点数的值:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">3.14159</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
 <span class="go">(3537115888337719, 1125899906842624)</span>
@@ -326,7 +327,7 @@
 <span class="go">True</span>
 </pre></div>
 </div>
-<p><code class="xref py py-meth docutils literal"><span class="pre">float.hex()</span></code> 方法以十六进制表示浮点数，给出的同样是计算机存储的精确值:</p>
+<p><tt class="xref py py-meth docutils literal"><span class="pre">float.hex()</span></tt> 方法以十六进制表示浮点数，给出的同样是计算机存储的精确值:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 <span class="go">&#39;0x1.921f9f01b866ep+1&#39;</span>
 </pre></div>
@@ -337,7 +338,7 @@
 </pre></div>
 </div>
 <p>因为可以精确表示，所以可以用在不同版本的 Python（与平台相关）之间可靠地移植数据以及与支持同样格式的其它语言（例如 Java 和 C99）交换数据。</p>
-<p>另外一个有用的工具是 <code class="xref py py-func docutils literal"><span class="pre">math.fsum()</span></code> 函数，它帮助求和过程中减少精度的损失。当数值在不停地相加的时候，它会跟踪“丢弃的数字”。这可以给总体的准确度带来不同，以至于错误不会累积到影响最终结果的点:</p>
+<p>另外一个有用的工具是 <tt class="xref py py-func docutils literal"><span class="pre">math.fsum()</span></tt> 函数，它帮助求和过程中减少精度的损失。当数值在不停地相加的时候，它会跟踪“丢弃的数字”。这可以给总体的准确度带来不同，以至于错误不会累积到影响最终结果的点:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">([</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">fsum</span><span class="p">([</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
@@ -400,7 +401,7 @@
 <span class="go">&#39;0.10000000000000001&#39;</span>
 </pre></div>
 </div>
-<p><code class="xref py py-mod docutils literal"><span class="pre">fractions</span></code> 和 <code class="xref py py-mod docutils literal"><span class="pre">decimal</span></code> 模块使得这些计算很简单:</p>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">fractions</span></tt> 和 <tt class="xref py py-mod docutils literal"><span class="pre">decimal</span></tt> 模块使得这些计算很简单:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
 
@@ -438,7 +439,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2013, D.D.
+        <a href="http://www.miibeian.gov.cn/">京ICP备14002119号-1</a>&nbsp;&nbsp; | &copy; Copyright 2013, D.D.
     </p>
   </div>
 

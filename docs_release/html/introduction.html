@@ -14,7 +14,7 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link href='_static/fonts/googleapis' rel='stylesheet' type='text/css'>
 
   
   
@@ -33,7 +33,7 @@
         <link rel="prev" title="2. 使用 Python 解释器" href="interpreter.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -74,11 +74,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="controlflow.html">4. 深入 Python 流程控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#if">4.1. <code class="docutils literal"><span class="pre">if</span></code> 语句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#for">4.2. <code class="docutils literal"><span class="pre">for</span></code> 语句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#range">4.3. <code class="docutils literal"><span class="pre">range()</span></code> 函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#break-continue-else">4.4. <code class="docutils literal"><span class="pre">break</span></code> 和 <code class="docutils literal"><span class="pre">continue</span></code> 语句, 以及循环中的 <code class="docutils literal"><span class="pre">else</span></code> 子句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#pass">4.5. <code class="docutils literal"><span class="pre">pass</span></code> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#if">4.1. <tt class="docutils literal"><span class="pre">if</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#for">4.2. <tt class="docutils literal"><span class="pre">for</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#range">4.3. <tt class="docutils literal"><span class="pre">range()</span></tt> 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#break-continue-else">4.4. <tt class="docutils literal"><span class="pre">break</span></tt> 和 <tt class="docutils literal"><span class="pre">continue</span></tt> 语句, 以及循环中的 <tt class="docutils literal"><span class="pre">else</span></tt> 子句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#pass">4.5. <tt class="docutils literal"><span class="pre">pass</span></tt> 语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-functions">4.6. 定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-defining">4.7. 深入 Python 函数定义</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-codingstyle">4.8. 插曲：编码风格</a></li>
@@ -86,7 +86,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datastructures.html">5. 数据结构</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-morelists">5.1. 关于列表更多的内容</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datastructures.html#del">5.2. <code class="docutils literal"><span class="pre">del</span></code> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#del">5.2. <tt class="docutils literal"><span class="pre">del</span></tt> 语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-tuples">5.3. 元组和序列</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-sets">5.4. 集合</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-dictionaries">5.5. 字典</a></li>
@@ -98,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="modules.html">6. 模块</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tut-moremodules">6.1. 深入模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tut-standardmodules">6.2. 标准模块</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#dir">6.3. <code class="docutils literal"><span class="pre">dir()</span></code> 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#dir">6.3. <tt class="docutils literal"><span class="pre">dir()</span></tt> 函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tut-packages">6.4. 包</a></li>
 </ul>
 </li>
@@ -190,6 +190,7 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
 
+
         <!--百度统计代码-->
 
           <script>
@@ -234,8 +235,8 @@
             
   <div class="section" id="python">
 <span id="tut-informal"></span><h1>3. Python 简介<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
-<p>下面的例子中，输入和输出分别由大于号和句号提示符（ <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> 和 <code class="docutils literal"><span class="pre">...</span></code> ）标注：如果想重现这些例子，就要在解释器的提示符后，输入（提示符后面的）那些不包含提示符的代码行。需要注意的是在练习中遇到的从属提示符表示你需要在最后多输入一个空行，解释器才能知道这是一个多行命令的结束。</p>
-<p>本手册中的很多示例——包括那些带有交互提示符的——都含有注释。Python 中的注释以 <code class="docutils literal"><span class="pre">#</span></code> 字符起始，直至实际的行尾（译注——这里原作者用了 physical line 以表示实际的换行而非编辑器的自动换行）。注释可以从行首开始，也可以在空白或代码之后，但是不出现在字符串中。文本字符串中的 <code class="docutils literal"><span class="pre">#</span></code> 字符仅仅表示 <code class="docutils literal"><span class="pre">#</span></code> 。代码中的注释不会被 Python 解释，录入示例的时候可以忽略它们。</p>
+<p>下面的例子中，输入和输出分别由大于号和句号提示符（ <tt class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></tt> 和 <tt class="docutils literal"><span class="pre">...</span></tt> ）标注：如果想重现这些例子，就要在解释器的提示符后，输入（提示符后面的）那些不包含提示符的代码行。需要注意的是在练习中遇到的从属提示符表示你需要在最后多输入一个空行，解释器才能知道这是一个多行命令的结束。</p>
+<p>本手册中的很多示例——包括那些带有交互提示符的——都含有注释。Python 中的注释以 <tt class="docutils literal"><span class="pre">#</span></tt> 字符起始，直至实际的行尾（译注——这里原作者用了 physical line 以表示实际的换行而非编辑器的自动换行）。注释可以从行首开始，也可以在空白或代码之后，但是不出现在字符串中。文本字符串中的 <tt class="docutils literal"><span class="pre">#</span></tt> 字符仅仅表示 <tt class="docutils literal"><span class="pre">#</span></tt> 。代码中的注释不会被 Python 解释，录入示例的时候可以忽略它们。</p>
 <p>如下示例:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># this is the first comment</span>
 <span class="n">SPAM</span> <span class="o">=</span> <span class="mi">1</span>                 <span class="c"># and this is the second comment</span>
@@ -245,10 +246,10 @@
 </div>
 <div class="section" id="tut-calculator">
 <span id="id1"></span><h2>3.1. 将 Python 当做计算器<a class="headerlink" href="#tut-calculator" title="Permalink to this headline">¶</a></h2>
-<p>我们来尝试一些简单的 Python 命令。启动解释器然后等待主提示符 <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> 出现（不需要很久）。</p>
+<p>我们来尝试一些简单的 Python 命令。启动解释器然后等待主提示符 <tt class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></tt> 出现（不需要很久）。</p>
 <div class="section" id="tut-numbers">
 <span id="id2"></span><h3>3.1.1. 数字<a class="headerlink" href="#tut-numbers" title="Permalink to this headline">¶</a></h3>
-<p>解释器的表示就像一个简单的计算器：可以向其录入一些表达式，它会给出返回值。表达式语法很直白：运算符 <code class="docutils literal"><span class="pre">+</span></code>， <code class="docutils literal"><span class="pre">-</span></code>， <code class="docutils literal"><span class="pre">*</span></code> 和 <code class="docutils literal"><span class="pre">/</span></code> 与其它语言一样（例如：Pascal 或 C）；括号用于分组。例如:</p>
+<p>解释器的表示就像一个简单的计算器：可以向其录入一些表达式，它会给出返回值。表达式语法很直白：运算符 <tt class="docutils literal"><span class="pre">+</span></tt>， <tt class="docutils literal"><span class="pre">-</span></tt>， <tt class="docutils literal"><span class="pre">*</span></tt> 和 <tt class="docutils literal"><span class="pre">/</span></tt> 与其它语言一样（例如：Pascal 或 C）；括号用于分组。例如:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
 <span class="go">4</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># This is a comment</span>
@@ -263,7 +264,7 @@
 </pre></div>
 </div>
 <p>注意：有时你可能会得到不同的结果；浮点数在不同机器上的运算结果可能是不同的。后面我们将对控制浮点数输出的显示结果做更多说明；这里我们看到的仅是有效的显示，并非我们能得到的可读性更好的结果。</p>
-<p>对整数做除法运算并想去除小数部分取得整数结果时，可以使用另外一个运算符，<code class="docutils literal"><span class="pre">//</span></code>:</p>
+<p>对整数做除法运算并想去除小数部分取得整数结果时，可以使用另外一个运算符，<tt class="docutils literal"><span class="pre">//</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Integer division returns the floor:</span>
 <span class="gp">... </span><span class="mi">7</span><span class="o">//</span><span class="mi">3</span>
 <span class="go">2</span>
@@ -271,7 +272,7 @@
 <span class="go">-3</span>
 </pre></div>
 </div>
-<p>等号（ <code class="docutils literal"><span class="pre">'='</span></code> ）用于给变量赋值:</p>
+<p>等号（ <tt class="docutils literal"><span class="pre">'='</span></tt> ）用于给变量赋值:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">width</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="mi">9</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
@@ -303,7 +304,7 @@
 <span class="go">3.5</span>
 </pre></div>
 </div>
-<p>复数也得到支持；带有后缀 <code class="docutils literal"><span class="pre">j</span></code> 或 <code class="docutils literal"><span class="pre">J</span></code> 就被视为虚数。带有非零实部的复数写为 <code class="docutils literal"><span class="pre">(real+imagj)</span></code>，或者可以用 <code class="docutils literal"><span class="pre">complex(real,</span> <span class="pre">imag)</span></code> 函数创建。</p>
+<p>复数也得到支持；带有后缀 <tt class="docutils literal"><span class="pre">j</span></tt> 或 <tt class="docutils literal"><span class="pre">J</span></tt> 就被视为虚数。带有非零实部的复数写为 <tt class="docutils literal"><span class="pre">(real+imagj)</span></tt>，或者可以用 <tt class="docutils literal"><span class="pre">complex(real,</span> <span class="pre">imag)</span></tt> 函数创建。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">1j</span> <span class="o">*</span> <span class="mi">1</span><span class="n">J</span>
 <span class="go">(-1+0j)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">1j</span> <span class="o">*</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -316,7 +317,7 @@
 <span class="go">(1.5+0.5j)</span>
 </pre></div>
 </div>
-<p>复数的实部和虚部总是记为两个浮点数。要从复数 z 中提取实部和虚部，使用 <code class="docutils literal"><span class="pre">z.real</span></code> 和 <code class="docutils literal"><span class="pre">z.imag</span></code>:</p>
+<p>复数的实部和虚部总是记为两个浮点数。要从复数 z 中提取实部和虚部，使用 <tt class="docutils literal"><span class="pre">z.real</span></tt> 和 <tt class="docutils literal"><span class="pre">z.imag</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="mf">1.5</span><span class="o">+</span><span class="mf">0.5j</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">real</span>
 <span class="go">1.5</span>
@@ -324,7 +325,7 @@
 <span class="go">0.5</span>
 </pre></div>
 </div>
-<p>浮点数和整数之间的转换函数（ <code class="xref py py-func docutils literal"><span class="pre">float()</span></code> 和 <code class="xref py py-func docutils literal"><span class="pre">int()</span></code> 以及 <code class="xref py py-func docutils literal"><span class="pre">long()</span></code> ）不能用于复数。没有什么正确方法可以把一个复数转成一个实数。函数 <code class="docutils literal"><span class="pre">abs(z)</span></code> 用于获取其模（浮点数）或 <code class="docutils literal"><span class="pre">z.real</span></code>  获取其实部:</p>
+<p>浮点数和整数之间的转换函数（ <tt class="xref py py-func docutils literal"><span class="pre">float()</span></tt> 和 <tt class="xref py py-func docutils literal"><span class="pre">int()</span></tt> 以及 <tt class="xref py py-func docutils literal"><span class="pre">long()</span></tt> ）不能用于复数。没有什么正确方法可以把一个复数转成一个实数。函数 <tt class="docutils literal"><span class="pre">abs(z)</span></tt> 用于获取其模（浮点数）或 <tt class="docutils literal"><span class="pre">z.real</span></tt>  获取其实部:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="mf">3.0</span><span class="o">+</span><span class="mf">4.0j</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
@@ -338,7 +339,7 @@
 <span class="go">5.0</span>
 </pre></div>
 </div>
-<p>交互模式中，最近一个表达式的值赋给变量 <code class="docutils literal"><span class="pre">_</span></code> 。这样我们就可以把它当作一个桌面计算器，很方便的用于连续计算，例如:</p>
+<p>交互模式中，最近一个表达式的值赋给变量 <tt class="docutils literal"><span class="pre">_</span></tt> 。这样我们就可以把它当作一个桌面计算器，很方便的用于连续计算，例如:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tax</span> <span class="o">=</span> <span class="mf">12.5</span> <span class="o">/</span> <span class="mi">100</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">price</span> <span class="o">=</span> <span class="mf">100.50</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">price</span> <span class="o">*</span> <span class="n">tax</span>
@@ -368,7 +369,7 @@
 <span class="go">&#39;&quot;Isn\&#39;t,&quot; she said.&#39;</span>
 </pre></div>
 </div>
-<p>Python 解释器按照字符串被输入的方式打印字符串结果：为了显示准确的值，字符串包含在成对的引号中，引号和其他特殊字符要用反斜线（ \ ）转译。 如果字符串只包含单引号（ &#8216; ）而没有双引号（ &#8221; ）就可以用双引号（ &#8221; ）包围，反之用单引号（ &#8216; ）包围。再强调一下，<code class="xref std std-keyword docutils literal"><span class="pre">print</span></code> 函数可以生成可读性更好的输出。</p>
+<p>Python 解释器按照字符串被输入的方式打印字符串结果：为了显示准确的值，字符串包含在成对的引号中，引号和其他特殊字符要用反斜线（ \ ）转译。 如果字符串只包含单引号（ &#8216; ）而没有双引号（ &#8221; ）就可以用双引号（ &#8221; ）包围，反之用单引号（ &#8216; ）包围。再强调一下，<tt class="xref std std-keyword docutils literal"><span class="pre">print</span></tt> 函数可以生成可读性更好的输出。</p>
 <p>字符串文本有几种方法分行。可以使用反斜杠为行结尾的连续字符串，它表示下一行在逻辑上是本行的后续内容:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">hello</span> <span class="o">=</span> <span class="s">&quot;This is a rather long string containing</span><span class="se">\n\</span>
 <span class="s">several lines of text just as you would do in C.</span><span class="se">\n\</span>
@@ -378,13 +379,13 @@
 <span class="k">print</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>需要注意的是，还是需要在字符串中写入 <code class="docutils literal"><span class="pre">\n</span></code> —— 结尾的反斜杠会被忽略。前例会打印为如下形式:</p>
+<p>需要注意的是，还是需要在字符串中写入 <tt class="docutils literal"><span class="pre">\n</span></tt> —— 结尾的反斜杠会被忽略。前例会打印为如下形式:</p>
 <div class="highlight-text"><div class="highlight"><pre>This is a rather long string containing
 several lines of text just as you would do in C.
     Note that whitespace at the beginning of the line is significant.
 </pre></div>
 </div>
-<p>另外，字符串可以标识在一对儿三引号中：<code class="docutils literal"><span class="pre">&quot;&quot;&quot;</span></code> 或 <code class="docutils literal"><span class="pre">'''</span></code>。三引号中，不需要行属转义，它们已经包含在字符串中:</p>
+<p>另外，字符串可以标识在一对儿三引号中：<tt class="docutils literal"><span class="pre">&quot;&quot;&quot;</span></tt> 或 <tt class="docutils literal"><span class="pre">'''</span></tt>。三引号中，不需要行属转义，它们已经包含在字符串中:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
 <span class="s">Usage: thingy [OPTIONS]</span>
 <span class="s">     -h                        Display this usage message</span>
@@ -398,7 +399,7 @@ several lines of text just as you would do in C.
      -H hostname               Hostname to connect to
 </pre></div>
 </div>
-<p>如果我们生成一个“原始”字符串，<code class="docutils literal"><span class="pre">\n</span></code> 序列不会被转义，而且行尾的反斜杠，源码中的换行符，都成为字符串中的一部分数据，因此下例:</p>
+<p>如果我们生成一个“原始”字符串，<tt class="docutils literal"><span class="pre">\n</span></tt> 序列不会被转义，而且行尾的反斜杠，源码中的换行符，都成为字符串中的一部分数据，因此下例:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">hello</span> <span class="o">=</span> <span class="s">r&quot;This is a rather long string containing\n</span><span class="se">\</span>
 <span class="s">several lines of text much as you would do in C.&quot;</span>
 
@@ -410,7 +411,7 @@ several lines of text just as you would do in C.
 several lines of text much as you would do in C.
 </pre></div>
 </div>
-<p>字符串可以由 <code class="docutils literal"><span class="pre">+</span></code> 操作符连接（粘到一起），可以由 <code class="docutils literal"><span class="pre">*</span></code> 重复:</p>
+<p>字符串可以由 <tt class="docutils literal"><span class="pre">+</span></tt> 操作符连接（粘到一起），可以由 <tt class="docutils literal"><span class="pre">*</span></tt> 重复:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="s">&#39;Help&#39;</span> <span class="o">+</span> <span class="s">&#39;A&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">word</span>
 <span class="go">&#39;HelpA&#39;</span>
@@ -418,7 +419,7 @@ several lines of text much as you would do in C.
 <span class="go">&#39;&lt;HelpAHelpAHelpAHelpAHelpA&gt;&#39;</span>
 </pre></div>
 </div>
-<p>相邻的两个字符串文本自动连接在一起，前面那行代码也可以写为 <code class="docutils literal"><span class="pre">word</span> <span class="pre">='Help'</span> <span class="pre">'A'</span></code>；它只用于两个字符串文本，不能用于字符串表达式:</p>
+<p>相邻的两个字符串文本自动连接在一起，前面那行代码也可以写为 <tt class="docutils literal"><span class="pre">word</span> <span class="pre">='Help'</span> <span class="pre">'A'</span></tt>；它只用于两个字符串文本，不能用于字符串表达式:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;str&#39;</span> <span class="s">&#39;ing&#39;</span>                   <span class="c">#  &lt;-  This is ok</span>
 <span class="go">&#39;string&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;str&#39;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;ing&#39;</span>   <span class="c">#  &lt;-  This is ok</span>
@@ -464,7 +465,7 @@ several lines of text much as you would do in C.
 <span class="go">&#39;SplatA&#39;</span>
 </pre></div>
 </div>
-<p>切片操作有个有用的不变性：<code class="docutils literal"><span class="pre">s[:i]</span> <span class="pre">+</span> <span class="pre">s[i:]</span></code> 等于 <code class="docutils literal"><span class="pre">s</span></code>:</p>
+<p>切片操作有个有用的不变性：<tt class="docutils literal"><span class="pre">s[:i]</span> <span class="pre">+</span> <span class="pre">s[i:]</span></tt> 等于 <tt class="docutils literal"><span class="pre">s</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
 <span class="go">&#39;HelpA&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
@@ -514,8 +515,8 @@ several lines of text much as you would do in C.
 </pre></div>
 </div>
 <p>文本中的第一行数字给出字符串中的索引点 0...5。第二行给出相应的负索引。切片是从 <em>i</em> 到 <em>j</em> 两个数值标示的边界之间的所有字符。</p>
-<p>对于非负索引，如果上下都在边界内，切片长度与索引不同。例如，<code class="docutils literal"><span class="pre">word[1:3]</span></code> 是 2。</p>
-<p>内置函数 <code class="xref py py-func docutils literal"><span class="pre">len()</span></code> 返回字符串长度:</p>
+<p>对于非负索引，如果上下都在边界内，切片长度与索引不同。例如，<tt class="docutils literal"><span class="pre">word[1:3]</span></tt> 是 2。</p>
+<p>内置函数 <tt class="xref py py-func docutils literal"><span class="pre">len()</span></tt> 返回字符串长度:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s">&#39;supercalifragilisticexpialidocious&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="go">34</span>
@@ -525,16 +526,16 @@ several lines of text much as you would do in C.
 <div class="section" id="unicode">
 <span id="tut-unicodestrings"></span><h3>3.1.3. 关于 Unicode<a class="headerlink" href="#unicode" title="Permalink to this headline">¶</a></h3>
 <p>从 Python 3.0 开始所有的字符串都支持 Unicode（参考 <a class="reference external" href="http://www.unicode.org">http://www.unicode.org</a> ）。</p>
-<p>Unicode 的先进之处在于为每一种现代或古代使用的文字系统中出现的每一个字符都提供了统一的序列号。之前，文字系统中的字符只能有 256 种可能的顺序。通过代码页分界映射。文本绑定到映射文字系统的代码页。这在软件国际化的时候尤其麻烦（通常写作 <code class="docutils literal"><span class="pre">i18n</span></code> —— <code class="docutils literal"><span class="pre">'i'</span></code> + 18 个字符 + <code class="docutils literal"><span class="pre">'n'</span></code> ）。Unicode 解决了为所有的文字系统设置一个独立代码页的难题。</p>
+<p>Unicode 的先进之处在于为每一种现代或古代使用的文字系统中出现的每一个字符都提供了统一的序列号。之前，文字系统中的字符只能有 256 种可能的顺序。通过代码页分界映射。文本绑定到映射文字系统的代码页。这在软件国际化的时候尤其麻烦（通常写作 <tt class="docutils literal"><span class="pre">i18n</span></tt> —— <tt class="docutils literal"><span class="pre">'i'</span></tt> + 18 个字符 + <tt class="docutils literal"><span class="pre">'n'</span></tt> ）。Unicode 解决了为所有的文字系统设置一个独立代码页的难题。</p>
 <p>如果想在字符串中包含特殊字符，你可以使用Python的 <em>Unicode_Escape</em> 编码方式。下面的例子展示了如何这样做:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;Hello</span><span class="se">\u0020</span><span class="s">World !&#39;</span>
 <span class="go">&#39;Hello World !&#39;</span>
 </pre></div>
 </div>
-<p>转码序列 <code class="docutils literal"><span class="pre">\u0020</span></code> 表示在指定位置插入编码为 0x0020 的 Unicode 字符（空格）。</p>
+<p>转码序列 <tt class="docutils literal"><span class="pre">\u0020</span></tt> 表示在指定位置插入编码为 0x0020 的 Unicode 字符（空格）。</p>
 <p>其他字符就像 Unicode 编码一样被直接解释为对应的编码值。 如果你有在许多西方国家使用的标准 Latin-1 编码的字符串，你会发现编码小于 256 的 Unicode 字符和在 Latin-1 编码中的一样。</p>
 <p>除了这些标准编码，Python 还提供了一整套基于其他已知编码创建 Unicode 字符串的方法。</p>
-<p>字符串对象提供了一个 <code class="xref py py-func docutils literal"><span class="pre">encode()</span></code> 方法用以将字符串转换成特定编码的字节序列，它接收一个小写的编码名称作为参数:</p>
+<p>字符串对象提供了一个 <tt class="xref py py-func docutils literal"><span class="pre">encode()</span></tt> 方法用以将字符串转换成特定编码的字节序列，它接收一个小写的编码名称作为参数:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;Äpfel&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
 <span class="go">b&#39;\xc3\x84pfel&#39;</span>
 </pre></div>
@@ -599,7 +600,7 @@ several lines of text much as you would do in C.
 <span class="go">[]</span>
 </pre></div>
 </div>
-<p>内置函数 <code class="xref py py-func docutils literal"><span class="pre">len()</span></code> 同样适用于列表:</p>
+<p>内置函数 <tt class="xref py py-func docutils literal"><span class="pre">len()</span></tt> 同样适用于列表:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="go">4</span>
@@ -624,7 +625,7 @@ several lines of text much as you would do in C.
 <span class="go">[2, 3, &#39;xtra&#39;]</span>
 </pre></div>
 </div>
-<p>注意最后一个例子中， <code class="docutils literal"><span class="pre">p[1]</span></code> 和 <code class="docutils literal"><span class="pre">q</span></code> 实际上指向同一个对象！我们会在后面的 <em>object semantics</em> 中继续讨论。</p>
+<p>注意最后一个例子中， <tt class="docutils literal"><span class="pre">p[1]</span></tt> 和 <tt class="docutils literal"><span class="pre">q</span></tt> 实际上指向同一个对象！我们会在后面的 <em>object semantics</em> 中继续讨论。</p>
 </div>
 </div>
 <div class="section" id="tut-firststeps">
@@ -647,13 +648,13 @@ several lines of text much as you would do in C.
 </div>
 <p>这个例子介绍了几个新功能。</p>
 <ul>
-<li><p class="first">第一行包括了一个 <em>多重赋值</em>：变量 <code class="docutils literal"><span class="pre">a</span></code> 和 <code class="docutils literal"><span class="pre">b</span></code> 同时获得了新的值 0 和 1 最后一行又使用了一次。在这个演示中，变量赋值前，右边首先完成计算。右边的表达式从左到右计算。</p>
+<li><p class="first">第一行包括了一个 <em>多重赋值</em>：变量 <tt class="docutils literal"><span class="pre">a</span></tt> 和 <tt class="docutils literal"><span class="pre">b</span></tt> 同时获得了新的值 0 和 1 最后一行又使用了一次。在这个演示中，变量赋值前，右边首先完成计算。右边的表达式从左到右计算。</p>
 </li>
-<li><p class="first">条件（这里是 <code class="docutils literal"><span class="pre">b</span> <span class="pre">&lt;</span> <span class="pre">10</span></code> ）为 true 时， <code class="xref std std-keyword docutils literal"><span class="pre">while</span></code> 循环执行。在 Python 中，类似于 C，任何非零整数都是 true；0 是 false 条件也可以是字符串或列表，实际上可以是任何序列；所有长度不为零的是 true，空序列是 false。示例中的测试是一个简单的比较。标准比较操作符与 C 相同： <code class="docutils literal"><span class="pre">&lt;</span></code> ， <code class="docutils literal"><span class="pre">&gt;</span></code> ， <code class="docutils literal"><span class="pre">==</span></code> ， <code class="docutils literal"><span class="pre">&lt;=</span></code>， <code class="docutils literal"><span class="pre">&gt;=</span></code> 和 <code class="docutils literal"><span class="pre">!=</span></code>。</p>
+<li><p class="first">条件（这里是 <tt class="docutils literal"><span class="pre">b</span> <span class="pre">&lt;</span> <span class="pre">10</span></tt> ）为 true 时， <tt class="xref std std-keyword docutils literal"><span class="pre">while</span></tt> 循环执行。在 Python 中，类似于 C，任何非零整数都是 true；0 是 false 条件也可以是字符串或列表，实际上可以是任何序列；所有长度不为零的是 true，空序列是 false。示例中的测试是一个简单的比较。标准比较操作符与 C 相同： <tt class="docutils literal"><span class="pre">&lt;</span></tt> ， <tt class="docutils literal"><span class="pre">&gt;</span></tt> ， <tt class="docutils literal"><span class="pre">==</span></tt> ， <tt class="docutils literal"><span class="pre">&lt;=</span></tt>， <tt class="docutils literal"><span class="pre">&gt;=</span></tt> 和 <tt class="docutils literal"><span class="pre">!=</span></tt>。</p>
 </li>
 <li><p class="first">循环 <em>体</em> 是 <em>缩进</em> 的：缩进是 Python 是 Python 组织語句的方法。Python (还)不提供集成的行编辑功能，所以你要为每一个缩进行输入 TAB 或空格。实践中建议你找个文本编辑来录入复杂的 Python 程序，大多数文本编辑器提供自动缩进。交互式录入复合语句时，必须在最后输入一个空行来标识结束（因为解释器没办法猜测你输入的哪一行是最后一行），需要 注意的是同一个语句块中的语句块必须缩进同样数量的空白。</p>
 </li>
-<li><p class="first">关键字 <code class="xref std std-keyword docutils literal"><span class="pre">print</span></code> 语句输出给定表达式的值。它控制多个表达式和字符串输出为你想要字符串（就像我们在前面计算器的例子中那样）。字符串打印时不用引号包围，每两个子项之间插入空间，所以你可以把格式弄得很漂亮，像这样:</p>
+<li><p class="first">关键字 <tt class="xref std std-keyword docutils literal"><span class="pre">print</span></tt> 语句输出给定表达式的值。它控制多个表达式和字符串输出为你想要字符串（就像我们在前面计算器的例子中那样）。字符串打印时不用引号包围，每两个子项之间插入空间，所以你可以把格式弄得很漂亮，像这样:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">256</span><span class="o">*</span><span class="mi">256</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&#39;The value of i is&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 <span class="go">The value of i is 65536</span>
@@ -691,7 +692,7 @@ several lines of text much as you would do in C.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2013, D.D.
+        <a href="http://www.miibeian.gov.cn/">京ICP备14002119号-1</a>&nbsp;&nbsp; | &copy; Copyright 2013, D.D.
     </p>
   </div>
 

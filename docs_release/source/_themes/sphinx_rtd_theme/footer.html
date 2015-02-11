@@ -18,7 +18,7 @@
       {%- if hasdoc('copyright') %}
         {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
       {%- else %}
-        {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
+        {% trans copyright=copyright|e %}<a href="http://www.miibeian.gov.cn/">京ICP备14002119号-1</a>&nbsp;&nbsp; | &copy; Copyright {{ copyright }}.{% endtrans %}
       {%- endif %}
     {%- endif %}
 

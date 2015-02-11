@@ -14,7 +14,7 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link href='_static/fonts/googleapis' rel='stylesheet' type='text/css'>
 
   
   
@@ -33,7 +33,7 @@
         <link rel="prev" title="11. 标准库浏览 – Part II" href="stdlib2.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -74,11 +74,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="controlflow.html">4. 深入 Python 流程控制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#if">4.1. <code class="docutils literal"><span class="pre">if</span></code> 语句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#for">4.2. <code class="docutils literal"><span class="pre">for</span></code> 语句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#range">4.3. <code class="docutils literal"><span class="pre">range()</span></code> 函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#break-continue-else">4.4. <code class="docutils literal"><span class="pre">break</span></code> 和 <code class="docutils literal"><span class="pre">continue</span></code> 语句, 以及循环中的 <code class="docutils literal"><span class="pre">else</span></code> 子句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controlflow.html#pass">4.5. <code class="docutils literal"><span class="pre">pass</span></code> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#if">4.1. <tt class="docutils literal"><span class="pre">if</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#for">4.2. <tt class="docutils literal"><span class="pre">for</span></tt> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#range">4.3. <tt class="docutils literal"><span class="pre">range()</span></tt> 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#break-continue-else">4.4. <tt class="docutils literal"><span class="pre">break</span></tt> 和 <tt class="docutils literal"><span class="pre">continue</span></tt> 语句, 以及循环中的 <tt class="docutils literal"><span class="pre">else</span></tt> 子句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#pass">4.5. <tt class="docutils literal"><span class="pre">pass</span></tt> 语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-functions">4.6. 定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-defining">4.7. 深入 Python 函数定义</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-codingstyle">4.8. 插曲：编码风格</a></li>
@@ -86,7 +86,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datastructures.html">5. 数据结构</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-morelists">5.1. 关于列表更多的内容</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datastructures.html#del">5.2. <code class="docutils literal"><span class="pre">del</span></code> 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#del">5.2. <tt class="docutils literal"><span class="pre">del</span></tt> 语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-tuples">5.3. 元组和序列</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-sets">5.4. 集合</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-dictionaries">5.5. 字典</a></li>
@@ -98,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="modules.html">6. 模块</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tut-moremodules">6.1. 深入模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tut-standardmodules">6.2. 标准模块</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#dir">6.3. <code class="docutils literal"><span class="pre">dir()</span></code> 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#dir">6.3. <tt class="docutils literal"><span class="pre">dir()</span></tt> 函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tut-packages">6.4. 包</a></li>
 </ul>
 </li>
@@ -190,6 +190,7 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
 
+
         <!--百度统计代码-->
 
           <script>
@@ -252,7 +253,7 @@
 <li><a class="reference external" href="http://pypi.python.org">http://pypi.python.org</a>： Python 包索引，以前昵称为奶酪店，索引了可供下载的，用户创建的 Python 模块。如果你发布了代码，可以注册到这里，这样别人可以找到它。</li>
 <li><a class="reference external" href="http://aspn.activestate.com/ASPN/Python/Cookbook/">http://aspn.activestate.com/ASPN/Python/Cookbook/</a>： Python 食谱是大量的示例代码、大型的集合，和有用的脚本。值得关注的是这次资源已经结集成书，名为《Python 食谱》（O’Reilly &amp; Associates, ISBN 0-596-00797-3。）</li>
 </ul>
-<p>与 Python 有关的问题，以及问题报告，可以发到新闻组 <em class="newsgroup">comp.lang.python</em> ，或者发送到邮件组 <a class="reference external" href="mailto:python-list&#37;&#52;&#48;python&#46;org">python-list<span>&#64;</span>python<span>&#46;</span>org</a> 。新闻组和邮件组是开放的，所以发送的消息可以自动的跟到另一个之后。每天有超过 120 个投递（高峰时有数百）,提问（以及回答）问题，为新功能提建议，发布新模块。在发信之前，请查阅 <a class="reference external" href="http://www.python.org/doc/faq/">常见问题</a> (亦称 FAQ)，或者在 Python 源码发布包的 <code class="file docutils literal"><span class="pre">Misc/</span></code> 目录中查阅。邮件组也可以在 <a class="reference external" href="http://mail.python.org/pipermail/">http://mail.python.org/pipermail/</a> 访问。FAQ回答了很多被反复提到的问题，很可能已经解答了你的问题。</p>
+<p>与 Python 有关的问题，以及问题报告，可以发到新闻组 <em class="newsgroup">comp.lang.python</em> ，或者发送到邮件组 <a class="reference external" href="mailto:python-list&#37;&#52;&#48;python&#46;org">python-list<span>&#64;</span>python<span>&#46;</span>org</a> 。新闻组和邮件组是开放的，所以发送的消息可以自动的跟到另一个之后。每天有超过 120 个投递（高峰时有数百）,提问（以及回答）问题，为新功能提建议，发布新模块。在发信之前，请查阅 <a class="reference external" href="http://www.python.org/doc/faq/">常见问题</a> (亦称 FAQ)，或者在 Python 源码发布包的 <tt class="file docutils literal"><span class="pre">Misc/</span></tt> 目录中查阅。邮件组也可以在 <a class="reference external" href="http://mail.python.org/pipermail/">http://mail.python.org/pipermail/</a> 访问。FAQ回答了很多被反复提到的问题，很可能已经解答了你的问题。</p>
 </div>
 
 
@@ -273,7 +274,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2013, D.D.
+        <a href="http://www.miibeian.gov.cn/">京ICP备14002119号-1</a>&nbsp;&nbsp; | &copy; Copyright 2013, D.D.
     </p>
   </div>
 

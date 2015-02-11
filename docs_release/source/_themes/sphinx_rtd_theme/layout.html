@@ -23,7 +23,7 @@
   {% endif %}
 
   {# CSS #}
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link href='_static/fonts/googleapis' rel='stylesheet' type='text/css'>
 
   {# OPENSEARCH #}
   {% if not embedded %}
@@ -71,7 +71,7 @@
   {%- block extrahead %} {% endblock %}
 
   {# Keep modernizr in head - http://modernizr.com/docs/#installing #}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -110,6 +110,7 @@
         <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
+
 
         <!--百度统计代码-->
 
