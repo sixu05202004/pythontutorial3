@@ -6,7 +6,7 @@
 
 Python 的类机制通过最小的新语法和语义在语言中实现了类。它是 C++ 或者 Modula-3 语言中类机制的混合。就像模块一样，Python 的类并没有在用户和定义之间设立绝对的屏障，而是依赖于用户不去“强行闯入定义”的优雅。另一方面，类的大多数重要特性都被完整的保留下来：类继承机制允许多重继承，派生类可以覆盖（override）基类中的任何方法或类，可以使用相同的方法名称调用基类的方法。对象可以包含任意数量的私有数据。
 
-用 C++ 术语来讲，所有的类成员（包括数据成员）都是公有（ *public* ）的，所有的成员函数都是虚（ *virtual* ）的。用 Modula-3 的术语来讲，在成员方法中没有简便的方式引用对象的成员：方法函数在定义时需要以引用的对象做为第一个参数，调用时则会隐式引用对象。像在 Smalltalk 中一个，类也是对象。这就提供了导入和重命名语义。不像 C++ 和 Modula-3 中那样，大多数带有特殊语法的内置操作符（算法运算符、下标等）都可以针对类的需要重新定义。 
+用 C++ 术语来讲，所有的类成员（包括数据成员）都是公有（ *public* ）的（其它情况见下文 :ref:`tut-private`），所有的成员函数都是虚（ *virtual* ）的。用 Modula-3 的术语来讲，在成员方法中没有简便的方式引用对象的成员：方法函数在定义时需要以引用的对象做为第一个参数，调用时则会隐式引用对象。像在 Smalltalk 中一个，类也是对象。这就提供了导入和重命名语义。不像 C++ 和 Modula-3 中那样，大多数带有特殊语法的内置操作符（算法运算符、下标等）都可以针对类的需要重新定义。 
 
 在讨论类时，没有足够的得到共识的术语，我会偶尔从 Smalltalk 和 C++ 借用一些。我比较喜欢用 Modula-3 的用语，因为比起 C++，Python 的面向对象语法更像它，但是我想很少有读者听过这个。
 
@@ -28,21 +28,21 @@ Python 作用域和命名空间
 
 让我们从一些定义说起。
 
-*命名空间* 是从命名到对象的映射。当前命名空间主要是通过 Python 字典实现的，不过通常不关心具体的实现方式（除非出于性能考虑），以后也有可能会改变其实现方式。以下有一些命名空间的例子：内置命名（像 :func:`abs` 这样的函数，以及内置异常名）集，模块中的全局命名，函数调用中的局部命名。某种意义上讲对象的属性集也是一个命名空间。关于命名空间需要了解的一件很重要的事就是不同命名空间中的命名没有任何联系，例如两个不同的模块可能都会定义一个名为 ``maximize`` 的函数而不会发生混淆－用户必须以模块名为前缀来引用它们。 
+*命名空间* 是从命名到对象的映射。当前命名空间主要是通过 Python 字典实现的，不过通常不关心具体的实现方式（除非出于性能考虑），以后也有可能会改变其实现方式。以下有一些命名空间的例子：内置命名（像 `abs()`_ 这样的函数，以及内置异常名）集，模块中的全局命名，函数调用中的局部命名。某种意义上讲对象的属性集也是一个命名空间。关于命名空间需要了解的一件很重要的事就是不同命名空间中的命名没有任何联系，例如两个不同的模块可能都会定义一个名为 ``maximize`` 的函数而不会发生混淆－用户必须以模块名为前缀来引用它们。 
 
 顺便提一句，我称 Python 中任何一个“.”之后的命名为 *属性* －－例如，表达式 ``z.real`` 中的 ``real`` 是对象 ``z`` 的一个属性。严格来讲，从模块中引用命名是引用属性：表达式 ``modname.funcname`` 中，``modname`` 是一个模块对象，``funcname`` 是它的一个属性。因此，模块的属性和模块中的全局命名有直接的映射关系：它们共享同一命名空间！[#]_
 
-属性可以是只读过或写的。后一种情况下，可以对属性赋值。你可以这样作： ``modname.the_answer = 42`` 。可写的属性也可以用 :keyword:`del` 语句删除。例如： ``del modname.the_answer`` 会从 ``modname`` 对象中删除 ``the_answer`` 属性。 
+属性可以是只读过或写的。后一种情况下，可以对属性赋值。你可以这样作： ``modname.the_answer = 42`` 。可写的属性也可以用 `del`_ 语句删除。例如： ``del modname.the_answer`` 会从 ``modname`` 对象中删除 :attr:`the_answer` 属性。 
 
-不同的命名空间在不同的时刻创建，有不同的生存期。包含内置命名的命名空间在 Python 解释器启动时创建，会一直保留，不被删除。模块的全局命名空间在模块定义被读入时创建，通常，模块命名空间也会一直保存到解释器退出。由解释器在最高层调用执行的语句，不管它是从脚本文件中读入还是来自交互式输入，都是 :mod:`__main__` 模块的一部分，所以它们也拥有自己的命名空间（内置命名也同样被包含在一个模块中，它被称作 :mod:`__builtin__` ）。
+不同的命名空间在不同的时刻创建，有不同的生存期。包含内置命名的命名空间在 Python 解释器启动时创建，会一直保留，不被删除。模块的全局命名空间在模块定义被读入时创建，通常，模块命名空间也会一直保存到解释器退出。由解释器在最高层调用执行的语句，不管它是从脚本文件中读入还是来自交互式输入，都是 `__main__ <https://docs.python.org/3/library/__main__.html#module-__main__>`_ 模块的一部分，所以它们也拥有自己的命名空间（内置命名也同样被包含在一个模块中，它被称作 `builtins`_ ）。
 
 当调用函数时，就会为它创建一个局部命名空间，并且在函数返回或抛出一个并没有在函数内部处理的异常时被删除。（实际上，用遗忘来形容到底发生了什么更为贴切。）当然，每个递归调用都有自己的局部命名空间。
 
-*作用域* 就是一个 Python 程序可以直接访问命名空间的正文区域。这里的直接访问意思是一个对名称的错误引用会尝试在命名空间内查找。
+*作用域* 就是一个 Python 程序可以直接访问命名空间的正文区域。这里的直接访问意思是一个对名称的错误引用会尝试在命名空间内查找。尽管作用域是静态定义，在使用时他们都是动态的。每次执行时，至少有三个命名空间可以直接访问的作用域嵌套在一起：
 
-尽管作用域是静态定义，在使用时他们都是动态的。每次执行时，至少有三个命名空间可以直接访问的作用域嵌套在一起：
-
-* 包含局部命名的使用域在最里面，首先被搜索；其次搜索的是中层的作用域，这里包含了同级的函数；最后搜索最外面的作用域，它包含内置命名。
+* 包含局部命名的使用域在最里面，首先被搜索；其次搜索的是中层的作用域，这里包含了同级的函数；
+  
+  最后搜索最外面的作用域，它包含内置命名。
 
 * 首先搜索最内层的作用域，它包含局部命名任意函数包含的作用域，是内层嵌套作用域搜索起点，包含非局部，但是也非全局的命名
 
@@ -50,22 +50,22 @@ Python 作用域和命名空间
 
 * 最外层的作用域（最后搜索）是包含内置命名的命名空间
 
-如果一个命名声明为全局的，那么所有的赋值和引用都直接针对包含模全局命名的中级作用域。另外，从外部访问到的所有内层作用域的变量都是只读的。（试图写这样的变量只会在内部作用域创建一个 *新* 局部变量，外部标示命名的那个变量不会改变）。
+如果一个命名声明为全局的，那么对它的所有引用和赋值会直接搜索包含这个模块全局命名的作用域。如果要重新绑定最里层作用域之外的变量，可以使用 `nonlocal`_ 语句；如果不声明为 nonlocal，这些变量将是只读的（对这样的变量赋值会在最里面的作用域创建一个新的局部变量，外部具有相同命名的那个变量不会改变）。
 
 通常，局部作用域引用当前函数的命名。在函数之外，局部作用域与全局使用域引用同一命名空间：模块命名空间。类定义也是局部作用域中的另一个命名空间。 
 
 重要的是作用域决定于源程序的意义：一个定义于某模块中的函数的全局作用域是该模块的命名空间，而不是该函数的别名被定义或调用的位置，了解这一点非常重要。另一方面，命名的实际搜索过程是动态的，在运行时确定的——然而，Python 语言也在不断发展，以后有可能会成为静态的“编译”时确定，所以不要依赖动态解析！（事实上，局部变量已经是静态确定了。）
 
-Python 的一个特别之处在于：如果没有使用 :keyword:`global` 语法，其赋值操作总是在最里层的作用域。赋值不会复制数据，只是将命名绑定到对象。删除也是如此：``del x`` 只是从局部作用域的命名空间中删除命名 ``x`` 。事实上，所有引入新命名的操作都作用于局部作用域。特别是 :keyword:`import` 语句和函数定将模块名或函数绑定于局部作用域（可以使用 :keyword:`global` 语句将变量引入到全局作用域）。
+Python 的一个特别之处在于：如果没有使用 `global`_ 语法，其赋值操作总是在最里层的作用域。赋值不会复制数据，只是将命名绑定到对象。删除也是如此：``del x`` 只是从局部作用域的命名空间中删除命名 ``x`` 。事实上，所有引入新命名的操作都作用于局部作用域。特别是 `import`_ 语句和函数定将模块名或函数绑定于局部作用域（可以使用 `global`_ 语句将变量引入到全局作用域）。
 
-:keyword:`global` 语句用以指明某个特定的变量为全局作用域，并重新绑定它。:keyword:`nonlocal` 语句用以指明某个特定的变量为封闭作用域，并重新绑定它。
+`global`_ 语句用以指明某个特定的变量为全局作用域，并重新绑定它。`nonlocal`_ 语句用以指明某个特定的变量为封闭作用域，并重新绑定它。
 
 .. _tut-scopeexample:
 
 作用域和命名空间示例
 -----------------------------
 
-以下是一个示例，演示了如何引用不同作用域和命名空间，以及 :keyword:`global` 和 :keyword:`nonlocal` 如何影响变量绑定::
+以下是一个示例，演示了如何引用不同作用域和命名空间，以及 `global`_ 和 `nonlocal`_ 如何影响变量绑定::
 
    def scope_test():
        def do_local():
@@ -76,7 +76,6 @@ Python 的一个特别之处在于：如果没有使用 :keyword:`global` 语法
        def do_global():
            global spam
            spam = "global spam"
-
        spam = "test spam"
        do_local()
        print("After local assignment:", spam)
@@ -97,9 +96,9 @@ Python 的一个特别之处在于：如果没有使用 :keyword:`global` 语法
    After global assignment: nonlocal spam
    In global scope: global spam
 
-注意：*local* 赋值语句是无法改变 *scope_test* 的 *spam* 绑定。:keyword:`nonlocal` 赋值语句改变了 *scope_test* 的 *spam* 绑定，并且 :keyword:`global` 赋值语句从模块级改变了 spam 绑定。
+注意：*local* 赋值语句是无法改变 *scope_test* 的 *spam* 绑定。`nonlocal`_ 赋值语句改变了 *scope_test* 的 *spam* 绑定，并且 `global`_ 赋值语句从模块级改变了 spam 绑定。
 
-你也可以看到在 :keyword:`global` 赋值语句之前对 spam 是没有预先绑定的。
+你也可以看到在 `global`_ 赋值语句之前对 *spam* 是没有预先绑定的。
 
 
 .. _tut-firstclasses:
@@ -124,7 +123,7 @@ Python 的一个特别之处在于：如果没有使用 :keyword:`global` 语法
        .
        <statement-N>
 
-类的定义就像函数定义（ :keyword:`def` 语句），要先执行才能生效。（你当然可以把它放进 :keyword:`if` 语句的某一分支，或者一个函数的内部。） 
+类的定义就像函数定义（ `def`_ 语句），要先执行才能生效。（你当然可以把它放进 `if`_ 语句的某一分支，或者一个函数的内部。） 
 
 习惯上，类定义语句的内容通常是函数定义，不过其它语句也可以，有时会很有用，后面我们再回过头来讨论。类中的函数定义通常包括了一个特殊形式的参数列表，用于方法调用约定——同样我们在后面讨论这些。
 
@@ -223,6 +222,71 @@ Python 的一个特别之处在于：如果没有使用 :keyword:`global` 语法
 如果你还是不理解方法的工作原理，了解一下它的实现也许有帮助。引用非数据属性的实例属性时，会搜索它的类。如果这个命名确认为一个有效的函数对象类属性，就会将实例对象和函数对象封装进一个抽象对象：这就是方法对象。以一个参数列表调用方法对象时，它被重新拆封，用实例对象和原始的参数列表构造一个新的参数列表，然后函数对象调用这个新的参数列表。
 
 
+.. _tut-class-and-instance-variables:
+
+类和实例变量
+----------------------------
+
+一般来说，实例变量用于对每一个实例都是唯一的数据，类变量用于类的所有实例共享的属性和方法::
+
+    class Dog:
+
+        kind = 'canine'         # class variable shared by all instances
+
+        def __init__(self, name):
+            self.name = name    # instance variable unique to each instance
+
+    >>> d = Dog('Fido')
+    >>> e = Dog('Buddy')
+    >>> d.kind                  # shared by all dogs
+    'canine'
+    >>> e.kind                  # shared by all dogs
+    'canine'
+    >>> d.name                  # unique to d
+    'Fido'
+    >>> e.name                  # unique to e
+    'Buddy'
+
+正如在 :ref:`tut-object` 讨论的， `可变`_ 对象，例如列表和字典，的共享数据可能带来意外的效果。例如，下面代码中的 *tricks* 列表不应该用作类变量，因为所有的 *Dog*  实例将共享同一个列表::
+
+    class Dog:
+
+        tricks = []             # mistaken use of a class variable
+
+        def __init__(self, name):
+            self.name = name
+
+        def add_trick(self, trick):
+            self.tricks.append(trick)
+
+    >>> d = Dog('Fido')
+    >>> e = Dog('Buddy')
+    >>> d.add_trick('roll over')
+    >>> e.add_trick('play dead')
+    >>> d.tricks                # unexpectedly shared by all dogs
+    ['roll over', 'play dead']
+
+这个类的正确设计应该使用一个实例变量::
+
+    class Dog:
+
+        def __init__(self, name):
+            self.name = name
+            self.tricks = []    # creates a new empty list for each dog
+
+        def add_trick(self, trick):
+            self.tricks.append(trick)
+
+    >>> d = Dog('Fido')
+    >>> e = Dog('Buddy')
+    >>> d.add_trick('roll over')
+    >>> e.add_trick('play dead')
+    >>> d.tricks
+    ['roll over']
+    >>> e.tricks
+    ['play dead']
+
+
 .. _tut-remarks:
 
 一些说明
@@ -238,7 +302,7 @@ Python 的一个特别之处在于：如果没有使用 :keyword:`global` 语法
 
 从方法内部引用数据属性（或其他方法）并没有快捷方式。我觉得这实际上增加了方法的可读性：当浏览一个方法时，在局部变量和实例变量之间不会出现令人费解的情况。
 
-一般，方法的第一个参数被命名为 self。这仅仅是一个约定：对 Python 而言，名称 self 绝对没有任何特殊含义。（但是请注意：如果不遵循这个约定，对其他的 Python 程序员而言你的代码可读性就会变差，而且有些类查看器程序也可能是遵循此约定编写的。）
+一般，方法的第一个参数被命名为 ``self``。这仅仅是一个约定：对 Python 而言，名称 ``self`` 绝对没有任何特殊含义。（但是请注意：如果不遵循这个约定，对其他的 Python 程序员而言你的代码可读性就会变差，而且有些 *类查看器* 程序也可能是遵循此约定编写的。）
 
 类属性的任何函数对象都为那个类的实例定义了一个方法。函数定义代码不一定非得定义在类中：也可以将一个函数对象赋值给类中的一个局部变量。例如::
 
@@ -298,9 +362,11 @@ Python 的一个特别之处在于：如果没有使用 :keyword:`global` 语法
 
 Python 有两个用于继承的函数：
 
-* 函数 :func:`isinstance` 用于检查实例类型： ``isinstance(obj, int)`` 只有在 ``obj.__class__`` 是 :class:`int` 或其它从 :class:`int` 继承的类型
+* 函数 `isinstance()`_ 用于检查实例类型： ``isinstance(obj, int)`` 只有在 ``obj.__class__`` 是 `int`_ 或其它从 `int`_ 继承的类型
 
-* 函数 :func:`issubclass` 用于检查类继承： ``issubclass(bool, int)`` 为 ``True``，因为 :class:`bool` 是 int 的子类。但是， ``issubclass(unicode, str)`` 是 ``False``，因为 :class:`unicode` 不是 :class:`str` 的子类（它们只是共享一个通用祖先类 :class:`basestring` ）。
+* 函数 `issubclass()`_ 用于检查类继承： ``issubclass(bool, int)`` 为 ``True``，因为 `bool`_ 是 `int`_ 的子类。
+  
+  然而， ``issubclass(float, int)`` 为 ``False``，因为 `float`_ 不是 `int`_ 的子类。
 
 
 
@@ -320,9 +386,9 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
 
 在大多数情况下，在最简单的情况下，你能想到的搜索属性从父类继承的深度优先，左到右，而不是搜索两次在同一个类层次结构中，其中有一个重叠。因此，如果在 :class:`DerivedClassName` （示例中的派生类）中没有找到某个属性，就会搜索 :class:`Base1`，然后（递归的）搜索其基类，如果最终没有找到，就搜索 :class:`Base2`，以此类推。 
 
-实际上，:func:`super` 可以动态的改变解析顺序。这个方式可见于其它的一些多继承语言，类似 call-next-method，比单继承语言中的 super 更强大 。
+实际上，`super()`_ 可以动态的改变解析顺序。这个方式可见于其它的一些多继承语言，类似 call-next-method，比单继承语言中的 super 更强大 。
 
-动态调整顺序十分必要的，因为所有的多继承会有一到多个菱形关系（指有至少一个祖先类可以从子类经由多个继承路径到达）。例如，所有的 new-style 类继承自 :class:`object` ，所以任意的多继承总是会有多于一条继承路径到达 :class:`object` 。
+动态调整顺序十分必要的，因为所有的多继承会有一到多个菱形关系（指有至少一个祖先类可以从子类经由多个继承路径到达）。例如，所有的 new-style 类继承自 `object`_ ，所以任意的多继承总是会有多于一条继承路径到达 `object`_ 。
 
 为了防止重复访问基类，通过动态的线性化算法，每个类都按从左到右的顺序特别指定了顺序，每个祖先类只调用一次，这是单调的（意味着一个类被继承时不会影响它祖先的次序）。总算可以通过这种方式使得设计一个可靠并且可扩展的多继承类成为可能。进一步的内容请参见 `<http://www.python.org/download/releases/2.3/mro/>`_ 。
 
@@ -359,7 +425,7 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
 
 需要注意的是编码规则设计为尽可能的避免冲突，被认作为私有的变量仍然有可能被访问或修改。在特定的场合它也是有用的，比如调试的时候。 
 
-要注意的是代码传入 ``exec``， ``eval()`` 或 ``execfile()`` 时不考虑所调用的类的类名，视其为当前类，这类似于 ``global`` 语句的效应，已经按字节编译的部分也有同样的限制。这也同样作用于 ``getattr()``， ``setattr()`` 和 ``delattr()``，像直接引用 ``__dict__`` 一样。
+要注意的是代码传入 ``exec()``， ``eval()`` 时不考虑所调用的类的类名，视其为当前类，这类似于 ``global`` 语句的效应，已经按字节编译的部分也有同样的限制。这也同样作用于 ``getattr()``， ``setattr()`` 和 ``delattr()``，像直接引用 ``__dict__`` 一样。
 
 
 .. _tut-odds:
@@ -381,7 +447,7 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
 
 某一段 Python 代码需要一个特殊的抽象数据结构的话，通常可以传入一个类，事实上这模仿了该类的方法。例如，如果你有一个用于从文件对象中格式化数据的函数，你可以定义一个带有 :meth:`read` 和 :meth:`readline` 方法的类，以此从字符串缓冲读取数据，然后将该类的对象作为参数传入前述的函数。
 
-实例方法对象也有属性：``m.im_self`` 是一个实例方法所属的对象，而 ``m.im_func`` 是这个方法对应的函数对象。
+实例方法对象也有属性：``m.__self__`` 是一个实例方法所属的对象，而 ``m.__func__`` 是这个方法对应的函数对象。
 
 
 .. _tut-exceptionclasses:
@@ -391,17 +457,17 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
 
 用户自定义异常也可以是类。利用这个机制可以创建可扩展的异常体系。 
 
-以下是两种新的，有效的（语义上的）异常抛出形式，使用 :keyword:`raise` 语句::
+以下是两种新的，有效的（语义上的）异常抛出形式，使用 `raise`_ 语句::
 
    raise Class
 
    raise Instance
 
-第一种形式中，``instance`` 必须是 :class:`Class` 或其派生类的一个实例。第二种形式是以下形式的简写::
+第一种形式中，``instance`` 必须是 `type`_ 或其派生类的一个实例。第二种形式是以下形式的简写::
 
    raise Class()
 
-发生的异常其类型如果是 :keyword:`except` 子句中列出的类，或者是其派生类，那么它们就是相符的（反过来说－－发生的异常其类型如果是异常子句中列出的类的基类，它们就不相符）。例如，以下代码会按顺序打印 B，C，D::
+发生的异常其类型如果是 `except`_ 子句中列出的类，或者是其派生类，那么它们就是相符的（反过来说－－发生的异常其类型如果是异常子句中列出的类的基类，它们就不相符）。例如，以下代码会按顺序打印 B，C，D::
 
    class B(Exception):
        pass
@@ -422,7 +488,7 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
 
 要注意的是如果异常子句的顺序颠倒过来（ ``execpt B`` 在最前），它就会打印 B，B，B－－第一个匹配的异常被触发。
 
-打印一个异常类的错误信息时，先打印类名，然后是一个空格、一个冒号，然后是用内置函数 :func:`str` 将类转换得到的完整字符串。
+打印一个异常类的错误信息时，先打印类名，然后是一个空格、一个冒号，然后是用内置函数 `str()`_ 将类转换得到的完整字符串。
 
 
 .. _tut-iterators:
@@ -430,7 +496,7 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
 迭代器
 =========
 
-现在你可能注意到大多数容器对象都可以用 :keyword:`for` 遍历::
+现在你可能注意到大多数容器对象都可以用 `for`_ 遍历::
 
    for element in [1, 2, 3]:
        print(element)
@@ -441,9 +507,9 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
    for char in "123":
        print(char)
    for line in open("myfile.txt"):
-       print(line)
+       print(line, end='')
 
-这种形式的访问清晰、简洁、方便。迭代器的用法在 Python 中普遍而且统一。在后台， :keyword:`for` 语句在容器对象中调用 :func:`iter` 。该函数返回一个定义了 :meth:`next` 方法的迭代器对象，它在容器中逐一访问元素。没有后续的元素时， :meth:`next` 抛出一个 :exc:`StopIteration` 异常通知 :keyword:`for` 语句循环结束。以下是其工作原理的示例::
+这种形式的访问清晰、简洁、方便。迭代器的用法在 Python 中普遍而且统一。在后台， `for`_ 语句在容器对象中调用 `iter()`_ 。该函数返回一个定义了 `__next__() <https://docs.python.org/3/library/stdtypes.html#iterator.__next__>`_ 方法的迭代器对象，它在容器中逐一访问元素。没有后续的元素时， `__next__() <https://docs.python.org/3/library/stdtypes.html#iterator.__next__>`_  抛出一个 `StopIteration`_ 异常通知 `for`_ 语句循环结束。你可以是用内建的 `next()`_ 函数调用 `__next__() <https://docs.python.org/3/library/stdtypes.html#iterator.__next__>`_ 方法；以下是其工作原理的示例::
 
    >>> s = 'abc'
    >>> it = iter(s)
@@ -461,7 +527,7 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
        next(it)
    StopIteration
 
-了解了迭代器协议的后台机制，就可以很容易的给自己的类添加迭代器行为。定义一个 :meth:`__iter__` 方法，使其返回一个带有 :meth:`next` 方法的对象。如果这个类已经定义了 :meth:`next` ，那么 :meth:`__iter__` 只需要返回 ``self``::
+了解了迭代器协议的后台机制，就可以很容易的给自己的类添加迭代器行为。定义一个 `__iter__() <https://docs.python.org/3/reference/datamodel.html#object.__iter__>`_ 方法，使其返回一个带有 `__next__() <https://docs.python.org/3/library/stdtypes.html#iterator.__next__>`_ 方法的对象。如果这个类已经定义了 `__next__() <https://docs.python.org/3/library/stdtypes.html#iterator.__next__>`_ ，那么 `__iter__() <https://docs.python.org/3/reference/datamodel.html#object.__iter__>`_ 只需要返回 ``self``::
 
    class Reverse:
        """Iterator for looping over a sequence backwards."""
@@ -495,7 +561,7 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
 生成器
 ==========
 
-:term:`Generator` 是创建迭代器的简单而强大的工具。它们写起来就像是正规的函数，需要返回数据的时候使用 :keyword:`yield` 语句。每次 :meth:`next` 被调用时，生成器回复它脱离的位置（它记忆语句最后一次执行的位置和所有的数据值）。以下示例演示了生成器可以很简单的创建出来::
+`Generator`_ 是创建迭代器的简单而强大的工具。它们写起来就像是正规的函数，需要返回数据的时候使用 `yield`_ 语句。每次 `next()`_ 被调用时，生成器回复它脱离的位置（它记忆语句最后一次执行的位置和所有的数据值）。以下示例演示了生成器可以很简单的创建出来::
 
    def reverse(data):
        for index in range(len(data)-1, -1, -1):
@@ -511,11 +577,11 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
    o
    g
 
-前一节中描述了基于类的迭代器，它能作的每一件事生成器也能作到。因为自动创建了 :meth:`__iter__` 和 :meth:`next` 方法，生成器显得如此简洁。 
+前一节中描述了基于类的迭代器，它能作的每一件事生成器也能作到。因为自动创建了 `__iter__() <https://docs.python.org/3/reference/datamodel.html#object.__iter__>`_ 和 `__next__() <https://docs.python.org/3/reference/expressions.html#generator.__next__>`_ 方法，生成器显得如此简洁。 
 
 另一个关键的功能在于两次执行之间，局部变量和执行状态都自动的保存下来。这使函数很容易写，而且比使用 ``self.index`` 和 ``self.data`` 之类的方式更清晰。 
 
-除了创建和保存程序状态的自动方法，当发生器终结时，还会自动抛出 :exc:`StopIteration`  异常。综上所述，这些功能使得编写一个正规函数成为创建迭代器的最简单方法。
+除了创建和保存程序状态的自动方法，当发生器终结时，还会自动抛出 `StopIteration`_  异常。综上所述，这些功能使得编写一个正规函数成为创建迭代器的最简单方法。
 
 
 .. _tut-genexps:
@@ -548,7 +614,37 @@ Python 同样有限的支持多继承形式。多继承的类定义形如下例:
 
 
 
+
 .. rubric:: Footnotes
 
 .. [#] 有一个例外。模块对象有一个隐秘的只读对象，名为 :attr:`__dict__` ，它返回用于实现模块命名空间的字典，命名 :attr:`__dict__`  是一个属性而非全局命名。显然，使用它违反了命名空间实现的抽象原则，应该被严格限制于调试中。
 
+
+
+.. _abs(): https://docs.python.org/3/library/functions.html#abs
+.. _del: https://docs.python.org/3/reference/simple_stmts.html#del
+.. _builtins: https://docs.python.org/3/library/builtins.html#module-builtins
+.. _nonlocal: https://docs.python.org/3/reference/simple_stmts.html#nonlocal
+.. _global: https://docs.python.org/3/reference/simple_stmts.html#global
+.. _import: https://docs.python.org/3/reference/simple_stmts.html#import
+.. _def: https://docs.python.org/3/reference/compound_stmts.html#def
+.. _if: https://docs.python.org/3/reference/compound_stmts.html#if
+.. _可变: https://docs.python.org/3/glossary.html#term-mutable
+.. _isinstance(): https://docs.python.org/3/library/functions.html#isinstance
+.. _int: https://docs.python.org/3/library/functions.html#int
+.. _bool: https://docs.python.org/3/library/functions.html#bool
+.. _float: https://docs.python.org/3/library/functions.html#float
+.. _issubclass(): https://docs.python.org/3/library/functions.html#issubclass
+.. _super(): https://docs.python.org/3/library/functions.html#super
+.. _object: https://docs.python.org/3/library/functions.html#object
+.. _raise: https://docs.python.org/3/reference/simple_stmts.html#raise
+.. _type: https://docs.python.org/3/library/functions.html#type
+.. _except: https://docs.python.org/3/reference/compound_stmts.html#except
+.. _str(): https://docs.python.org/3/library/stdtypes.html#str
+.. _for: https://docs.python.org/3/reference/compound_stmts.html#for
+.. _iter(): https://docs.python.org/3/library/functions.html#iter
+.. _StopIteration: https://docs.python.org/3/library/exceptions.html#StopIteration
+.. _next(): https://docs.python.org/3/library/functions.html#next
+.. _Generator: https://docs.python.org/3/glossary.html#term-generator
+.. _yield: https://docs.python.org/3/reference/simple_stmts.html#yield
+.. _StopIteration: https://docs.python.org/3/library/exceptions.html#StopIteration

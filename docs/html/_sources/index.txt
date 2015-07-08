@@ -15,13 +15,13 @@ Python 是一门简单易学且功能强大的编程语言。它拥有高效的�
 
 本手册非正式的向读者介绍了 Python 语言及其体系相关的基本知识与概念。在学习实践中结合使用 Python 解释器是很有帮助的，不过所有的例子都是完整的，所以本手册亦可离线阅读。
 
-如果需要了解相关标准库或对象的详细介绍，请查阅 `Python 参考文档 <http://docs.python.org/3.3/library/index.html>`_ 。`Python 参考手册 <http://docs.python.org/3.3/library/index.html>`_ 提供了更多语言相关的正式说明。如果想要使用 C 或 C++ 编写扩展，请查阅 `Python 解释器扩展和集成章节 <http://docs.python.org/3.3/extending/index.html#extending-index>`_ 和 `C API 参考手册 <http://docs.python.org/3.3/c-api/index.html#c-api-index>`_ 。当然也可阅读一些深入介绍 Python 知识的图书。
+如果需要了解相关标准库或对象的详细介绍，请查阅 `Python 参考文档`_ 。`Python 参考手册`_ 提供了更多语言相关的正式说明。如果想要使用 C 或 C++ 编写扩展，请查阅 `Python 解释器扩展和集成章节`_ 和 `C API 参考手册`_ 。当然也可阅读一些深入介绍 Python 知识的图书。
 
 本手册不会尝试涵盖 Python 的全部知识和每个特性，甚至不会涵盖所有常用的特性。相反地，它介绍了 Python 中许多最引人瞩目的特性，并且会给你一个关于语言特色和风格的认识。读完之后，你将能够阅读和编写 Python 模块或程序，并为以后使用 
-`Python参考手册 <http://docs.python.org/3.3/library/index.html>`_ 继续学习诸多 Python 模块库做好准备。
+`Python参考手册`_ 继续学习诸多 Python 模块库做好准备。
 
 
-`词汇表 <http://docs.python.org/3.3/glossary.html#glossary>`_ 也值得浏览一下。
+`词汇表`_ 也值得浏览一下。
 
 .. toctree::
    :numbered:
@@ -41,3 +41,10 @@ Python 是一门简单易学且功能强大的编程语言。它拥有高效的�
    interactive.rst
    floatingpoint.rst
    appendix.rst
+
+
+.. _Python 参考文档: https://docs.python.org/3/library/index.html#library-index
+.. _Python 参考手册: https://docs.python.org/3/reference/index.html#reference-index
+.. _Python 解释器扩展和集成章节: https://docs.python.org/3/extending/index.html#extending-index
+.. _C API 参考手册: https://docs.python.org/3/c-api/index.html#c-api-index
+.. _词汇表: https://docs.python.org/3/glossary.html#glossary

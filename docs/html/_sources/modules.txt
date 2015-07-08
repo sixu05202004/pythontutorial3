@@ -56,9 +56,9 @@
 
 每个模块都有自己私有的符号表，被模块内所有的函数定义作为全局符号表使用。因此，模块的作者可以在模块内部使用全局变量，而无需担心它与某个用户的全局变量意外冲突。从另一个方面讲，如果你确切的知道自己在做什么，你可以使用引用模块函数的表示法访问模块的全局变量，``modname.itemname``。
 
-模块可以导入其他的模块。一个（好的）习惯是将所有的 :keyword:`import` 语句放在模块的开始（或者是脚本），这并非强制。被导入的模块名会放入当前模块的全局符号表中。
+模块可以导入其他的模块。一个（好的）习惯是将所有的 `import`_ 语句放在模块的开始（或者是脚本），这并非强制。被导入的模块名会放入当前模块的全局符号表中。
 
-:keyword:`import` 语句的一个变体直接从被导入的模块中导入命名到本模块的语义表中。例如::
+`import`_ 语句的一个变体直接从被导入的模块中导入命名到本模块的语义表中。例如::
 
    >>> from fibo import fib, fib2
    >>> fib(500)
@@ -78,7 +78,7 @@
 
 .. note::
 
-   出于性能考虑，每个模块在每个解释器会话中只导入一遍。因此，如果你修改了你的模块，需要重启解释器；或者，如果你就是想交互式的测试这么一个模块，可以用 :func:`reload` 重新加载，例如 ``reload(modulename)``。
+   出于性能考虑，每个模块在每个解释器会话中只导入一遍。因此，如果你修改了你的模块，需要重启解释器；或者，如果你就是想交互式的测试这么一个模块，可以用 `imp.reload()`_ 重新加载，例如 ``import imp; imp.reload(modulename)``。
 
 
 .. _tut-modulesasscripts:
@@ -116,14 +116,22 @@
 
 .. index:: triple: module; search; path
 
-导入一个叫 :mod:`spam` 的模块时，解释器先在当前目录中搜索名为 :file:`spam.py` 的文件。如果没有找到的话，接着会到 :data:`sys.path` 变量中给出的目录列表中查找。 :data:`sys.path` 变量的初始值来自如下：
+导入一个叫 :mod:`spam` 的模块时，解释器先在当前目录中搜索名为 :file:`spam.py` 的文件。如果没有找到的话，接着会到 `sys.path`_ 变量中给出的目录列表中查找。 `sys.path`_ 变量的初始值来自如下：
 
 
 * 输入脚本的目录（当前目录）。
-* 环境变量 :envvar:`PYTHONPATH` 表示的目录列表中搜索 (这和 shell 变量 :envvar:`PATH` 具有一样的语法，即一系列目录名的列表)。
-* Python 默认安装路径中搜索。
 
-实际上，解释器由 :data:`sys.path` 变量指定的路径目录搜索模块，该变量初始化时默认包含了输入脚本（或者当前目录）， :envvar:`PYTHONPATH` 和安装目录。这样就允许 Python 程序了解如何修改或替换模块搜索目录。需要注意的是由于这些目录中包含有搜索路径中运行的脚本，所以这些脚本不应该和标准模块重名，否则在导入模块时 Python 会尝试把这些脚本当作模块来加载。这通常会引发错误。请参见 :ref:`tut-standardmodules` 以了解更多的信息。
+* 环境变量 `PYTHONPATH`_ 表示的目录列表中搜索 
+  
+  (这和 shell 变量 :envvar:`PATH` 具有一样的语法，即一系列目录名的列表)。
+
+* Python 默认安装路径中搜索。
+  
+  .. note::
+
+     在支持符号连接的文件系统中，输入的脚本所在的目录是符号连接指向的目录。 换句话说也就是包含符号链接的目录不会被加到目录搜索路径中。
+
+实际上，解释器由 `sys.path`_ 变量指定的路径目录搜索模块，该变量初始化时默认包含了输入脚本（或者当前目录）， `PYTHONPATH`_ 和安装目录。这样就允许 Python 程序了解如何修改或替换模块搜索目录。需要注意的是由于这些目录中包含有搜索路径中运行的脚本，所以这些脚本不应该和标准模块重名，否则在导入模块时 Python 会尝试把这些脚本当作模块来加载。这通常会引发错误。请参见 :ref:`tut-standardmodules` 以了解更多的信息。
 
 .. %
     Do we need stuff on zip files etc. ? DUBOIS
@@ -131,25 +139,23 @@
 “编译的” Python 文件
 -----------------------
 
-对于引用了大量标准模块的短程序，有一个提高启动速度的重要方法，如果在 :file:`spam.py` 所在的目录下存在一个名为 :file:`spam.pyc` 的文件，它会被视为 :mod:`spam` 模块的预“编译”（ ``byte-compiled`` ，二进制编译）版本。用于创建 :file:`spam.pyc` 的这一版 :file:`spam.py`  的修改时间记录在 :file:`spam.pyc` 文件中，如果两者不匹配，:file:`.pyc` 文件就被忽略。 
+为了加快加载模块的速度，Python 会在 ``__pycache__`` 目录下以 :file:`module.{version}.pyc` 名字缓存每个模块编译后的版本，这里的版本编制了编译后文件的格式。它通常会包含 Python 的版本号。例如，在 CPython 3.3 版中，spam.py 编译后的版本将缓存为 ``__pycache__/spam.cpython-33.pyc``。这种命名约定允许由不同发布和不同版本的 Python 编译的模块同时存在。
 
-通常你不需要为创建 :file:`spam.pyc` 文件做任何工作。一旦 :file:`spam.py` 成功编译，就会尝试生成对应版本的 :file:`spam.pyc` 。如果有任何原因导致写入不成功，生成的 :file:`spam.pyc` 文件就会视为无效，随后即被忽略。 :file:`spam.pyc` 文件的内容是平台独立的，所以 Python 模块目录可以在不同架构的机器之间共享。 
+Python 会检查源文件与编译版的修改日期以确定它是否过期并需要重新编译。这是完全自动化的过程。同时，编译后的模块是跨平台的，所以同一个库可以在不同架构的系统之间共享。
+
+Python 不检查在两个不同环境中的缓存。首先，它会永远重新编译而且不会存储直接从命令行加载的模块。其次，如果没有源模块它不会检查缓存。若要支持没有源文件（只有编译版）的发布，编译后的模块必须在源目录下，并且必须没有源文件的模块。
 
 部分高级技巧:
 
-* 以 :option:`-O` 参数调用 Python 解释器时，会生成优化代码并保存在 :file:`.pyo`  文件中。现在的优化器没有太多帮助；它只是删除了断言（ :keyword:`assert` ）语句。使用 :option:`-O` 参数， *所有* 的字节码（ :term:`bytecode` ）都会被优化；``.pyc`` 文件被忽略，``.py``  文件被编译为优化代码。
-
-* 向 Python 解释器传递两个 :option:`-O` 参数（ :option:`-OO` ）会执行完全优化的二进制优化编译，这偶尔会生成错误的程序。现在的优化器，只是从字节码中删除了 ``__doc__`` 符串，生成更为紧凑的 :file:`.pyo`  文件。因为某些程序依赖于这些变量的可用性，你应该只在确定无误的场合使用这一选项。
+* 为了减少一个编译模块的大小，你可以在 Python 命令行中使用 `-O`_ 或者 `-OO`_。`-O`_ 参数删除了断言语句，`-OO`_ 参数删除了断言语句和 __doc__ 字符串。
+  
+  因为某些程序依赖于这些变量的可用性，你应该只在确定无误的场合使用这一选项。“优化的” 模块有一个 .pyo 后缀而不是 .pyc 后缀。未来的版本可能会改变优化的效果。
 
 * 来自 :file:`.pyc` 文件或 :file:`.pyo` 文件中的程序不会比来自 :file:`.py` 文件的运行更快；:file:`.pyc` 或 :file:`.pyo` 文件只是在它们加载的时候更快一些。
 
-* 通过脚本名在命令行运行脚本时，不会将为该脚本创建的二进制代码写入 :file:`.pyc` 或 :file:`.pyo` 文件。当然，把脚本的主要代码移进一个模块里，然后用一个小的启动脚本导入这个模块，就可以提高脚本的启动速度。也可以直接在命令行中指定一个 :file:`.pyc` 或 :file:`.pyo` 文件。
+* `compileall`_ 模块可以为指定目录中的所有模块创建 :file:`.pyc` 文件（或者使用 `-O`_ 参数创建 :file:`.pyo` 文件）。
 
-* 对于同一个模块（这里指例程 spam.py －－译者），可以只有 :file:`spam.pyc` 文件（或者 :file:`spam.pyc`，在使用 :option:`-O` 参数时）而没有 :file:`spam.py`  文件。这样可以打包发布比较难于逆向工程的 Python 代码库。
-
-  .. index:: module: compileall
-
-* :mod:`compileall` 模块可以为指定目录中的所有模块创建 :file:`.pyc` 文件（或者使用 :option:`-O` 参数创建 :file:`.pyo` 文件）。
+* 在 PEP 3147 中有很多关这一部分内容的细节，并且包含了一个决策流程。
 
 
 .. _tut-standardmodules:
@@ -159,7 +165,7 @@
 
 .. index:: module: sys
 
-Python 带有一个标准模块库，并发布有独立的文档，名为 Python 库参考手册（此后称其为“库参考手册”）。有一些模块内置于解释器之中，这些操作的访问接口不是语言内核的一部分，但是已经内置于解释器了。这既是为了提高效率，也是为了给系统调用等操作系统原生访问提供接口。这类模块集合是一个依赖于底层平台的配置选项。例如，:mod:`winreg` 模块只提供在 Windows 系统上才有。有一个具体的模块值得注意： :mod:`sys` ，这个模块内置于所有的 Python 解释器。变量 ``sys.ps1`` 和 ``sys.ps2`` 定义了主提示符和辅助提示符字符串::
+Python 带有一个标准模块库，并发布有独立的文档，名为 Python 库参考手册（此后称其为“库参考手册”）。有一些模块内置于解释器之中，这些操作的访问接口不是语言内核的一部分，但是已经内置于解释器了。这既是为了提高效率，也是为了给系统调用等操作系统原生访问提供接口。这类模块集合是一个依赖于底层平台的配置选项。例如，`winreg`_ 模块只提供在 Windows 系统上才有。有一个具体的模块值得注意： `sys`_ ，这个模块内置于所有的 Python 解释器。变量 ``sys.ps1`` 和 ``sys.ps2`` 定义了主提示符和辅助提示符字符串::
 
    >>> import sys
    >>> sys.ps1
@@ -174,7 +180,7 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 
 这两个变量只在解释器的交互模式下有意义。 
 
-变量 ``sys.path`` 是解释器模块搜索路径的字符串列表。它由环境变量 :envvar:`PYTHONPATH` 初始化，如果没有设定 :envvar:`PYTHONPATH` ，就由内置的默认值初始化。你可以用标准的字符串操作修改它::
+变量 ``sys.path`` 是解释器模块搜索路径的字符串列表。它由环境变量 `PYTHONPATH`_ 初始化，如果没有设定 `PYTHONPATH`_ ，就由内置的默认值初始化。你可以用标准的字符串操作修改它::
 
    >>> import sys
    >>> sys.path.append('/ufs/guido/lib/python')
@@ -182,27 +188,34 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 
 .. _tut-dir:
 
-:func:`dir` 函数
+`dir()`_ 函数
 ========================
 
-内置函数 :func:`dir` 用于按模块名搜索模块定义，它返回一个字符串类型的存储列表::
+内置函数 `dir()`_ 用于按模块名搜索模块定义，它返回一个字符串类型的存储列表::
 
    >>> import fibo, sys
    >>> dir(fibo)
    ['__name__', 'fib', 'fib2']
-   >>> dir(sys)
-   ['__displayhook__', '__doc__', '__excepthook__', '__name__', '__stderr__',
-    '__stdin__', '__stdout__', '_getframe', 'api_version', 'argv',
-    'builtin_module_names', 'byteorder', 'callstats', 'copyright',
-    'displayhook', 'exc_info', 'excepthook',
-    'exec_prefix', 'executable', 'exit', 'getdefaultencoding', 'getdlopenflags',
-    'getrecursionlimit', 'getrefcount', 'hexversion', 'maxint', 'maxunicode',
-    'meta_path', 'modules', 'path', 'path_hooks', 'path_importer_cache',
-    'platform', 'prefix', 'ps1', 'ps2', 'setcheckinterval', 'setdlopenflags',
-    'setprofile', 'setrecursionlimit', 'settrace', 'stderr', 'stdin', 'stdout',
-    'version', 'version_info', 'warnoptions']
+   >>> dir(sys)  # doctest: +NORMALIZE_WHITESPACE
+   ['__displayhook__', '__doc__', '__excepthook__', '__loader__', '__name__',
+    '__package__', '__stderr__', '__stdin__', '__stdout__',
+    '_clear_type_cache', '_current_frames', '_debugmallocstats', '_getframe',
+    '_home', '_mercurial', '_xoptions', 'abiflags', 'api_version', 'argv',
+    'base_exec_prefix', 'base_prefix', 'builtin_module_names', 'byteorder',
+    'call_tracing', 'callstats', 'copyright', 'displayhook',
+    'dont_write_bytecode', 'exc_info', 'excepthook', 'exec_prefix',
+    'executable', 'exit', 'flags', 'float_info', 'float_repr_style',
+    'getcheckinterval', 'getdefaultencoding', 'getdlopenflags',
+    'getfilesystemencoding', 'getobjects', 'getprofile', 'getrecursionlimit',
+    'getrefcount', 'getsizeof', 'getswitchinterval', 'gettotalrefcount',
+    'gettrace', 'hash_info', 'hexversion', 'implementation', 'int_info',
+    'intern', 'maxsize', 'maxunicode', 'meta_path', 'modules', 'path',
+    'path_hooks', 'path_importer_cache', 'platform', 'prefix', 'ps1',
+    'setcheckinterval', 'setdlopenflags', 'setprofile', 'setrecursionlimit',
+    'setswitchinterval', 'settrace', 'stderr', 'stdin', 'stdout',
+    'thread_info', 'version', 'version_info', 'warnoptions']
 
-无参数调用时，:func:`dir` 函数返回当前定义的命名::
+无参数调用时，`dir()`_ 函数返回当前定义的命名::
 
    >>> a = [1, 2, 3, 4, 5]
    >>> import fibo
@@ -214,31 +227,40 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 
 .. index:: module: builtins
 
-:func:`dir` 不会列出内置函数和变量名。如果你想列出这些内容，它们在标准模块 :mod:`__builtin__` 中定义::
+`dir()`_ 不会列出内置函数和变量名。如果你想列出这些内容，它们在标准模块 `builtins`_ 中定义::
+
 
    >>> import builtins
-   >>> dir(builtins)
-
-   ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'Buffer
-   Error', 'BytesWarning', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'Environme
-   ntError', 'Exception', 'False', 'FloatingPointError', 'FutureWarning', 'Generato
-   rExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexErr
-   or', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'NameError',
-    'None', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'P
-   endingDeprecationWarning', 'ReferenceError', 'RuntimeError', 'RuntimeWarning', '
-   StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'Ta
-   bError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'Unicod
-   eEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserW
-   arning', 'ValueError', 'Warning', 'ZeroDivisionError', '__build_class__', '__deb
-   ug__', '__doc__', '__import__', '__name__', '__package__', 'abs', 'all', 'any',
-   'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'chr', 'classmethod', 'compile', '
-   complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate
-   ', 'eval', 'exec', 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr',
-   'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance',
-    'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memory
-   view', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property'
-   , 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sort
-   ed', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
+   >>> dir(builtins)  # doctest: +NORMALIZE_WHITESPACE
+   ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException',
+    'BlockingIOError', 'BrokenPipeError', 'BufferError', 'BytesWarning',
+    'ChildProcessError', 'ConnectionAbortedError', 'ConnectionError',
+    'ConnectionRefusedError', 'ConnectionResetError', 'DeprecationWarning',
+    'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False',
+    'FileExistsError', 'FileNotFoundError', 'FloatingPointError',
+    'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError',
+    'ImportWarning', 'IndentationError', 'IndexError', 'InterruptedError',
+    'IsADirectoryError', 'KeyError', 'KeyboardInterrupt', 'LookupError',
+    'MemoryError', 'NameError', 'None', 'NotADirectoryError', 'NotImplemented',
+    'NotImplementedError', 'OSError', 'OverflowError',
+    'PendingDeprecationWarning', 'PermissionError', 'ProcessLookupError',
+    'ReferenceError', 'ResourceWarning', 'RuntimeError', 'RuntimeWarning',
+    'StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError',
+    'SystemExit', 'TabError', 'TimeoutError', 'True', 'TypeError',
+    'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError',
+    'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning',
+    'ValueError', 'Warning', 'ZeroDivisionError', '_', '__build_class__',
+    '__debug__', '__doc__', '__import__', '__name__', '__package__', 'abs',
+    'all', 'any', 'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'callable',
+    'chr', 'classmethod', 'compile', 'complex', 'copyright', 'credits',
+    'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval', 'exec', 'exit',
+    'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr',
+    'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance', 'issubclass',
+    'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memoryview',
+    'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property',
+    'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice',
+    'sorted', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars',
+    'zip']
 
 .. _tut-packages:
 
@@ -248,7 +270,9 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 包通常是使用用“圆点模块名”的结构化模块命名空间。例如，名为 :mod:`A.B` 的模块表示了名为 ``A`` 的包中名为 ``B`` 的子模块。正如同用模块来保存不同的模块架构可以避免全局变量之间的相互冲突，使用圆点模块名保存像 NumPy 或 Python Imaging Library 之类的不同类库架构可以避免模块之间的命名冲突。 
 
 假设你现在想要设计一个模块集（一个“包”）来统一处理声音文件和声音数据。存在几种不同的声音格式（通常由它们的扩展名来标识，例如：:file:`.wav`，
-:file:`.aiff`，:file:`.au` ），于是，为了在不同类型的文件格式之间转换，你需要维护一个不断增长的包集合。可能你还想要对声音数据做很多不同的操作（例如混音，添加回声，应用平衡 功能，创建一个人造效果），所以你要加入一个无限流模块来执行这些操作。你的包可能会是这个样子（通过分级的文件体系来进行分组）::
+:file:`.aiff`，:file:`.au` ），于是，为了在不同类型的文件格式之间转换，你需要维护一个不断增长的包集合。可能你还想要对声音数据做很多不同的操作（例如混音，添加回声，应用平衡 功能，创建一个人造效果），所以你要加入一个无限流模块来执行这些操作。你的包可能会是这个样子（通过分级的文件体系来进行分组）:
+
+.. code-block:: text
 
    sound/                          Top-level package
          __init__.py               Initialize the sound package
@@ -302,7 +326,7 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 
    echofilter(input, output, delay=0.7, atten=4)
 
-需要注意的是使用 ``from package import item`` 方式导入包时，这个子项（item）既可以是包中的一个子模块（或一个子包），也可以是包中定义的其它命名，像函数、类或变量。``import`` 语句首先核对是否包中有这个子项，如果没有，它假定这是一个模块，并尝试加载它。如果没有找到它，会引发一个  :exc:`ImportError` 异常。 
+需要注意的是使用 ``from package import item`` 方式导入包时，这个子项（item）既可以是包中的一个子模块（或一个子包），也可以是包中定义的其它命名，像函数、类或变量。``import`` 语句首先核对是否包中有这个子项，如果没有，它假定这是一个模块，并尝试加载它。如果没有找到它，会引发一个  `ImportError`_ 异常。 
 
 相反，使用类似 ``import item.subitem.subsubitem`` 这样的语法时，这些子项必须是包，最后的子项可以是包或模块，但不能是前面子项中定义的类、函数或变量。
 
@@ -316,13 +340,13 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 
 那么当用户写下 ``from sound.Effects import *`` 时会发生什么事？理想中，总是希望在文件系统中找出包中所有的子模块，然后导入它们。这可能会花掉委有长时间，并且出现期待之外的边界效应，导出了希望只能显式导入的包。 
 
-对于包的作者来说唯一的解决方案就是给提供一个明确的包索引。:keyword:`import` 语句按如下条件进行转换：执行 ``from package import *`` 时，如果包中的 :file:`__init__.py` 代码定义了一个名为 ``__all__`` 的列表，就会按照列表中给出的模块名进行导入。新版本的包发布时作者可以任意更新这个列表。如果包作者不想 import \* 的时候导入他们的包中所有模块，那么也可能会决定不支持它（ import * ）。例如， :file:`sounds/effects/__init__.py` 这个文件可能包括如下代码::
+对于包的作者来说唯一的解决方案就是给提供一个明确的包索引。`import`_ 语句按如下条件进行转换：执行 ``from package import *`` 时，如果包中的 :file:`__init__.py` 代码定义了一个名为 ``__all__`` 的列表，就会按照列表中给出的模块名进行导入。新版本的包发布时作者可以任意更新这个列表。如果包作者不想 import \* 的时候导入他们的包中所有模块，那么也可能会决定不支持它（ import \* ）。例如， :file:`sound/effects/__init__.py` 这个文件可能包括如下代码::
 
    __all__ = ["echo", "surround", "reverse"]
 
 这意味着 ``from Sound.Effects import *`` 语句会从 :mod:`sound` 包中导入以上三个已命名的子模块。 
 
-如果没有定义 ``__all__`` ， ``from Sound.Effects import *`` 语句 *不会* 从 :mod:`sound.effects` 包中导入所有的子模块。无论包中定义多少命名，只能确定的是导入了 :mod:`sound.effects`  包（可能会运行 :file:`__init__.py` 中的初始化代码）以及包中定义的所有命名会随之导入。这样就从 :file:`__init__.py` 中导入了每一个命名（以及明确导入的子模块）。同样也包括了前述的 :keyword:`import` 语句从包中明确导入的子模块，考虑以下代码::
+如果没有定义 ``__all__`` ， ``from Sound.Effects import *`` 语句 *不会* 从 :mod:`sound.effects` 包中导入所有的子模块。无论包中定义多少命名，只能确定的是导入了 :mod:`sound.effects`  包（可能会运行 :file:`__init__.py` 中的初始化代码）以及包中定义的所有命名会随之导入。这样就从 :file:`__init__.py` 中导入了每一个命名（以及明确导入的子模块）。同样也包括了前述的 `import`_ 语句从包中明确导入的子模块，考虑以下代码::
 
    import sound.effects.echo
    import sound.effects.surround
@@ -352,7 +376,7 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 多重目录中的包
 --------------------------------
 
-包支持一个更为特殊的特性， :attr:`__path__`。 在包的 :file:`__init__.py` 文件代码执行之前，该变量初始化一个目录名列表。该变量可以修改，它作用于包中的子包和模块的搜索功能。 
+包支持一个更为特殊的特性， `__path__ <https://docs.python.org/3/reference/import.html#__path__>`_。 在包的 :file:`__init__.py` 文件代码执行之前，该变量初始化一个目录名列表。该变量可以修改，它作用于包中的子包和模块的搜索功能。 
 
 这个功能可以用于扩展包中的模块集，不过它不常用。
 
@@ -361,3 +385,17 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 
 .. [#] 事实上函数定义既是“声明”又是“可执行体”；执行体由函数在模块全局语义表中的命名导入。
 
+
+
+.. _import: https://docs.python.org/3/reference/simple_stmts.html#import
+.. _imp.reload(): https://docs.python.org/3/library/imp.html#imp.reload
+.. _sys.path: https://docs.python.org/3/library/sys.html#sys.path
+.. _PYTHONPATH: https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH
+.. _-O: https://docs.python.org/3/using/cmdline.html#cmdoption-O
+.. _-OO: https://docs.python.org/3/using/cmdline.html#cmdoption-OO
+.. _compileall: https://docs.python.org/3/library/compileall.html#module-compileall
+.. _winreg: https://docs.python.org/3/library/winreg.html#module-winreg
+.. _sys: https://docs.python.org/3/library/sys.html#module-sys
+.. _dir(): https://docs.python.org/3/library/functions.html#dir
+.. _builtins: https://docs.python.org/3/library/builtins.html#module-builtins
+.. _ImportError: https://docs.python.org/3/library/exceptions.html#ImportError

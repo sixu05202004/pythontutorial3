@@ -12,13 +12,13 @@
 输出格式
 =================
 
-:mod:`reprlib` 模块为大型的或深度嵌套的容器缩写显示提供了 :func:`repr` 函数的一个定制版本::
+`reprlib <https://docs.python.org/3/library/reprlib.html#module-reprlib>`_ 模块为大型的或深度嵌套的容器缩写显示提供了 :`repr() <https://docs.python.org/3/library/functions.html#repr>`_ 函数的一个定制版本::
 
    >>> import reprlib
    >>> reprlib.repr(set('supercalifragilisticexpialidocious'))
    "set(['a', 'c', 'd', 'e', 'f', 'g', ...])"
 
-:mod:`pprint` 模块给老手提供了一种解释器可读的方式深入控制内置和用户自定义对象的打印。当输出超过一行的时候，“美化打印（pretty printer）”添加断行和标识符，使得数据结构显示的更清晰::
+`pprint <https://docs.python.org/3/library/pprint.html#module-pprint>`_ 模块给老手提供了一种解释器可读的方式深入控制内置和用户自定义对象的打印。当输出超过一行的时候，“美化打印（pretty printer）”添加断行和标识符，使得数据结构显示的更清晰::
 
    >>> import pprint
    >>> t = [[[['black', 'cyan'], 'white', ['green', 'red']], [['magenta',
@@ -31,7 +31,7 @@
      [['magenta', 'yellow'],
       'blue']]]
 
-:mod:`textwrap` 模块格式化文本段落以适应设定的屏宽::
+`textwrap <https://docs.python.org/3/library/textwrap.html#module-textwrap>`_ 模块格式化文本段落以适应设定的屏宽::
 
    >>> import textwrap
    >>> doc = """The wrap() method is just like fill() except that it returns
@@ -44,7 +44,7 @@
    instead of one big string with newlines
    to separate the wrapped lines.
 
-:mod:`locale` 模块按访问预定好的国家信息数据库。locale 的格式化函数属性集提供了一个直接方式以分组标示格式化数字::
+`locale <https://docs.python.org/3/library/locale.html#module-locale>`_ 模块按访问预定好的国家信息数据库。locale 的格式化函数属性集提供了一个直接方式以分组标示格式化数字::
 
    >>> import locale
    >>> locale.setlocale(locale.LC_ALL, 'English_United States.1252')
@@ -63,7 +63,7 @@
 模板
 ==========
 
-:mod:`string` 提供了一个灵活多变的模版类 :class:`Template` ，使用它最终用户可以用简单的进行编辑。这使用户可以在不进行改变的情况下定制他们的应用程序。 
+`string <https://docs.python.org/3/library/string.html#module-string>`_ 提供了一个灵活多变的模版类 `Template <https://docs.python.org/3/library/string.html#string.Template>`_ ，使用它最终用户可以用简单的进行编辑。这使用户可以在不进行改变的情况下定制他们的应用程序。 
 
 格式使用 ``$`` 为开头的 Python 合法标识（数字、字母和下划线）作为占位符。占位符外面的大括号使它可以和其它的字符不加空格混在一起。 ``$$`` 创建一个单独的 ``$``::
 
@@ -72,13 +72,13 @@
    >>> t.substitute(village='Nottingham', cause='the ditch fund')
    'Nottinghamfolk send $10 to the ditch fund.'
 
-当一个占位符在字典或关键字参数中没有被提供时， :meth:`substitute` 方法就会抛出一个 :exc:`KeyError` 异常。 对于邮件合并风格的应用程序，用户提供的数据可能并不完整，这时使用 :meth:`safe_substitute` 方法可能更适合 — 如果数据不完整，它就不会改变占位符::
+当一个占位符在字典或关键字参数中没有被提供时，`substitute() <https://docs.python.org/3/library/string.html#string.Template.substitute>`_ 方法就会抛出一个 `KeyError <https://docs.python.org/3/library/exceptions.html#KeyError>`_ 异常。 对于邮件合并风格的应用程序，用户提供的数据可能并不完整，这时使用 `safe_substitute() <https://docs.python.org/3/library/string.html#string.Template.safe_substitute>`_ 方法可能更适合 — 如果数据不完整，它就不会改变占位符::
 
    >>> t = Template('Return the $item to $owner.')
    >>> d = dict(item='unladen swallow')
    >>> t.substitute(d)
    Traceback (most recent call last):
-     . . .
+     ...
    KeyError: 'owner'
    >>> t.safe_substitute(d)
    'Return the unladen swallow to $owner.'
@@ -111,7 +111,7 @@
 使用二进制数据记录布局
 =======================================
 
-:mod:`struct` 模块为使用变长的二进制记录格式提供了 :func:`pack` 和 :func:`unpack` 函数。下面的示例演示了在不使用 :mod:`zipfile` 模块的情况下如何迭代一个 ZIP 文件的头信息。压缩码 ``"H"`` 和 ``"I"`` 分别表示2和4字节无符号数字， ``"<"`` 表明它们都是标准大小并且按照 little-endian 字节排序。 ::
+`struct <https://docs.python.org/3/library/struct.html#module-struct>`_ 模块为使用变长的二进制记录格式提供了 `pack() <https://docs.python.org/3/library/struct.html#struct.pack>`_ 和 `unpack() <https://docs.python.org/3/library/struct.html#struct.unpack>`_ 函数。下面的示例演示了在不使用 `zipfile <https://docs.python.org/3/library/zipfile.html#module-zipfile>`_ 模块的情况下如何迭代一个 ZIP 文件的头信息。压缩码 ``"H"`` 和 ``"I"`` 分别表示2和4字节无符号数字， ``"<"`` 表明它们都是标准大小并且按照 little-endian 字节排序。 ::
 
    import struct
 
@@ -140,7 +140,7 @@
 
 线程是一个分离无顺序依赖关系任务的技术。在某些任务运行于后台的时候应用程序会变得迟缓，线程可以提升其速度。一个有关的用途是在 I/O 的同时其它线程可以并行计算。 
 
-下面的代码显示了高级模块 :mod:`threading` 如何在主程序运行的同时运行任务::
+下面的代码显示了高级模块 `threading <https://docs.python.org/3/library/threading.html#module-threading>`_ 如何在主程序运行的同时运行任务::
 
    import threading, zipfile
 
@@ -164,7 +164,7 @@
 
 多线程应用程序的主要挑战是协调线程，诸如线程间共享数据或其它资源。为了达到那个目的，线程模块提供了许多同步化的原生支持，包括：锁，事件，条件变量和信号灯。
 
-尽管这些工具很强大，微小的设计错误也可能造成难以挽回的故障。因此，任务协调的首选方法是把对一个资源的所有访问集中在一个单独的线程中，然后使用 :mod:`queue` 模块用那个线程服务其他线程的请求。为内部线程通信和协调而使用 :class:`Queue` 对象的应用程序更易于设计，更可读，并且更可靠。
+尽管这些工具很强大，微小的设计错误也可能造成难以挽回的故障。因此，任务协调的首选方法是把对一个资源的所有访问集中在一个单独的线程中，然后使用 `queue <https://docs.python.org/3/library/queue.html#module-queue>`_ 模块用那个线程服务其他线程的请求。为内部线程通信和协调而使用 `Queue <https://docs.python.org/3/library/queue.html#queue.Queue>`_ 对象的应用程序更易于设计，更可读，并且更可靠。
 
 
 .. _tut-logging:
@@ -172,7 +172,7 @@
 日志
 =======
 
-:mod:`logging` 模块提供了完整和灵活的日志系统。它最简单的用法是记录信息并发送到一个文件或 ``sys.stderr``::
+`logging <https://docs.python.org/3/library/logging.html#module-logging>`_ 模块提供了完整和灵活的日志系统。它最简单的用法是记录信息并发送到一个文件或 ``sys.stderr``::
 
    import logging
    logging.debug('Debugging information')
@@ -198,16 +198,16 @@
 弱引用
 ===============
 
-Python 自动进行内存管理（对大多数的对象进行引用计数和垃圾回收—— :term:`garbage collection`  ——以循环利用）在最后一个引用消失后，内存会很快释放。
+Python 自动进行内存管理（对大多数的对象进行引用计数和垃圾回收—— `垃圾回收 <https://docs.python.org/3/glossary.html#term-garbage-collection>`_  ——以循环利用）在最后一个引用消失后，内存会很快释放。
 
-这个工作方式对大多数应用程序工作良好，但是偶尔会需要跟踪对象来做一些事。不幸的是，仅仅为跟踪它们创建引用也会使其长期存在。 :mod:`weakref` 模块提供了不用创建引用的跟踪对象工具，一旦对象不再存在，它自动从弱引用表上删除并触发回调。典型的应用包括捕获难以构造的对象::
+这个工作方式对大多数应用程序工作良好，但是偶尔会需要跟踪对象来做一些事。不幸的是，仅仅为跟踪它们创建引用也会使其长期存在。 `weakref <https://docs.python.org/3/library/weakref.html#module-weakref>`_ 模块提供了不用创建引用的跟踪对象工具，一旦对象不再存在，它自动从弱引用表上删除并触发回调。典型的应用包括捕获难以构造的对象::
 
    >>> import weakref, gc
    >>> class A:
    ...     def __init__(self, value):
-   ...             self.value = value
+   ...         self.value = value
    ...     def __repr__(self):
-   ...             return str(self.value)
+   ...         return str(self.value)
    ...
    >>> a = A(10)                   # create a reference
    >>> d = weakref.WeakValueDictionary()
@@ -221,7 +221,7 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
    Traceback (most recent call last):
      File "<stdin>", line 1, in <module>
        d['primary']                # entry was automatically removed
-     File "C:/python33/lib/weakref.py", line 46, in __getitem__
+     File "C:/python34/lib/weakref.py", line 46, in __getitem__
        o = self.data[key]()
    KeyError: 'primary'
 
@@ -233,7 +233,7 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
 
 很多数据结构可能会用到内置列表类型。然而，有时可能需要不同性能代价的实现。 
 
-:mod:`array` 模块提供了一个类似列表的 :class:`array()` 对象，它仅仅是存储数据，更为紧凑。以下的示例演示了一个存储双字节无符号整数的数组（类型编码 ``"H"`` ）而非存储 16 字节 Python 整数对象的普通正规列表::
+`array <https://docs.python.org/3/library/array.html#module-array>`_ 模块提供了一个类似列表的 `array() <https://docs.python.org/3/library/array.html#array.array>`_ 对象，它仅仅是存储数据，更为紧凑。以下的示例演示了一个存储双字节无符号整数的数组（类型编码 ``"H"`` ）而非存储 16 字节 Python 整数对象的普通正规列表::
 
    >>> from array import array
    >>> a = array('H', [4000, 10, 700, 22222])
@@ -242,13 +242,15 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
    >>> a[1:3]
    array('H', [10, 700])
 
-:mod:`collections` 模块提供了类似列表的 :class:`deque()` 对象，它从左边添加（append）和弹出（pop）更快，但是在内部查询更慢。这些对象更适用于队列实现和广度优先的树搜索::
+`collections <https://docs.python.org/3/library/collections.html#module-collections>`_ 模块提供了类似列表的 `deque() <https://docs.python.org/3/library/collections.html#collections.deque>`_ 对象，它从左边添加（append）和弹出（pop）更快，但是在内部查询更慢。这些对象更适用于队列实现和广度优先的树搜索::
 
    >>> from collections import deque
    >>> d = deque(["task1", "task2", "task3"])
    >>> d.append("task4")
    >>> print("Handling", d.popleft())
    Handling task1
+
+::
 
    unsearched = deque([starting_node])
    def breadth_first_search(unsearched):
@@ -258,7 +260,7 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
                return m
            unsearched.append(m)
 
-除了链表的替代实现，该库还提供了 :mod:`bisect` 这样的模块以操作存储链表::
+除了链表的替代实现，该库还提供了 `bisect <https://docs.python.org/3/library/bisect.html#module-bisect>`_ 这样的模块以操作存储链表::
 
    >>> import bisect
    >>> scores = [(100, 'perl'), (200, 'tcl'), (400, 'lua'), (500, 'python')]
@@ -266,7 +268,7 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
    >>> scores
    [(100, 'perl'), (200, 'tcl'), (300, 'ruby'), (400, 'lua'), (500, 'python')]
 
-:mod:`heapq` 提供了基于正规链表的堆实现。最小的值总是保持在 0 点。这在希望循环访问最小元素但是不想执行完整堆排序的时候非常有用::
+`heapq <https://docs.python.org/3/library/heapq.html#module-heapq>`_ 提供了基于正规链表的堆实现。最小的值总是保持在 0 点。这在希望循环访问最小元素但是不想执行完整堆排序的时候非常有用::
 
    >>> from heapq import heapify, heappop, heappush
    >>> data = [1, 3, 5, 7, 9, 2, 4, 6, 8, 0]
@@ -281,7 +283,7 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
 十进制浮点数算法
 =================================
 
-:mod:`decimal` 模块提供了一个 :class:`Decimal` 数据类型用于浮点数计算。相比内置的二进制浮点数实现 :class:`float`，这个类型有助于
+`decimal <https://docs.python.org/3/library/decimal.html#module-decimal>`_ 模块提供了一个 `Decimal <https://docs.python.org/3/library/decimal.html#decimal.Decimal>`_ 数据类型用于浮点数计算。相比内置的二进制浮点数实现 `float <https://docs.python.org/3/library/functions.html#float>`_，这个类型有助于
 
 * 金融应用和其它需要精确十进制表达的场合，
 
@@ -289,7 +291,9 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
 
 * 控制舍入以适应法律或者规定要求，
 
-* 确保十进制数位精度，或者
+* 确保十进制数位精度，
+  
+  或者
 
 * 用户希望计算结果与手算相符的场合。
 
@@ -301,9 +305,9 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
    >>> round(.70 * 1.05, 2)
    0.73
 
-:class:`Decimal` 的结果总是保有结尾的 0，自动从两位精度延伸到4位。Decimal 重现了手工的数学运算，这就确保了二进制浮点数无法精确保有的数据精度。
+`Decimal <https://docs.python.org/3/library/decimal.html#decimal.Decimal>`_ 的结果总是保有结尾的 0，自动从两位精度延伸到4位。Decimal 重现了手工的数学运算，这就确保了二进制浮点数无法精确保有的数据精度。
 
-高精度使 :class:`Decimal` 可以执行二进制浮点数无法进行的模运算和等值测试::
+高精度使 `Decimal <https://docs.python.org/3/library/decimal.html#decimal.Decimal>`_ 可以执行二进制浮点数无法进行的模运算和等值测试::
 
    >>> Decimal('1.00') % Decimal('.10')
    Decimal('0.00')
@@ -315,7 +319,7 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
    >>> sum([0.1]*10) == 1.0
    False
 
-:mod:`decimal` 提供了必须的高精度算法::
+`decimal <https://docs.python.org/3/library/decimal.html#module-decimal>`_ 提供了必须的高精度算法::
 
    >>> getcontext().prec = 36
    >>> Decimal(1) / Decimal(7)
