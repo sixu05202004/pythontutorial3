@@ -1,1 +1,0 @@
-.. _Python 参考文档: https://docs.python.org/3.4/library/index.html#library-index
