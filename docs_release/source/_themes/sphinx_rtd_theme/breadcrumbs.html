@@ -11,7 +11,9 @@
         {% elif display_bitbucket %}
           <a href="https://bitbucket.org/{{ bitbucket_user }}/{{ bitbucket_repo }}/src/{{ bitbucket_version}}{{ conf_py_path }}{{ pagename }}{{ source_suffix }}" class="fa fa-bitbucket"> Edit on Bitbucket</a>
         {% elif show_source and has_source and sourcename %}
-          <a href="{{ pathto('_sources/' + sourcename, true)|e }}" rel="nofollow"> View page source</a>
+        <div class="rst-footer-buttons" aria-label="footer navigation" role="navigation">
+          <a class="btn btn-neutral float-right" href="http://www.pythondoc.com/donate.html" rel="nofollow">￥我要小额赞助<span class="fa fa-arrow-circle-right"></span></a>
+        </div>
         {% endif %}
       </li>
   </ul>
