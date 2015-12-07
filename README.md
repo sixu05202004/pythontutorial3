@@ -1,7 +1,7 @@
 pythontutorial3
 ===============
 
-python 3.4 tutorial中文版
+python 3.5.1 tutorial中文版
 
 原地址：http://docs.python.org/3/tutorial/index.html
 
