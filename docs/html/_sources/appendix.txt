@@ -27,7 +27,7 @@
 
 在 BSD'ish Unix 系统上，Python 脚本可直接执行，像 shell 脚本一样，只需要把下面内容加入到 ::
 
-   #!/usr/bin/env python3.5
+   #!/usr/bin/env python3.4
 
 （假设 python 解释器在用户的 :envvar:`PATH` 中）脚本的开头，并给予该文件的可执行模式。``#!`` 必须是文件的头两个字符。在一些系统上，第一行必须以 Unix-style 的行结束符（``'\n'``）结束，不能以 Windows 的行结束符（``'\r\n'``）。 注意 ``'#'`` 在 Python 中是用于注释的。
 

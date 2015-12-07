@@ -7,14 +7,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. 使用 Python 解释器 &mdash; Python tutorial 3.5.0 documentation</title>
+  <title>2. 使用 Python 解释器 &mdash; Python tutorial 3.5.1 documentation</title>
   
 
   
   
 
   
-  <link href='_static/css/googleapis.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,12 +28,12 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.0 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.5.1 documentation" href="index.html"/>
         <link rel="next" title="3. Python 简介" href="introduction.html"/>
         <link rel="prev" title="1. 开胃菜" href="appetite.html"/> 
 
   
-  <script src="_static/js/modernizr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
 </head>
 
@@ -177,30 +177,6 @@
         
       </div>
       &nbsp;
-    <div class="wy-side-ad">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- 新模板广告 -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:160px;height:600px"
-             data-ad-client="ca-pub-3421553373953599"
-             data-ad-slot="9570547632"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-
-
-        <!--百度统计代码-->
-
-          <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "//hm.baidu.com/hm.js?9adc7a1c86496c8e2bc61c4f8fc92d30";
-          var s = document.getElementsByTagName("script")[0]; 
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-    </div>
 
     </nav>
 
@@ -235,13 +211,13 @@
 <span id="tut-using"></span><h1>2. 使用 Python 解释器<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="tut-invoking">
 <span id="id1"></span><h2>2.1. 调用 Python 解释器<a class="headerlink" href="#tut-invoking" title="Permalink to this headline">¶</a></h2>
-<p>Python 解释器通常被安装在目标机器的 <code class="file docutils literal"><span class="pre">/usr/local/bin/python3.5</span></code> 目录下。将 <code class="file docutils literal"><span class="pre">/usr/local/bin</span></code> 目录包含进 Unix shell 的搜索路径里，以确保可以通过输入:</p>
-<div class="highlight-text"><div class="highlight"><pre>python3.5
+<p>Python 解释器通常被安装在目标机器的 <code class="file docutils literal"><span class="pre">/usr/local/bin/python3.4</span></code> 目录下。将 <code class="file docutils literal"><span class="pre">/usr/local/bin</span></code> 目录包含进 Unix shell 的搜索路径里，以确保可以通过输入:</p>
+<div class="highlight-text"><div class="highlight"><pre>python3.4
 </pre></div>
 </div>
 <p>命令来启动他。<a class="footnote-reference" href="#id7" id="id2">[1]</a> 由于 Python 解释器的安装路径是可选的，这也可能是其它路径，你可以联系安装 Python 的用户或系统管理员确认（例如，<code class="file docutils literal"><span class="pre">/usr/local/python</span></code> 就是一个常见的选择）。</p>
-<p>在 Windows 机器上，Python 通常安装在 <code class="file docutils literal"><span class="pre">C:\Python35</span></code> 位置，当然你可以在运行安装向导时修改此值。要想把此目录添加到你的 PATH 环境变量中，你可以在 DOS 窗口中输入以下命令:</p>
-<div class="highlight-python"><div class="highlight"><pre>set path=%path%;C:\python35
+<p>在 Windows 机器上，Python 通常安装在 <code class="file docutils literal"><span class="pre">C:\Python34</span></code> 位置，当然你可以在运行安装向导时修改此值。要想把此目录添加到你的 PATH 环境变量中，你可以在 DOS 窗口中输入以下命令:</p>
+<div class="highlight-python"><div class="highlight"><pre>set path=%path%;C:\python34
 </pre></div>
 </div>
 <p>通常你可以在主窗口输入一个文件结束符（Unix 系统是 <code class="kbd docutils literal"><span class="pre">Control-D</span></code>，Windows 系统是 <code class="kbd docutils literal"><span class="pre">Control-Z</span></code>）让解释器以 0 状态码退出。如果那没有作用，你可以通过输入 <code class="docutils literal"><span class="pre">quit()</span></code> 命令退出解释器。</p>
@@ -258,8 +234,8 @@
 <div class="section" id="tut-interactive">
 <span id="id4"></span><h3>2.1.2. 交互模式<a class="headerlink" href="#tut-interactive" title="Permalink to this headline">¶</a></h3>
 <p>从 tty 读取命令时，我们称解释器工作于 <em>交互模式</em>。这种模式下它根据主提示符来执行，主提示符通常标识为三个大于号(<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code>)；继续的部分被称为 <em>从属提示符</em>，由三个点标识(<code class="docutils literal"><span class="pre">...</span></code>)。在第一行之前，解释器打印欢迎信息、版本号和授权提示:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python3.5
-Python 3.5 (default, Mar 16 2014, 09:25:04)
+<div class="highlight-python"><div class="highlight"><pre>$ python3.4
+Python 3.4 (default, Mar 16 2014, 09:25:04)
 [GCC 4.8.2] on linux
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 &gt;&gt;&gt;
@@ -320,7 +296,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 
   <div role="contentinfo">
     <p>
-        <a href="http://www.miibeian.gov.cn/">京ICP备14002119号-1</a>&nbsp;&nbsp; | &copy; Copyright 2013, D.D.
+        &copy; Copyright 2013, D.D.
     </p>
   </div>
 
@@ -341,7 +317,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.0',
+            VERSION:'3.5.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
