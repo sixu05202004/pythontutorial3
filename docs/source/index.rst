@@ -37,6 +37,7 @@ Python 是一门简单易学且功能强大的编程语言。它拥有高效的�
    classes.rst
    stdlib.rst
    stdlib2.rst
+   venv.rst
    whatnow.rst
    interactive.rst
    floatingpoint.rst
