@@ -157,18 +157,24 @@
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-decimal-fp">11.8. 十进制浮点数算法</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="whatnow.html">12. 接下来？</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interactive.html">13. 交互式输入行编辑历史回溯</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">13.1. Tab 补全和历史记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">13.2. 其它交互式解释器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id3">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="floatingpoint.html">14. 浮点数算法：争议和限制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">14.1. 表达错误</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatnow.html">13. 接下来？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">14. 交互式输入行编辑历史回溯</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">14.1. Tab 补全和历史记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">14.2. 其它交互式解释器</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. 附录</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">15.1. 交互模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="floatingpoint.html">15. 浮点数算法：争议和限制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">15.1. 表达错误</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. 附录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">16.1. 交互模式</a></li>
 </ul>
 </li>
 </ul>
@@ -362,7 +368,7 @@
 </div>
 <div class="section" id="tut-userexceptions">
 <span id="id6"></span><h2>8.5. 用户自定义异常<a class="headerlink" href="#tut-userexceptions" title="Permalink to this headline">¶</a></h2>
-<p>在程序中可以通过创建新的异常类型来命名自己的异常（Python 类的内容请参见 <a class="reference internal" href="classes.html#tut-classes"><em>类</em></a> ）。异常类通常应该直接或间接的从 <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a> 类派生，例如:</p>
+<p>在程序中可以通过创建新的异常类型来命名自己的异常（Python 类的内容请参见 <a class="reference internal" href="classes.html#tut-classes"><span>类</span></a> ）。异常类通常应该直接或间接的从 <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a> 类派生，例如:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
@@ -416,7 +422,7 @@
 </pre></div>
 </div>
 <p>与标准异常相似，大多数异常的命名都以 “Error” 结尾。</p>
-<p>很多标准模块中都定义了自己的异常，用以报告在他们所定义的函数中可能发生的错误。关于类的进一步信息请参见 <a class="reference internal" href="classes.html#tut-classes"><em>类</em></a> 一章。</p>
+<p>很多标准模块中都定义了自己的异常，用以报告在他们所定义的函数中可能发生的错误。关于类的进一步信息请参见 <a class="reference internal" href="classes.html#tut-classes"><span>类</span></a> 一章。</p>
 </div>
 <div class="section" id="tut-cleanup">
 <span id="id7"></span><h2>8.6. 定义清理行为<a class="headerlink" href="#tut-cleanup" title="Permalink to this headline">¶</a></h2>

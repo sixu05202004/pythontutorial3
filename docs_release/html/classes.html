@@ -157,18 +157,24 @@
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-decimal-fp">11.8. 十进制浮点数算法</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="whatnow.html">12. 接下来？</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interactive.html">13. 交互式输入行编辑历史回溯</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">13.1. Tab 补全和历史记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">13.2. 其它交互式解释器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id4">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="floatingpoint.html">14. 浮点数算法：争议和限制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">14.1. 表达错误</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatnow.html">13. 接下来？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">14. 交互式输入行编辑历史回溯</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">14.1. Tab 补全和历史记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">14.2. 其它交互式解释器</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. 附录</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">15.1. 交互模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="floatingpoint.html">15. 浮点数算法：争议和限制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">15.1. 表达错误</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. 附录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">16.1. 交互模式</a></li>
 </ul>
 </li>
 </ul>
@@ -236,7 +242,7 @@
   <div class="section" id="tut-classes">
 <span id="id1"></span><h1>9. 类<a class="headerlink" href="#tut-classes" title="Permalink to this headline">¶</a></h1>
 <p>Python 的类机制通过最小的新语法和语义在语言中实现了类。它是 C++ 或者 Modula-3 语言中类机制的混合。就像模块一样，Python 的类并没有在用户和定义之间设立绝对的屏障，而是依赖于用户不去“强行闯入定义”的优雅。另一方面，类的大多数重要特性都被完整的保留下来：类继承机制允许多重继承，派生类可以覆盖（override）基类中的任何方法或类，可以使用相同的方法名称调用基类的方法。对象可以包含任意数量的私有数据。</p>
-<p>用 C++ 术语来讲，所有的类成员（包括数据成员）都是公有（ <em>public</em> ）的（其它情况见下文 <a class="reference internal" href="#tut-private"><em>私有变量</em></a>），所有的成员函数都是虚（ <em>virtual</em> ）的。用 Modula-3 的术语来讲，在成员方法中没有简便的方式引用对象的成员：方法函数在定义时需要以引用的对象做为第一个参数，调用时则会隐式引用对象。像在 Smalltalk 中一个，类也是对象。这就提供了导入和重命名语义。不像 C++ 和 Modula-3 中那样，大多数带有特殊语法的内置操作符（算法运算符、下标等）都可以针对类的需要重新定义。</p>
+<p>用 C++ 术语来讲，所有的类成员（包括数据成员）都是公有（ <em>public</em> ）的（其它情况见下文 <a class="reference internal" href="#tut-private"><span>私有变量</span></a>），所有的成员函数都是虚（ <em>virtual</em> ）的。用 Modula-3 的术语来讲，在成员方法中没有简便的方式引用对象的成员：方法函数在定义时需要以引用的对象做为第一个参数，调用时则会隐式引用对象。像在 Smalltalk 中一个，类也是对象。这就提供了导入和重命名语义。不像 C++ 和 Modula-3 中那样，大多数带有特殊语法的内置操作符（算法运算符、下标等）都可以针对类的需要重新定义。</p>
 <p>在讨论类时，没有足够的得到共识的术语，我会偶尔从 Smalltalk 和 C++ 借用一些。我比较喜欢用 Modula-3 的用语，因为比起 C++，Python 的面向对象语法更像它，但是我想很少有读者听过这个。</p>
 <div class="section" id="tut-object">
 <span id="id2"></span><h2>9.1. 术语相关<a class="headerlink" href="#tut-object" title="Permalink to this headline">¶</a></h2>
@@ -413,7 +419,7 @@ In global scope: global spam
 &#39;Buddy&#39;
 </pre></div>
 </div>
-<p>正如在 <a class="reference internal" href="#tut-object"><em>术语相关</em></a> 讨论的， <a class="reference external" href="https://docs.python.org/3/glossary.html#term-mutable">可变</a> 对象，例如列表和字典，的共享数据可能带来意外的效果。例如，下面代码中的 <em>tricks</em> 列表不应该用作类变量，因为所有的 <em>Dog</em>  实例将共享同一个列表:</p>
+<p>正如在 <a class="reference internal" href="#tut-object"><span>术语相关</span></a> 讨论的， <a class="reference external" href="https://docs.python.org/3/glossary.html#term-mutable">可变</a> 对象，例如列表和字典，的共享数据可能带来意外的效果。例如，下面代码中的 <em>tricks</em> 列表不应该用作类变量，因为所有的 <em>Dog</em>  实例将共享同一个列表:</p>
 <div class="highlight-python"><div class="highlight"><pre>class Dog:
 
     tricks = []             # mistaken use of a class variable

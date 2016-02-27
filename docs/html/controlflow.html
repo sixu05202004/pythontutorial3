@@ -157,18 +157,24 @@
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-decimal-fp">11.8. 十进制浮点数算法</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="whatnow.html">12. 接下来？</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interactive.html">13. 交互式输入行编辑历史回溯</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">13.1. Tab 补全和历史记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">13.2. 其它交互式解释器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id3">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="floatingpoint.html">14. 浮点数算法：争议和限制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">14.1. 表达错误</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatnow.html">13. 接下来？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">14. 交互式输入行编辑历史回溯</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">14.1. Tab 补全和历史记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">14.2. 其它交互式解释器</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. 附录</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">15.1. 交互模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="floatingpoint.html">15. 浮点数算法：争议和限制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">15.1. 表达错误</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. 附录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">16.1. 交互模式</a></li>
 </ul>
 </li>
 </ul>
@@ -289,7 +295,7 @@ range(-10, -100, -30)
 <span class="go">4 lamb</span>
 </pre></div>
 </div>
-<p>不过，这种场合可以方便的使用 <a class="reference external" href="https://docs.python.org/3/library/functions.html#enumerate">enumerate()</a>，请参见 <a class="reference internal" href="datastructures.html#tut-loopidioms"><em>循环技巧</em></a>。</p>
+<p>不过，这种场合可以方便的使用 <a class="reference external" href="https://docs.python.org/3/library/functions.html#enumerate">enumerate()</a>，请参见 <a class="reference internal" href="datastructures.html#tut-loopidioms"><span>循环技巧</span></a>。</p>
 <p>如果你只是打印一个序列的话会发生奇怪的事情:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="go">range(0, 10)</span>
@@ -327,7 +333,7 @@ range(-10, -100, -30)
 </pre></div>
 </div>
 <p>(Yes, 这是正确的代码。看仔细：<code class="docutils literal"><span class="pre">else</span></code> 语句是属于 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#for">for</a> 循环之中， <strong>不是</strong>  <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#if">if</a> 语句。)</p>
-<p>与循环一起使用时，<code class="docutils literal"><span class="pre">else</span></code> 子句与 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句的 <code class="docutils literal"><span class="pre">else</span></code> 子句比与 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#if">if</a> 语句的具有更多的共同点：<a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句的 <code class="docutils literal"><span class="pre">else</span></code> 子句在未出现异常时运行，循环的 <code class="docutils literal"><span class="pre">else</span></code> 子句在未出现 <code class="docutils literal"><span class="pre">break</span></code> 时运行。更多关于 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句和异常的内容，请参见 <a class="reference internal" href="errors.html#tut-handling"><em>异常处理</em></a>。</p>
+<p>与循环一起使用时，<code class="docutils literal"><span class="pre">else</span></code> 子句与 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句的 <code class="docutils literal"><span class="pre">else</span></code> 子句比与 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#if">if</a> 语句的具有更多的共同点：<a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句的 <code class="docutils literal"><span class="pre">else</span></code> 子句在未出现异常时运行，循环的 <code class="docutils literal"><span class="pre">else</span></code> 子句在未出现 <code class="docutils literal"><span class="pre">break</span></code> 时运行。更多关于 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#try">try</a> 语句和异常的内容，请参见 <a class="reference internal" href="errors.html#tut-handling"><span>异常处理</span></a>。</p>
 <p><a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#continue">continue</a> 语句是从 C 中借鉴来的，它表示循环继续执行下一次迭代:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -383,7 +389,7 @@ range(-10, -100, -30)
 </pre></div>
 </div>
 <p id="index-1">关键字 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#def">def</a> 引入了一个函数 <em>定义</em>。在其后必须跟有函数名和包括形式参数的圆括号。函数体语句从下一行开始，必须是缩进的。</p>
-<p>函数体的第一行语句可以是可选的字符串文本，这个字符串是函数的文档字符串，或者称为 <em class="dfn">docstring</em>。（更多关于 docstrings 的信息请参考 <a class="reference internal" href="#tut-docstrings"><em>文档字符串</em></a>） 有些工具通过 docstrings 自动生成在线的或可打印的文档，或者让用户通过代码交互浏览；在你的代码中包含 docstrings 是一个好的实践，让它成为习惯吧。</p>
+<p>函数体的第一行语句可以是可选的字符串文本，这个字符串是函数的文档字符串，或者称为 <em class="dfn">docstring</em>。（更多关于 docstrings 的信息请参考 <a class="reference internal" href="#tut-docstrings"><span>文档字符串</span></a>） 有些工具通过 docstrings 自动生成在线的或可打印的文档，或者让用户通过代码交互浏览；在你的代码中包含 docstrings 是一个好的实践，让它成为习惯吧。</p>
 <p>函数 <em>调用</em> 会为函数局部变量生成一个新的符号表。确切的说，所有函数中的变量赋值都是将值存储在局部符号表。变量引用首先在局部符号表中查找，然后是包含函数的局部符号表，然后是全局符号表，最后是内置名字表。因此，全局变量不能在函数中直接赋值（除非用 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#global">global</a> 语句命名），尽管他们可以被引用。</p>
 <p>函数引用的实际参数在函数调用时引入局部符号表，因此，实参总是 <em>传值调用</em> （这里的 <em>值</em> 总是一个对象 引用 ，而不是该对象的值）。<a class="footnote-reference" href="#id12" id="id2">[1]</a>  一个函数被另一个函数调用时，一个新的局部符号表在调用过程中被创建。</p>
 <p>一个函数定义会在当前符号表内引入函数名。函数名指代的值（即函数体）有一个被 Python 解释器认定为 <em>用户自定义函数</em> 的类型。 这个值可以赋予其他的名字（即变量名），然后它也可以被当做函数使用。这可以作为通用的重命名机制:</p>
@@ -421,7 +427,7 @@ range(-10, -100, -30)
 <p>过程结束后也会返回 <code class="docutils literal"><span class="pre">None</span></code>。</p>
 </li>
 <li><p class="first">语句 <code class="docutils literal"><span class="pre">result.append(b)</span></code> 称为链表对象 <code class="docutils literal"><span class="pre">result</span></code> 的一个 <em>方法</em>。方法是一个“属于”某个对象的函数，它被命名为 <code class="docutils literal"><span class="pre">obj.methodename</span></code>，这里的 <code class="docutils literal"><span class="pre">obj</span></code> 是某个对象（可能是一个表达式）， <code class="docutils literal"><span class="pre">methodename</span></code> 是某个在该对象类型定义中的方法的命名。</p>
-<p>不同的类型定义不同的方法。不同类型可能有同样名字的方法，但不会混淆。（当你定义自己的对象类型和方法时，可能会出现这种情况，<em>class</em> 的定义方法详见 <a class="reference internal" href="classes.html#tut-classes"><em>类</em></a> ）。示例中演示的 <code class="xref py py-meth docutils literal"><span class="pre">append()</span></code> 方法由链表对象定义，它向链表中加入一个新元素。在示例中它等同于 <code class="docutils literal"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">result</span> <span class="pre">+</span> <span class="pre">[a]</span></code>，不过效率更高。</p>
+<p>不同的类型定义不同的方法。不同类型可能有同样名字的方法，但不会混淆。（当你定义自己的对象类型和方法时，可能会出现这种情况，<em>class</em> 的定义方法详见 <a class="reference internal" href="classes.html#tut-classes"><span>类</span></a> ）。示例中演示的 <code class="xref py py-meth docutils literal"><span class="pre">append()</span></code> 方法由链表对象定义，它向链表中加入一个新元素。在示例中它等同于 <code class="docutils literal"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">result</span> <span class="pre">+</span> <span class="pre">[a]</span></code>，不过效率更高。</p>
 </li>
 </ul>
 </div>
@@ -565,7 +571,7 @@ sketch : Cheese Shop Sketch
 </div>
 <div class="section" id="tut-arbitraryargs">
 <span id="id7"></span><h3>4.7.3. 可变参数列表<a class="headerlink" href="#tut-arbitraryargs" title="Permalink to this headline">¶</a></h3>
-<p id="index-2">最后，一个最不常用的选择是可以让函数调用可变个数的参数。这些参数被包装进一个元组（参见 <a class="reference internal" href="datastructures.html#tut-tuples"><em>元组和序列</em></a> ）。在这些可变个数的参数之前，可以有零到多个普通的参数:</p>
+<p id="index-2">最后，一个最不常用的选择是可以让函数调用可变个数的参数。这些参数被包装进一个元组（参见 <a class="reference internal" href="datastructures.html#tut-tuples"><span>元组和序列</span></a> ）。在这些可变个数的参数之前，可以有零到多个普通的参数:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">write_multiple_items</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">separator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">separator</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
 </pre></div>
@@ -663,7 +669,7 @@ annotations）是定义在参数名称的冒号后面，紧随着一个用来表
 </div>
 <div class="section" id="tut-codingstyle">
 <span id="id11"></span><h2>4.8. 插曲：编码风格<a class="headerlink" href="#tut-codingstyle" title="Permalink to this headline">¶</a></h2>
-<p id="index-6">此时你已经可以写一此更长更复杂的 Python 程序，是时候讨论一下 <em>编码风格</em> 了。大多数语言可以写（或者更明白的说， <em>格式化</em> ）作几种不同的风格。有些比其它的更好读。让你的代码对别人更易读是个好想法，养成良好的编码风格对此很有帮助。</p>
+<p id="index-6">此时你已经可以写一些更长更复杂的 Python 程序，是时候讨论一下 <em>编码风格</em> 了。大多数语言可以写（或者更明白的说， <em>格式化</em> ）作几种不同的风格。有些比其它的更好读。让你的代码对别人更易读是个好想法，养成良好的编码风格对此很有帮助。</p>
 <p>对于 Python，<a class="reference external" href="http://www.python.org/dev/peps/pep-0008">PEP 8</a> 引入了大多数项目遵循的风格指导。它给出了一个高度可读，视觉友好的编码风格。每个 Python 开发者都应该读一下，大多数要点都会对你有帮助：</p>
 <ul>
 <li><p class="first">使用 4 空格缩进，而非 TAB</p>
@@ -681,7 +687,7 @@ annotations）是定义在参数名称的冒号后面，紧随着一个用来表
 <li><p class="first">把空格放到操作符两边，以及逗号后面，但是括号里侧不加空格：<code class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">f(1,</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">g(3,</span> <span class="pre">4)</span></code></p>
 </li>
 <li><p class="first">统一函数和类命名</p>
-<p>推荐类名用 <code class="docutils literal"><span class="pre">驼峰命名</span></code>， 函数和方法名用 <code class="docutils literal"><span class="pre">小写_和_下划线</span></code>。总是用 <code class="docutils literal"><span class="pre">self</span></code> 作为方法的第一个参数（关于类和方法的知识详见 <a class="reference internal" href="classes.html#tut-firstclasses"><em>初识类</em></a> ）</p>
+<p>推荐类名用 <code class="docutils literal"><span class="pre">驼峰命名</span></code>， 函数和方法名用 <code class="docutils literal"><span class="pre">小写_和_下划线</span></code>。总是用 <code class="docutils literal"><span class="pre">self</span></code> 作为方法的第一个参数（关于类和方法的知识详见 <a class="reference internal" href="classes.html#tut-firstclasses"><span>初识类</span></a> ）</p>
 </li>
 <li><p class="first">不要使用花哨的编码，如果你的代码的目的是要在国际化环境。Python 的默认情况下，UTF-8，甚至普通的 ASCII 总是工作的最好</p>
 </li>

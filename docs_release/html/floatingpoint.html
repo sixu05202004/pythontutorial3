@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>14. 浮点数算法：争议和限制 &mdash; Python tutorial 3.5.1 documentation</title>
+  <title>15. 浮点数算法：争议和限制 &mdash; Python tutorial 3.5.1 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
 
   
     <link rel="top" title="Python tutorial 3.5.1 documentation" href="index.html"/>
-        <link rel="next" title="15. 附录" href="appendix.html"/>
-        <link rel="prev" title="13. 交互式输入行编辑历史回溯" href="interactive.html"/> 
+        <link rel="next" title="16. 附录" href="appendix.html"/>
+        <link rel="prev" title="14. 交互式输入行编辑历史回溯" href="interactive.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -157,18 +157,24 @@
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-decimal-fp">11.8. 十进制浮点数算法</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="whatnow.html">12. 接下来？</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interactive.html">13. 交互式输入行编辑历史回溯</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">13.1. Tab 补全和历史记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">13.2. 其它交互式解释器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id4">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">14. 浮点数算法：争议和限制</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#tut-fp-error">14.1. 表达错误</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatnow.html">13. 接下来？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">14. 交互式输入行编辑历史回溯</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">14.1. Tab 补全和历史记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">14.2. 其它交互式解释器</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. 附录</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">15.1. 交互模式</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">15. 浮点数算法：争议和限制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tut-fp-error">15.1. 表达错误</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. 附录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">16.1. 交互模式</a></li>
 </ul>
 </li>
 </ul>
@@ -220,7 +226,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>14. 浮点数算法：争议和限制</li>
+    <li>15. 浮点数算法：争议和限制</li>
       <li class="wy-breadcrumbs-aside">
         
         <div class="rst-footer-buttons" aria-label="footer navigation" role="navigation">
@@ -234,7 +240,7 @@
           <div role="main" class="document">
             
   <div class="section" id="tut-fp-issues">
-<span id="id1"></span><h1>14. 浮点数算法：争议和限制<a class="headerlink" href="#tut-fp-issues" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>15. 浮点数算法：争议和限制<a class="headerlink" href="#tut-fp-issues" title="Permalink to this headline">¶</a></h1>
 <p>浮点数在计算机中表达为二进制（binary）小数。例如：十进制小数:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="mf">0.125</span>
 </pre></div>
@@ -340,7 +346,7 @@
 </pre></div>
 </div>
 <div class="section" id="tut-fp-error">
-<span id="id5"></span><h2>14.1. 表达错误<a class="headerlink" href="#tut-fp-error" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>15.1. 表达错误<a class="headerlink" href="#tut-fp-error" title="Permalink to this headline">¶</a></h2>
 <p>这一节详细说明 “0.1” 示例，教你怎样自己去精确的分析此类案例。假设这里你已经对浮点数表示有基本的了解。</p>
 <p><em class="dfn">Representation error</em> 提及事实上有些（实际是大多数）十进制小数不能精确的表示为二进制小数。这是 Python （或 Perl，C，C++，Java，Fortran 以及其它很多）语言往往不能按你期待的样子显示十进制数值的根本原因。</p>
 <p>这是为什么？ 1/10 不能精确的表示为二进制小数。大多数今天的机器（2000年十一月）使用 IEEE-754 浮点数算法，大多数平台上 Python 将浮点数映射为 IEEE-754 “双精度浮点数”。754 双精度包含 53 位精度，所以计算机努力将输入的 0.1 转为 <em>J</em>/2**<em>N</em> 最接近的二进制小数。<em>J</em> 是一个 53 位的整数。改写:</p>
@@ -417,10 +423,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="appendix.html" class="btn btn-neutral float-right" title="15. 附录">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="appendix.html" class="btn btn-neutral float-right" title="16. 附录">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="interactive.html" class="btn btn-neutral" title="13. 交互式输入行编辑历史回溯"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="interactive.html" class="btn btn-neutral" title="14. 交互式输入行编辑历史回溯"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
