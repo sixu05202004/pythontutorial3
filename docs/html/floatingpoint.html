@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>15. 浮点数算法：争议和限制 &mdash; Python tutorial 3.5.1 documentation</title>
+  <title>15. 浮点数算法：争议和限制 &mdash; Python tutorial 3.5.2 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.1 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.5.2 documentation" href="index.html"/>
         <link rel="next" title="16. 附录" href="appendix.html"/>
         <link rel="prev" title="14. 交互式输入行编辑历史回溯" href="interactive.html"/> 
 
@@ -159,7 +159,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="venv.html#id3">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id4">12.2. 创建虚拟环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
@@ -169,7 +169,7 @@
 <li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">14.2. 其它交互式解释器</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">15. 浮点数算法：争议和限制</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">15. 浮点数算法：争议和限制</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tut-fp-error">15.1. 表达错误</a></li>
 </ul>
 </li>
@@ -216,40 +216,40 @@
   <div class="section" id="tut-fp-issues">
 <span id="id1"></span><h1>15. 浮点数算法：争议和限制<a class="headerlink" href="#tut-fp-issues" title="Permalink to this headline">¶</a></h1>
 <p>浮点数在计算机中表达为二进制（binary）小数。例如：十进制小数:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.125</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.125</span>
 </pre></div>
 </div>
 <p>是 1/10 + 2/100 + 5/1000 的值，同样二进制小数:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.001</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.001</span>
 </pre></div>
 </div>
 <p>是 0/2 + 0/4 + 1/8。这两个数值相同。唯一的实质区别是第一个写为十进制小数记法，第二个是二进制。</p>
 <p>不幸的是，大多数十进制小数不能完全用二进制小数表示。结果是，一般情况下，你输入的十进制浮点数仅由实际存储在计算机中的近似的二进制浮点数表示。</p>
 <p>这个问题更早的时候首先在十进制中发现。考虑小数形式的 1/3 ，你可以来个十进制的近似值。</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.3</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.3</span>
 </pre></div>
 </div>
 <p>或者更进一步的,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.33</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.33</span>
 </pre></div>
 </div>
 <p>或者更进一步的,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mf">0.333</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.333</span>
 </pre></div>
 </div>
 <p>诸如此类。如果你写多少位，这个结果永远不是精确的 1/3 ，但是可以无限接近 1/3 。</p>
 <p>同样，无论在二进制中写多少位，十进制数 0.1 都不能精确表达为二进制小数。二进制来表达 1/10 是一个无限循环小数:</p>
-<div class="highlight-python"><div class="highlight"><pre>0.0001100110011001100110011001100110011001100110011...
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.0001100110011001100110011001100110011001100110011</span><span class="o">...</span>
 </pre></div>
 </div>
 <p>在任何有限数量的位停下来，你得到的都是近似值。今天在大多数机器上，浮点数的近似使用的小数以最高的 53 位为分子，2 的幂为分母。至于 1/10 这种情况，其二进制小数是  <code class="docutils literal"><span class="pre">3602879701896397</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">**</span> <span class="pre">55</span></code>，它非常接近但不完全等于1/10真实的值。</p>
 <p>由于显示方式的原因，许多使用者意识不到是近似值。Python 只打印机器中存储的二进制值的十进制近似值。在大多数机器上，如果 Python 要打印 0.1 存储的二进制的真正近似值，将会显示:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span>
 <span class="go">0.1000000000000000055511151231257827021181583404541015625</span>
 </pre></div>
 </div>
 <p>这么多位的数字对大多数人是没有用的，所以 Python 显示一个舍入的值</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">/</span> <span class="mi">10</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">/</span> <span class="mi">10</span>
 <span class="go">0.1</span>
 </pre></div>
 </div>
@@ -258,10 +258,10 @@
 <p>历史上，Python 提示符和内置的 <a class="reference external" href="https://docs.python.org/3/library/functions.html#repr">repr()</a> 函数选择一个 17 位精度的数字，<code class="docutils literal"><span class="pre">0.10000000000000001</span></code>。从 Python 3.1 开始，Python（在大多数系统上）能够从这些数字当中选择最短的一个并简单地显示 <code class="docutils literal"><span class="pre">0.1</span></code>。</p>
 <p>注意，这是二进制浮点数的自然性质：它不是 Python 中的一个 bug，也不是你的代码中的 bug。你会看到所有支持硬件浮点数算法的语言都会有这个现象（尽管有些语言默认情况下或者在所有输出模式下可能不会 <em>显示</em> 出差异）。</p>
 <p>为了输出更好看，你可能想用字符串格式化来生成固定位数的有效数字:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="s">&#39;.12g&#39;</span><span class="p">)</span>  <span class="c"># give 12 significant digits</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="s1">&#39;.12g&#39;</span><span class="p">)</span>  <span class="c1"># give 12 significant digits</span>
 <span class="go">&#39;3.14159265359&#39;</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="s">&#39;.2f&#39;</span><span class="p">)</span>   <span class="c"># give 2 digits after the point</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="s1">&#39;.2f&#39;</span><span class="p">)</span>   <span class="c1"># give 2 digits after the point</span>
 <span class="go">&#39;3.14&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
@@ -270,17 +270,17 @@
 </div>
 <p>认识到这，在真正意义上，是一种错觉是很重要的：你在简单地舍入真实机器值的 <em>显示</em>。</p>
 <p>例如，既然 0.1 不是精确的 1/10，3 个 0.1 的值相加可能也不会得到精确的 0.3:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span> <span class="o">==</span> <span class="o">.</span><span class="mi">3</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span> <span class="o">==</span> <span class="o">.</span><span class="mi">3</span>
 <span class="go">False</span>
 </pre></div>
 </div>
 <p>另外，既然 0.1 不能更接近 1/10 的精确值而且 0.3 不能更接近 3/10 的精确值，使用 <a class="reference external" href="https://docs.python.org/3/library/functions.html#round">round()</a> 函数提前舍入也没有帮助:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="go">False</span>
 </pre></div>
 </div>
 <p>虽然这些数字不可能再更接近它们想要的精确值，<a class="reference external" href="https://docs.python.org/3/library/functions.html#round">round()</a>  函数可以用于在计算之后进行舍入，这样的话不精确的结果就可以和另外一个相比较了:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -291,29 +291,29 @@
 <p><a class="reference external" href="https://docs.python.org/3/library/fractions.html#module-fractions">fractions</a> 模块支持另外一种形式的运算，它实现的运算基于有理数（因此像1/3这样的数字可以精确地表示）。</p>
 <p>如果你是浮点数操作的重度使用者，你应该看一下由 SciPy 项目提供的 Numerical Python 包和其它用于数学和统计学的包。参看 &lt;<a class="reference external" href="http://scipy.org">http://scipy.org</a>&gt;。</p>
 <p>当你真的 <em>真</em> 想要知道浮点数精确值的时候，Python 提供这样的工具可以帮助你。<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#float.as_integer_ratio">float.as_integer_ratio()</a> 方法以分数的形式表示一个浮点数的值:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">3.14159</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
 <span class="go">(3537115888337719, 1125899906842624)</span>
 </pre></div>
 </div>
 <p>因为比值是精确的，它可以用来无损地重新生成初始值:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">==</span> <span class="mi">3537115888337719</span> <span class="o">/</span> <span class="mi">1125899906842624</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">==</span> <span class="mi">3537115888337719</span> <span class="o">/</span> <span class="mi">1125899906842624</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#float.hex">float.hex()</a> 方法以十六进制表示浮点数，给出的同样是计算机存储的精确值:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 <span class="go">&#39;0x1.921f9f01b866ep+1&#39;</span>
 </pre></div>
 </div>
 <p>精确的十六进制表示可以用来准确地重新构建浮点数:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">==</span> <span class="nb">float</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s">&#39;0x1.921f9f01b866ep+1&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">==</span> <span class="nb">float</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s1">&#39;0x1.921f9f01b866ep+1&#39;</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 <p>因为可以精确表示，所以可以用在不同版本的 Python（与平台相关）之间可靠地移植数据以及与支持同样格式的其它语言（例如 Java 和 C99）交换数据。</p>
 <p>另外一个有用的工具是 <a class="reference external" href="https://docs.python.org/3/library/math.html#math.fsum">math.fsum()</a> 函数，它帮助求和过程中减少精度的损失。当数值在不停地相加的时候，它会跟踪“丢弃的数字”。这可以给总体的准确度带来不同，以至于错误不会累积到影响最终结果的点:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">([</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">([</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">fsum</span><span class="p">([</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>
 <span class="go">True</span>
@@ -324,56 +324,56 @@
 <p>这一节详细说明 “0.1” 示例，教你怎样自己去精确的分析此类案例。假设这里你已经对浮点数表示有基本的了解。</p>
 <p><em class="dfn">Representation error</em> 提及事实上有些（实际是大多数）十进制小数不能精确的表示为二进制小数。这是 Python （或 Perl，C，C++，Java，Fortran 以及其它很多）语言往往不能按你期待的样子显示十进制数值的根本原因。</p>
 <p>这是为什么？ 1/10 不能精确的表示为二进制小数。大多数今天的机器（2000年十一月）使用 IEEE-754 浮点数算法，大多数平台上 Python 将浮点数映射为 IEEE-754 “双精度浮点数”。754 双精度包含 53 位精度，所以计算机努力将输入的 0.1 转为 <em>J</em>/2**<em>N</em> 最接近的二进制小数。<em>J</em> 是一个 53 位的整数。改写:</p>
-<div class="highlight-python"><div class="highlight"><pre>1 / 10 ~= J / (2**N)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">~=</span> <span class="n">J</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">N</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>为:</p>
-<div class="highlight-python"><div class="highlight"><pre>J ~= 2**N / 10
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">~=</span> <span class="mi">2</span><span class="o">**</span><span class="n">N</span> <span class="o">/</span> <span class="mi">10</span>
 </pre></div>
 </div>
 <p><em>J</em> 重现时正是 53 位（是 <code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">2**52</span></code> 而非 <code class="docutils literal"><span class="pre">&lt;</span> <span class="pre">2**53</span></code> ）， <em>N</em> 的最佳值是 56:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">52</span> <span class="o">&lt;=</span>  <span class="mi">2</span><span class="o">**</span><span class="mi">56</span> <span class="o">//</span> <span class="mi">10</span>  <span class="o">&lt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">53</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">52</span> <span class="o">&lt;=</span>  <span class="mi">2</span><span class="o">**</span><span class="mi">56</span> <span class="o">//</span> <span class="mi">10</span>  <span class="o">&lt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">53</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 <p>因此，56 是保持 <em>J</em> 精度的唯一 <em>N</em> 值。<em>J</em> 最好的近似值是整除的商:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">56</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">56</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
 <span class="go">6</span>
 </pre></div>
 </div>
 <p>因为余数大于 10 的一半，最好的近似是取上界:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">+</span><span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">+</span><span class="mi">1</span>
 <span class="go">7205759403792794</span>
 </pre></div>
 </div>
 <p>因此在 754 双精度中 1/10 最好的近似值是是 2**56，或:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mi">7205759403792794</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">56</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">7205759403792794</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">56</span>
 </pre></div>
 </div>
 <p>分子和分母都除以2将小数缩小到:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mi">3602879701896397</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">55</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">3602879701896397</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">55</span>
 </pre></div>
 </div>
 <p>要注意因为我们向上舍入，它其实比 1/10 稍大一点点。如果我们没有向上舍入，它会比 1/10 稍小一点。但是没办法让它 <em>恰好</em> 是 1/10！</p>
 <p>所以计算机永远也不 “知道” 1/10：它遇到上面这个小数，给出它所能得到的最佳的 754 双精度实数:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">.</span><span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="mi">55</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">.</span><span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="mi">55</span>
 <span class="go">7205759403792794.0</span>
 </pre></div>
 </div>
 <p>如果我们把这小数乘以 10**55，我们可以看到其55位十进制数的值:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">3602879701896397</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">55</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">55</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3602879701896397</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">55</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">55</span>
 <span class="go">1000000000000000055511151231257827021181583404541015625</span>
 </pre></div>
 </div>
 <p>这表示存储在计算机中的实际值近似等于十进制值 0.1000000000000000055511151231257827021181583404541015625。许多语言（包括旧版本的Python）会把结果舍入到 17 位有效数字，而不是显示全部的十进制值:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;.17f&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;.17f&#39;</span><span class="p">)</span>
 <span class="go">&#39;0.10000000000000001&#39;</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://docs.python.org/3/library/fractions.html#module-fractions">fractions</a> 和 <a class="reference external" href="https://docs.python.org/3/library/decimal.html#module-decimal">decimal</a> 模块使得这些计算很简单:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decimal</span> <span class="k">import</span> <span class="n">Decimal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fractions</span> <span class="k">import</span> <span class="n">Fraction</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Fraction</span><span class="o">.</span><span class="n">from_float</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="go">Fraction(3602879701896397, 36028797018963968)</span>
@@ -384,7 +384,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Decimal</span><span class="o">.</span><span class="n">from_float</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="go">Decimal(&#39;0.1000000000000000055511151231257827021181583404541015625&#39;)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">format</span><span class="p">(</span><span class="n">Decimal</span><span class="o">.</span><span class="n">from_float</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="s">&#39;.17&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">format</span><span class="p">(</span><span class="n">Decimal</span><span class="o">.</span><span class="n">from_float</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;.17&#39;</span><span class="p">)</span>
 <span class="go">&#39;0.10000000000000001&#39;</span>
 </pre></div>
 </div>
@@ -430,7 +430,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.1',
+            VERSION:'3.5.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

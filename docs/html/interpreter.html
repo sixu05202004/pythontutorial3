@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. 使用 Python 解释器 &mdash; Python tutorial 3.5.1 documentation</title>
+  <title>2. 使用 Python 解释器 &mdash; Python tutorial 3.5.2 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.1 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.5.2 documentation" href="index.html"/>
         <link rel="next" title="3. Python 简介" href="introduction.html"/>
         <link rel="prev" title="1. 开胃菜" href="appetite.html"/> 
 
@@ -63,7 +63,7 @@
           
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="appetite.html">1. 开胃菜</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">2. 使用 Python 解释器</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. 使用 Python 解释器</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tut-invoking">2.1. 调用 Python 解释器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tut-interp">2.2. 解释器及其环境</a></li>
 </ul>
@@ -159,7 +159,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="venv.html#id3">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id4">12.2. 创建虚拟环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
@@ -217,17 +217,17 @@
 <span id="tut-using"></span><h1>2. 使用 Python 解释器<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="tut-invoking">
 <span id="id1"></span><h2>2.1. 调用 Python 解释器<a class="headerlink" href="#tut-invoking" title="Permalink to this headline">¶</a></h2>
-<p>Python 解释器通常被安装在目标机器的 <code class="file docutils literal"><span class="pre">/usr/local/bin/python3.4</span></code> 目录下。将 <code class="file docutils literal"><span class="pre">/usr/local/bin</span></code> 目录包含进 Unix shell 的搜索路径里，以确保可以通过输入:</p>
-<div class="highlight-text"><div class="highlight"><pre>python3.4
+<p>Python 解释器通常被安装在目标机器的 <code class="file docutils literal"><span class="pre">/usr/local/bin/python3.5</span></code> 目录下。将 <code class="file docutils literal"><span class="pre">/usr/local/bin</span></code> 目录包含进 Unix shell 的搜索路径里，以确保可以通过输入:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>python3.5
 </pre></div>
 </div>
 <p>命令来启动他。<a class="footnote-reference" href="#id7" id="id2">[1]</a> 由于 Python 解释器的安装路径是可选的，这也可能是其它路径，你可以联系安装 Python 的用户或系统管理员确认（例如，<code class="file docutils literal"><span class="pre">/usr/local/python</span></code> 就是一个常见的选择）。</p>
-<p>在 Windows 机器上，Python 通常安装在 <code class="file docutils literal"><span class="pre">C:\Python34</span></code> 位置，当然你可以在运行安装向导时修改此值。要想把此目录添加到你的 PATH 环境变量中，你可以在 DOS 窗口中输入以下命令:</p>
-<div class="highlight-python"><div class="highlight"><pre>set path=%path%;C:\python34
+<p>在 Windows 机器上，Python 通常安装在 <code class="file docutils literal"><span class="pre">C:\Python35</span></code> 位置，当然你可以在运行安装向导时修改此值。要想把此目录添加到你的 PATH 环境变量中，你可以在 DOS 窗口中输入以下命令:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">path</span><span class="o">=%</span><span class="n">path</span><span class="o">%</span><span class="p">;</span><span class="n">C</span><span class="p">:</span>\<span class="n">python35</span>
 </pre></div>
 </div>
 <p>通常你可以在主窗口输入一个文件结束符（Unix 系统是 <code class="kbd docutils literal"><span class="pre">Control-D</span></code>，Windows 系统是 <code class="kbd docutils literal"><span class="pre">Control-Z</span></code>）让解释器以 0 状态码退出。如果那没有作用，你可以通过输入 <code class="docutils literal"><span class="pre">quit()</span></code> 命令退出解释器。</p>
-<p>Python 解释器具有简单的行编辑功能。在 Unix 系统上，任何 Python 解释器都可能已经添加了 GNU readline 库支持，这样就具备了精巧的交互编辑和历史记录等功能。在 Python 主窗口中输入 Control-P 可能是检查是否支持命令行编辑的最简单的方法。如果发出嘟嘟声（计算机扬声器），则说明你可以使用命令行编辑功能；更多快捷键的介绍请参考 <a class="reference internal" href="interactive.html#tut-interacting"><span>交互式输入行编辑历史回溯</span></a>。如果没有任何声音，或者显示 <code class="docutils literal"><span class="pre">^P</span></code> 字符，则说明命令行编辑功能不可用；你只能通过退格键从当前行删除已键入的字符并重新输入。</p>
+<p>Python 解释器具有简单的行编辑功能。在 Unix 系统上，任何 Python 解释器都可能已经添加了 GNU readline 库支持，这样就具备了精巧的交互编辑和历史记录等功能。在 Python 主窗口中输入 Control-P 可能是检查是否支持命令行编辑的最简单的方法。如果发出嘟嘟声（计算机扬声器），则说明你可以使用命令行编辑功能；更多快捷键的介绍请参考 <a class="reference internal" href="interactive.html#tut-interacting"><span class="std std-ref">交互式输入行编辑历史回溯</span></a>。如果没有任何声音，或者显示 <code class="docutils literal"><span class="pre">^P</span></code> 字符，则说明命令行编辑功能不可用；你只能通过退格键从当前行删除已键入的字符并重新输入。</p>
 <p>Python 解释器有些操作类似 Unix shell：当使用终端设备（tty）作为标准输入调用时，它交互的解释并执行命令；当使用文件名参数或以文件作为标准输入调用时，它读取文件并将文件作为 <em>脚本</em> 执行。</p>
 <p>第二种启动 Python 解释器的方法是 <code class="docutils literal"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">command</span> <span class="pre">[arg]</span> <span class="pre">...</span></code>，这种方法可以在 <em>命令行</em> 执行 Python 语句，类似于 shell 中的 <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#cmdoption-c">-c</a> 选项。由于 Python 语句通常会包含空格或其他特殊 shell 字符，一般建议将 <em>命令</em> 用单引号包裹起来。</p>
 <p>有一些 Python 模块也可以当作脚本使用。你可以使用 <code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">module</span> <span class="pre">[arg]</span> <span class="pre">...</span></code> 命令调用它们，这类似在命令行中键入完整的路径名执行 <em>模块</em> 源文件一样。</p>
@@ -240,22 +240,22 @@
 <div class="section" id="tut-interactive">
 <span id="id4"></span><h3>2.1.2. 交互模式<a class="headerlink" href="#tut-interactive" title="Permalink to this headline">¶</a></h3>
 <p>从 tty 读取命令时，我们称解释器工作于 <em>交互模式</em>。这种模式下它根据主提示符来执行，主提示符通常标识为三个大于号(<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code>)；继续的部分被称为 <em>从属提示符</em>，由三个点标识(<code class="docutils literal"><span class="pre">...</span></code>)。在第一行之前，解释器打印欢迎信息、版本号和授权提示:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python3.4
-Python 3.4 (default, Mar 16 2014, 09:25:04)
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python3.5
+Python 3.5.2 (default, Mar 16 2014, 09:25:04)
 [GCC 4.8.2] on linux
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 &gt;&gt;&gt;
 </pre></div>
 </div>
 <p>输入多行结构时需要从属提示符了，例如，下面这个 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#if">if</a> 语句:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">the_world_is_flat</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">the_world_is_flat</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">the_world_is_flat</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Be careful not to fall off!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Be careful not to fall off!&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">Be careful not to fall off!</span>
 </pre></div>
 </div>
-<p>关于交互模式更多的内容，请参见 <a class="reference internal" href="appendix.html#tut-interac"><span>交互模式</span></a>。</p>
+<p>关于交互模式更多的内容，请参见 <a class="reference internal" href="appendix.html#tut-interac"><span class="std std-ref">交互模式</span></a>。</p>
 </div>
 </div>
 <div class="section" id="tut-interp">
@@ -264,12 +264,12 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <span id="id6"></span><h3>2.2.1. 源程序编码<a class="headerlink" href="#tut-source-encoding" title="Permalink to this headline">¶</a></h3>
 <p>默认情况下，Python 源文件是 UTF-8 编码。在此编码下，全世界大多数语言的字符可以同时用在字符串、标识符和注释中 — 尽管 Python 标准库仅使用 ASCII 字符做为标识符，这只是任何可移植代码应该遵守的约定。如果要正确的显示所有的字符，你的编辑器必须能识别出文件是 UTF-8 编码，并且它使用的字体能支持文件中所有的字符。</p>
 <p>你也可以为源文件指定不同的字符编码。为此，在 <code class="docutils literal"><span class="pre">#!</span></code> 行（首行）后插入至少一行特殊的注释行来定义源文件的编码:</p>
-<div class="highlight-python"><div class="highlight"><pre># -*- coding: encoding -*-
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: encoding -*-</span>
 </pre></div>
 </div>
 <p>通过此声明，源文件中所有的东西都会被当做用 <em>encoding</em> 指代的 UTF-8 编码对待。在 Python 库参考手册 <a class="reference external" href="https://docs.python.org/3/library/codecs.html#module-codecs">codecs</a> 一节中你可以找到一张可用的编码列表。</p>
 <p>例如，如果你的编辑器不支持 UTF-8 编码的文件，但支持像 Windows-1252 的其他一些编码，你可以定义:</p>
-<div class="highlight-python"><div class="highlight"><pre># -*- coding: cp-1252 -*-
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: cp-1252 -*-</span>
 </pre></div>
 </div>
 <p>这样就可以在源文件中使用 Windows-1252 字符集中的所有字符了。这个特殊的编码注释必须在文件中的 <em>第一或第二</em> 行定义。</p>
@@ -323,7 +323,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.1',
+            VERSION:'3.5.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

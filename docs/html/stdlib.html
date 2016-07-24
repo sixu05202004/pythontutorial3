@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10. Python 标准库概览 &mdash; Python tutorial 3.5.1 documentation</title>
+  <title>10. Python 标准库概览 &mdash; Python tutorial 3.5.2 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.1 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.5.2 documentation" href="index.html"/>
         <link rel="next" title="11. 标准库浏览 – Part II" href="stdlib2.html"/>
         <link rel="prev" title="9. 类" href="classes.html"/> 
 
@@ -131,7 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="classes.html#tut-genexps">9.11. 生成器表达式</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">10. Python 标准库概览</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Python 标准库概览</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tut-os-interface">10.1. 操作系统接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tut-file-wildcards">10.2. 文件通配符</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tut-command-line-arguments">10.3. 命令行参数</a></li>
@@ -159,7 +159,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="venv.html#id3">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id4">12.2. 创建虚拟环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
@@ -218,17 +218,17 @@
 <div class="section" id="tut-os-interface">
 <span id="id1"></span><h2>10.1. 操作系统接口<a class="headerlink" href="#tut-os-interface" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.python.org/3/library/os.html#module-os">os</a> 模块提供了很多与操作系统交互的函数:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>      <span class="c"># Return the current working directory</span>
-<span class="go">&#39;C:\\Python33&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s">&#39;/server/accesslogs&#39;</span><span class="p">)</span>   <span class="c"># Change current working directory</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&#39;mkdir today&#39;</span><span class="p">)</span>   <span class="c"># Run the command mkdir in the system shell</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>      <span class="c1"># Return the current working directory</span>
+<span class="go">&#39;C:\\Python35&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/server/accesslogs&#39;</span><span class="p">)</span>   <span class="c1"># Change current working directory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;mkdir today&#39;</span><span class="p">)</span>   <span class="c1"># Run the command mkdir in the system shell</span>
 <span class="go">0</span>
 </pre></div>
 </div>
 <p>应该用 <code class="docutils literal"><span class="pre">import</span> <span class="pre">os</span></code> 风格而非 <code class="docutils literal"><span class="pre">from</span> <span class="pre">os</span> <span class="pre">import</span> <span class="pre">*</span></code>。这样可以保证随操作系统不同而有所变化的 <a class="reference external" href="https://docs.python.org/3/library/os.html#os.open">os.open()</a> 不会覆盖内置函数 <a class="reference external" href="https://docs.python.org/3/library/functions.html#open">open()</a>。</p>
 <p id="index-0">在使用一些像 <a class="reference external" href="https://docs.python.org/3/library/os.html#module-os">os</a> 这样的大型模块时内置的 <a class="reference external" href="https://docs.python.org/3/library/functions.html#dir">dir()</a> 和 <a class="reference external" href="https://docs.python.org/3/library/functions.html#help">help()</a> 函数非常有用:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
 <span class="go">&lt;returns a list of all module functions&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
@@ -236,10 +236,10 @@
 </pre></div>
 </div>
 <p>针对日常的文件和目录管理任务，<a class="reference external" href="https://docs.python.org/3/library/shutil.html#module-shutil">shutil</a> 模块提供了一个易于使用的高级接口:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s">&#39;data.db&#39;</span><span class="p">,</span> <span class="s">&#39;archive.db&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s1">&#39;data.db&#39;</span><span class="p">,</span> <span class="s1">&#39;archive.db&#39;</span><span class="p">)</span>
 <span class="go">&#39;archive.db&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s">&#39;/build/executables&#39;</span><span class="p">,</span> <span class="s">&#39;installdir&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;/build/executables&#39;</span><span class="p">,</span> <span class="s1">&#39;installdir&#39;</span><span class="p">)</span>
 <span class="go">&#39;installdir&#39;</span>
 </pre></div>
 </div>
@@ -247,8 +247,8 @@
 <div class="section" id="tut-file-wildcards">
 <span id="id2"></span><h2>10.2. 文件通配符<a class="headerlink" href="#tut-file-wildcards" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.python.org/3/library/glob.html#module-glob">glob</a> 模块提供了一个函数用于从目录通配符搜索中生成文件列表:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">glob</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.py&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">)</span>
 <span class="go">[&#39;primes.py&#39;, &#39;random.py&#39;, &#39;quote.py&#39;]</span>
 </pre></div>
 </div>
@@ -256,8 +256,8 @@
 <div class="section" id="tut-command-line-arguments">
 <span id="id3"></span><h2>10.3. 命令行参数<a class="headerlink" href="#tut-command-line-arguments" title="Permalink to this headline">¶</a></h2>
 <p>通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 <a class="reference external" href="https://docs.python.org/3/library/sys.html#module-sys">sys</a> 模块的 <em>argv</em> 变量。例如在命令行中执行 <code class="docutils literal"><span class="pre">python</span> <span class="pre">demo.py</span> <span class="pre">one</span> <span class="pre">two</span> <span class="pre">three</span></code> 后可以得到以下输出结果:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 <span class="go">[&#39;demo.py&#39;, &#39;one&#39;, &#39;two&#39;, &#39;three&#39;]</span>
 </pre></div>
 </div>
@@ -266,7 +266,7 @@
 <div class="section" id="tut-stderr">
 <span id="id4"></span><h2>10.4. 错误输出重定向和程序终止<a class="headerlink" href="#tut-stderr" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.python.org/3/library/sys.html#module-sys">sys</a> 还有 <em>stdin</em>， <em>stdout</em> 和 <em>stderr</em> 属性，即使在 <em>stdout</em> 被重定向时，后者也可以用于显示警告和错误信息:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Warning, log file not found starting a new one</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Warning, log file not found starting a new one</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="go">Warning, log file not found starting a new one</span>
 </pre></div>
 </div>
@@ -275,15 +275,15 @@
 <div class="section" id="tut-string-pattern-matching">
 <span id="id5"></span><h2>10.5. 字符串正则匹配<a class="headerlink" href="#tut-string-pattern-matching" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.python.org/3/library/re.html#module-re">re</a> 模块为高级字符串处理提供了正则表达式工具。对于复杂的匹配和处理，正则表达式提供了简洁、优化的解决方案:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\bf[a-z]*&#39;</span><span class="p">,</span> <span class="s">&#39;which foot or hand fell fastest&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">r&#39;\bf[a-z]*&#39;</span><span class="p">,</span> <span class="s1">&#39;which foot or hand fell fastest&#39;</span><span class="p">)</span>
 <span class="go">[&#39;foot&#39;, &#39;fell&#39;, &#39;fastest&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;(\b[a-z]+) \1&#39;</span><span class="p">,</span> <span class="s">r&#39;\1&#39;</span><span class="p">,</span> <span class="s">&#39;cat in the the hat&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;(\b[a-z]+) \1&#39;</span><span class="p">,</span> <span class="s1">r&#39;\1&#39;</span><span class="p">,</span> <span class="s1">&#39;cat in the the hat&#39;</span><span class="p">)</span>
 <span class="go">&#39;cat in the hat&#39;</span>
 </pre></div>
 </div>
 <p>只需简单的操作时，字符串方法最好用，因为它们易读，又容易调试:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;tea for too&#39;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;too&#39;</span><span class="p">,</span> <span class="s">&#39;two&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;tea for too&#39;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;too&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>
 <span class="go">&#39;tea for two&#39;</span>
 </pre></div>
 </div>
@@ -291,7 +291,7 @@
 <div class="section" id="tut-mathematics">
 <span id="id6"></span><h2>10.6. 数学<a class="headerlink" href="#tut-mathematics" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.python.org/3/library/math.html#module-math">math</a> 模块为浮点运算提供了对底层C函数库的访问:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">4.0</span><span class="p">)</span>
 <span class="go">0.70710678118654757</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -299,14 +299,14 @@
 </pre></div>
 </div>
 <p><a class="reference external" href="https://docs.python.org/3/library/random.html#module-random">random</a> 提供了生成随机数的工具:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;apple&#39;</span><span class="p">,</span> <span class="s">&#39;pear&#39;</span><span class="p">,</span> <span class="s">&#39;banana&#39;</span><span class="p">])</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">])</span>
 <span class="go">&#39;apple&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>   <span class="c"># sampling without replacement</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># sampling without replacement</span>
 <span class="go">[30, 83, 16, 4, 8, 81, 41, 50, 18, 33]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>    <span class="c"># random float</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>    <span class="c1"># random float</span>
 <span class="go">0.17970987693706186</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>    <span class="c"># random integer chosen from range(6)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>    <span class="c1"># random integer chosen from range(6)</span>
 <span class="go">4</span>
 </pre></div>
 </div>
@@ -315,17 +315,17 @@
 <div class="section" id="tut-internet-access">
 <span id="id7"></span><h2>10.7. 互联网访问<a class="headerlink" href="#tut-internet-access" title="Permalink to this headline">¶</a></h2>
 <p>有几个模块用于访问互联网以及处理网络通信协议。其中最简单的两个是用于处理从 urls 接收的数据的 <a class="reference external" href="https://docs.python.org/3/library/urllib.request.html#module-urllib.request">urllib.request</a> 以及用于发送电子邮件的 <a class="reference external" href="https://docs.python.org/3/library/smtplib.html#module-smtplib">smtplib</a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://tycho.usno.navy.mil/cgi-bin/timer.pl&#39;</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>  <span class="c"># Decoding the binary data to text.</span>
-<span class="gp">... </span>    <span class="k">if</span> <span class="s">&#39;EST&#39;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s">&#39;EDT&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>  <span class="c"># look for Eastern Time</span>
-<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="n">urlopen</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://tycho.usno.navy.mil/cgi-bin/timer.pl&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>  <span class="c1"># Decoding the binary data to text.</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="s1">&#39;EST&#39;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s1">&#39;EDT&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>  <span class="c1"># look for Eastern Time</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
 <span class="go">&lt;BR&gt;Nov. 25, 09:43:32 PM EST</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">smtplib</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="s">&#39;soothsayer@example.org&#39;</span><span class="p">,</span> <span class="s">&#39;jcaesar@example.org&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="s1">&#39;soothsayer@example.org&#39;</span><span class="p">,</span> <span class="s1">&#39;jcaesar@example.org&#39;</span><span class="p">,</span>
 <span class="gp">... </span><span class="sd">&quot;&quot;&quot;To: jcaesar@example.org</span>
 <span class="gp">... </span><span class="sd">From: soothsayer@example.org</span>
 <span class="gp">...</span><span class="sd"></span>
@@ -339,15 +339,15 @@
 <div class="section" id="tut-dates-and-times">
 <span id="id8"></span><h2>10.8. 日期和时间<a class="headerlink" href="#tut-dates-and-times" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.python.org/3/library/datetime.html#module-datetime">datetime</a> 模块为日期和时间处理同时提供了简单和复杂的方法。支持日期和时间算法的同时，实现的重点放在更有效的处理和格式化输出。该模块还支持时区处理。</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># dates are easily constructed and formatted</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># dates are easily constructed and formatted</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">date</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">now</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">now</span>
 <span class="go">datetime.date(2003, 12, 2)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%m-</span><span class="si">%d</span><span class="s">-%y. </span><span class="si">%d</span><span class="s"> %b %Y is a %A on the </span><span class="si">%d</span><span class="s"> day of %B.&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">-%y. </span><span class="si">%d</span><span class="s2"> %b %Y is a %A on the </span><span class="si">%d</span><span class="s2"> day of %B.&quot;</span><span class="p">)</span>
 <span class="go">&#39;12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December.&#39;</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># dates support calendar arithmetic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># dates support calendar arithmetic</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">birthday</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">1964</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">age</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">birthday</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">age</span><span class="o">.</span><span class="n">days</span>
@@ -359,8 +359,8 @@
 <span id="id9"></span><h2>10.9. 数据压缩<a class="headerlink" href="#tut-data-compression" title="Permalink to this headline">¶</a></h2>
 <p>以下模块直接支持通用的数据打包和压缩格式：<a class="reference external" href="https://docs.python.org/3/library/zlib.html#module-zlib">zlib</a>， <a class="reference external" href="https://docs.python.org/3/library/gzip.html#module-gzip">gzip</a>， <a class="reference external" href="https://docs.python.org/3/library/bz2.html#module-bz2">bz2</a>， <a class="reference external" href="https://docs.python.org/3/library/lzma.html#module-lzma">lzma</a>， <a class="reference external" href="https://docs.python.org/3/library/zipfile.html#module-zipfile">zipfile</a> 以及
 <a class="reference external" href="https://docs.python.org/3/library/tarfile.html#module-tarfile">tarfile</a>。</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">zlib</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">b</span><span class="s">&#39;witch which has which witches wrist watch&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">zlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">b</span><span class="s1">&#39;witch which has which witches wrist watch&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="go">41</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
@@ -377,10 +377,10 @@
 <span id="id10"></span><h2>10.10. 性能度量<a class="headerlink" href="#tut-performance-measurement" title="Permalink to this headline">¶</a></h2>
 <p>有些用户对了解解决同一问题的不同方法之间的性能差异很感兴趣。Python 提供了一个度量工具，为这些问题提供了直接答案。</p>
 <p>例如，使用元组封装和拆封来交换元素看起来要比使用传统的方法要诱人的多。<a class="reference external" href="https://docs.python.org/3/library/timeit.html#module-timeit">timeit</a> 证明了后者更快一些:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;t=a; a=b; b=t&#39;</span><span class="p">,</span> <span class="s">&#39;a=1; b=2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="k">import</span> <span class="n">Timer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;t=a; a=b; b=t&#39;</span><span class="p">,</span> <span class="s1">&#39;a=1; b=2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
 <span class="go">0.57535828626024577</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;a,b = b,a&#39;</span><span class="p">,</span> <span class="s">&#39;a=1; b=2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;a,b = b,a&#39;</span><span class="p">,</span> <span class="s1">&#39;a=1; b=2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
 <span class="go">0.54962537085770791</span>
 </pre></div>
 </div>
@@ -390,7 +390,7 @@
 <span id="id11"></span><h2>10.11. 质量控制<a class="headerlink" href="#tut-quality-control" title="Permalink to this headline">¶</a></h2>
 <p>开发高质量软件的方法之一是为每一个函数开发测试代码，并且在开发过程中经常进行测试。</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/doctest.html#module-doctest">doctest</a> 模块提供了一个工具，扫描模块并根据程序中内嵌的文档字符串执行测试。测试构造如同简单的将它的输出结果剪切并粘贴到文档字符串中。通过用户提供的例子，它发展了文档，允许 doctest 模块确认代码的结果是否与文档一致:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Computes the arithmetic mean of a list of numbers.</span>
 
 <span class="sd">    &gt;&gt;&gt; print(average([20, 30, 70]))</span>
@@ -399,11 +399,11 @@
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">doctest</span>
-<span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>   <span class="c"># automatically validate the embedded tests</span>
+<span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>   <span class="c1"># automatically validate the embedded tests</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://docs.python.org/3/library/unittest.html#module-unittest">unittest</a> 模块不像 <a class="reference external" href="https://docs.python.org/3/library/doctest.html#module-doctest">doctest</a> 模块那么容易使用，不过它可以在一个独立的文件里提供一个更全面的测试集:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">unittest</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
 
 <span class="k">class</span> <span class="nc">TestStatisticalFunctions</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
@@ -415,7 +415,7 @@
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
             <span class="n">average</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
 
-<span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span> <span class="c"># Calling from the command line invokes all tests</span>
+<span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span> <span class="c1"># Calling from the command line invokes all tests</span>
 </pre></div>
 </div>
 </div>
@@ -476,7 +476,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.1',
+            VERSION:'3.5.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

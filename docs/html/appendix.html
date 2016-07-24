@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>16. 附录 &mdash; Python tutorial 3.5.1 documentation</title>
+  <title>16. 附录 &mdash; Python tutorial 3.5.2 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.1 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.5.2 documentation" href="index.html"/>
         <link rel="prev" title="15. 浮点数算法：争议和限制" href="floatingpoint.html"/> 
 
   
@@ -158,7 +158,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="venv.html#id3">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id4">12.2. 创建虚拟环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
@@ -172,7 +172,7 @@
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">15.1. 表达错误</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">16. 附录</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">16. 附录</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tut-interac">16.1. 交互模式</a></li>
 </ul>
 </li>
@@ -224,12 +224,12 @@
 <div class="section" id="python">
 <span id="tut-scripts"></span><h3>16.1.2. 可执行 Python 脚本<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
 <p>在 BSD&#8217;ish Unix 系统上，Python 脚本可直接执行，像 shell 脚本一样，只需要把下面内容加入到</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python3.4</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.5</span>
 </pre></div>
 </div>
 <p>（假设 python 解释器在用户的 <span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal"><span class="pre">PATH</span></code> 中）脚本的开头，并给予该文件的可执行模式。<code class="docutils literal"><span class="pre">#!</span></code> 必须是文件的头两个字符。在一些系统上，第一行必须以 Unix-style 的行结束符（<code class="docutils literal"><span class="pre">'\n'</span></code>）结束，不能以 Windows 的行结束符（<code class="docutils literal"><span class="pre">'\r\n'</span></code>）。 注意 <code class="docutils literal"><span class="pre">'#'</span></code> 在 Python 中是用于注释的。</p>
 <p>使用 <strong class="program">chmod</strong> 命令能够给予脚本执行模式或者权限。</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>chmod +x myscript.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ chmod +x myscript.py
 </pre></div>
 </div>
 <p>在 Windows 系统上，没有一个 “可执行模式” 的概念。Python 安装器会自动地把 <code class="docutils literal"><span class="pre">.py</span></code>  文件和 <code class="docutils literal"><span class="pre">python.exe</span></code> 关联起来，因此双击 Python 分拣将会把它当成一个脚本运行。文件扩展名也可以是 <code class="docutils literal"><span class="pre">.pyw</span></code>，在这种情况下，运行时不会出现控制台窗口。</p>
@@ -240,19 +240,19 @@
 <p>这个文件在交互式会话中是只读的，在当 Python 从脚本中读取命令，以及在当 <code class="file docutils literal"><span class="pre">/dev/tty</span></code> 被作为明确的命令源的时候不只是可读的。该文件在交互式命令被执行的时候在相同的命名空间中能够被执行，因此在交互式会话中定义或者导入的对象能够无需授权就能使用。你也能在文件中更改提示 <code class="docutils literal"><span class="pre">sys.ps1</span></code> 和 <code class="docutils literal"><span class="pre">sys.ps2</span></code>。</p>
 <p>如果你想要从当前目录中读取一个附加的启动文件，你可以在全局启动文件中编写代码像这样：<code class="docutils literal"><span class="pre">if</span>
 <span class="pre">os.path.isfile('.pythonrc.py'):</span> <span class="pre">exec(open('.pythonrc.py').read())</span></code>。如果你想要在脚本中使用启动文件的话，你必须在脚本中明确要这么做:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;PYTHONSTARTUP&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PYTHONSTARTUP&#39;</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">filename</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
        <span class="n">startup_file</span> <span class="o">=</span> <span class="n">fobj</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="k">exec</span><span class="p">(</span><span class="n">startup_file</span><span class="p">)</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">startup_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="tut-customize">
 <span id="id7"></span><h3>16.1.4. 定制模块<a class="headerlink" href="#tut-customize" title="Permalink to this headline">¶</a></h3>
 <p>Python 提供两个钩子为了让你们定制 <code class="xref py py-mod docutils literal"><span class="pre">sitecustomize</span></code> 和 <code class="xref py py-mod docutils literal"><span class="pre">usercustomize</span></code>。为了看看它的工作机制的话，你必须首先找到你的用户 site-packages 目录的位置。启动 Python 并且运行这段代码:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">site</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">site</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">site</span><span class="o">.</span><span class="n">getusersitepackages</span><span class="p">()</span>
 <span class="go">&#39;/home/user/.local/lib/python3.4/site-packages&#39;</span>
 </pre></div>
@@ -307,7 +307,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.1',
+            VERSION:'3.5.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

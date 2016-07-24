@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. 类 &mdash; Python tutorial 3.5.1 documentation</title>
+  <title>9. 类 &mdash; Python tutorial 3.5.2 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.1 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.5.2 documentation" href="index.html"/>
         <link rel="next" title="10. Python 标准库概览" href="stdlib.html"/>
         <link rel="prev" title="8. 错误和异常" href="errors.html"/> 
 
@@ -117,7 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="errors.html#tut-cleanup-with">8.7. 预定义清理行为</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">9. 类</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. 类</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tut-object">9.1. 术语相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#python">9.2. Python 作用域和命名空间</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tut-firstclasses">9.3. 初识类</a></li>
@@ -159,7 +159,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="venv.html#id3">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id4">12.2. 创建虚拟环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
@@ -216,7 +216,7 @@
   <div class="section" id="tut-classes">
 <span id="id1"></span><h1>9. 类<a class="headerlink" href="#tut-classes" title="Permalink to this headline">¶</a></h1>
 <p>Python 的类机制通过最小的新语法和语义在语言中实现了类。它是 C++ 或者 Modula-3 语言中类机制的混合。就像模块一样，Python 的类并没有在用户和定义之间设立绝对的屏障，而是依赖于用户不去“强行闯入定义”的优雅。另一方面，类的大多数重要特性都被完整的保留下来：类继承机制允许多重继承，派生类可以覆盖（override）基类中的任何方法或类，可以使用相同的方法名称调用基类的方法。对象可以包含任意数量的私有数据。</p>
-<p>用 C++ 术语来讲，所有的类成员（包括数据成员）都是公有（ <em>public</em> ）的（其它情况见下文 <a class="reference internal" href="#tut-private"><span>私有变量</span></a>），所有的成员函数都是虚（ <em>virtual</em> ）的。用 Modula-3 的术语来讲，在成员方法中没有简便的方式引用对象的成员：方法函数在定义时需要以引用的对象做为第一个参数，调用时则会隐式引用对象。像在 Smalltalk 中一个，类也是对象。这就提供了导入和重命名语义。不像 C++ 和 Modula-3 中那样，大多数带有特殊语法的内置操作符（算法运算符、下标等）都可以针对类的需要重新定义。</p>
+<p>用 C++ 术语来讲，所有的类成员（包括数据成员）都是公有（ <em>public</em> ）的（其它情况见下文 <a class="reference internal" href="#tut-private"><span class="std std-ref">私有变量</span></a>），所有的成员函数都是虚（ <em>virtual</em> ）的。用 Modula-3 的术语来讲，在成员方法中没有简便的方式引用对象的成员：方法函数在定义时需要以引用的对象做为第一个参数，调用时则会隐式引用对象。像在 Smalltalk 中一个，类也是对象。这就提供了导入和重命名语义。不像 C++ 和 Modula-3 中那样，大多数带有特殊语法的内置操作符（算法运算符、下标等）都可以针对类的需要重新定义。</p>
 <p>在讨论类时，没有足够的得到共识的术语，我会偶尔从 Smalltalk 和 C++ 借用一些。我比较喜欢用 Modula-3 的用语，因为比起 C++，Python 的面向对象语法更像它，但是我想很少有读者听过这个。</p>
 <div class="section" id="tut-object">
 <span id="id2"></span><h2>9.1. 术语相关<a class="headerlink" href="#tut-object" title="Permalink to this headline">¶</a></h2>
@@ -251,29 +251,29 @@
 <div class="section" id="tut-scopeexample">
 <span id="id4"></span><h3>9.2.1. 作用域和命名空间示例<a class="headerlink" href="#tut-scopeexample" title="Permalink to this headline">¶</a></h3>
 <p>以下是一个示例，演示了如何引用不同作用域和命名空间，以及 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#global">global</a> 和 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#nonlocal">nonlocal</a> 如何影响变量绑定:</p>
-<div class="highlight-python"><div class="highlight"><pre>def scope_test():
-    def do_local():
-        spam = &quot;local spam&quot;
-    def do_nonlocal():
-        nonlocal spam
-        spam = &quot;nonlocal spam&quot;
-    def do_global():
-        global spam
-        spam = &quot;global spam&quot;
-    spam = &quot;test spam&quot;
-    do_local()
-    print(&quot;After local assignment:&quot;, spam)
-    do_nonlocal()
-    print(&quot;After nonlocal assignment:&quot;, spam)
-    do_global()
-    print(&quot;After global assignment:&quot;, spam)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scope_test</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">do_local</span><span class="p">():</span>
+        <span class="n">spam</span> <span class="o">=</span> <span class="s2">&quot;local spam&quot;</span>
+    <span class="k">def</span> <span class="nf">do_nonlocal</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">spam</span>
+        <span class="n">spam</span> <span class="o">=</span> <span class="s2">&quot;nonlocal spam&quot;</span>
+    <span class="k">def</span> <span class="nf">do_global</span><span class="p">():</span>
+        <span class="k">global</span> <span class="n">spam</span>
+        <span class="n">spam</span> <span class="o">=</span> <span class="s2">&quot;global spam&quot;</span>
+    <span class="n">spam</span> <span class="o">=</span> <span class="s2">&quot;test spam&quot;</span>
+    <span class="n">do_local</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After local assignment:&quot;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
+    <span class="n">do_nonlocal</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After nonlocal assignment:&quot;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
+    <span class="n">do_global</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After global assignment:&quot;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
 
-scope_test()
-print(&quot;In global scope:&quot;, spam)
+<span class="n">scope_test</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In global scope:&quot;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>以上示例代码的输出为:</p>
-<div class="highlight-none"><div class="highlight"><pre>After local assignment: test spam
+<div class="highlight-none"><div class="highlight"><pre><span></span>After local assignment: test spam
 After nonlocal assignment: nonlocal spam
 After global assignment: nonlocal spam
 In global scope: global spam
@@ -289,12 +289,12 @@ In global scope: global spam
 <div class="section" id="tut-classdefinition">
 <span id="id6"></span><h3>9.3.1. 类定义语法<a class="headerlink" href="#tut-classdefinition" title="Permalink to this headline">¶</a></h3>
 <p>类定义最简单的形式如下:</p>
-<div class="highlight-python"><div class="highlight"><pre>class ClassName:
-    &lt;statement-1&gt;
-    .
-    .
-    .
-    &lt;statement-N&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ClassName</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="n">N</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>类的定义就像函数定义（ <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#def">def</a> 语句），要先执行才能生效。（你当然可以把它放进 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#if">if</a> 语句的某一分支，或者一个函数的内部。）</p>
@@ -306,30 +306,30 @@ In global scope: global spam
 <span id="id7"></span><h3>9.3.2. 类对象<a class="headerlink" href="#tut-classobjects" title="Permalink to this headline">¶</a></h3>
 <p>类对象支持两种操作：属性引用和实例化。</p>
 <p><em>属性引用</em> 使用和 Python 中所有的属性引用一样的标准语法：<code class="docutils literal"><span class="pre">obj.name</span></code>。类对象创建后，类命名空间中所有的命名都是有效属性名。所以如果类定义是这样:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;A simple example class&quot;&quot;&quot;</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">12345</span>
     <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&#39;hello world&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;hello world&#39;</span>
 </pre></div>
 </div>
 <p>那么 <code class="docutils literal"><span class="pre">MyClass.i</span></code> 和 <code class="docutils literal"><span class="pre">MyClass.f</span></code> 是有效的属性引用，分别返回一个整数和一个方法对象。也可以对类属性赋值，你可以通过给 <code class="docutils literal"><span class="pre">MyClass.i</span></code> 赋值来修改它。 <code class="xref py py-attr docutils literal"><span class="pre">__doc__</span></code> 也是一个有效的属性，返回类的文档字符串：<code class="docutils literal"><span class="pre">&quot;A</span> <span class="pre">simple</span> <span class="pre">example</span> <span class="pre">class&quot;</span></code>。</p>
 <p>类的 <em>实例化</em> 使用函数符号。只要将类对象看作是一个返回新的类实例的无参数函数即可。例如（假设沿用前面的类）:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>以上创建了一个新的类 <em>实例</em> 并将该对象赋给局部变量 <code class="docutils literal"><span class="pre">x</span></code>。</p>
 <p>这个实例化操作（“调用”一个类对象）来创建一个空的对象。很多类都倾向于将对象创建为有初始状态的。因此类可能会定义一个名为 <code class="xref py py-meth docutils literal"><span class="pre">__init__()</span></code> 的特殊方法，像下面这样:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 <p>类定义了 <code class="xref py py-meth docutils literal"><span class="pre">__init__()</span></code> 方法的话，类的实例化操作会自动为新创建的类实例调用 <code class="xref py py-meth docutils literal"><span class="pre">__init__()</span></code> 方法。所以在下例中，可以这样创建一个新的实例:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>当然，出于弹性的需要，<code class="xref py py-meth docutils literal"><span class="pre">__init__()</span></code> 方法可以有参数。事实上，参数通过 <code class="xref py py-meth docutils literal"><span class="pre">__init__()</span></code> 传递到类的实例化操作上。例如，</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Complex</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Complex</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">realpart</span><span class="p">,</span> <span class="n">imagpart</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">realpart</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">imagpart</span>
@@ -344,10 +344,10 @@ In global scope: global spam
 <span id="id8"></span><h3>9.3.3. 实例对象<a class="headerlink" href="#tut-instanceobjects" title="Permalink to this headline">¶</a></h3>
 <p>现在我们可以用实例对象作什么？实例对象唯一可用的操作就是属性引用。有两种有效的属性名。</p>
 <p><em>数据属性</em> 相当于 Smalltalk 中的“实例变量”或 C++ 中的“数据成员”。和局部变量一样，数据属性不需要声明，第一次使用时它们就会生成。例如，如果 <code class="docutils literal"><span class="pre">x</span></code> 是前面创建的 <code class="xref py py-class docutils literal"><span class="pre">MyClass</span></code> 实例，下面这段代码会打印出 16 而在堆栈中留下多余的东西:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">while</span> <span class="n">x</span><span class="o">.</span><span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
     <span class="n">x</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">counter</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">counter</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">counter</span><span class="p">)</span>
 <span class="k">del</span> <span class="n">x</span><span class="o">.</span><span class="n">counter</span>
 </pre></div>
 </div>
@@ -357,13 +357,13 @@ In global scope: global spam
 <div class="section" id="tut-methodobjects">
 <span id="id9"></span><h3>9.3.4. 方法对象<a class="headerlink" href="#tut-methodobjects" title="Permalink to this headline">¶</a></h3>
 <p>通常，方法通过右绑定方式调用:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span><span class="o">.</span><span class="n">f</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">f</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>在 <code class="xref py py-class docutils literal"><span class="pre">MyClass</span></code> 示例中，这会返回字符串 <code class="docutils literal"><span class="pre">'hello</span> <span class="pre">world'</span></code>。然而，也不是一定要直接调用方法。 <code class="docutils literal"><span class="pre">x.f</span></code> 是一个方法对象，它可以存储起来以后调用。例如:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">xf</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">f</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">xf</span><span class="p">())</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xf</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">f</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">xf</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>会不断的打印 <code class="docutils literal"><span class="pre">hello</span> <span class="pre">world</span></code>。</p>
@@ -374,62 +374,62 @@ In global scope: global spam
 <div class="section" id="tut-class-and-instance-variables">
 <span id="id10"></span><h3>9.3.5. 类和实例变量<a class="headerlink" href="#tut-class-and-instance-variables" title="Permalink to this headline">¶</a></h3>
 <p>一般来说，实例变量用于对每一个实例都是唯一的数据，类变量用于类的所有实例共享的属性和方法:</p>
-<div class="highlight-python"><div class="highlight"><pre>class Dog:
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
 
-    kind = &#39;canine&#39;         # class variable shared by all instances
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canine&#39;</span>         <span class="c1"># class variable shared by all instances</span>
 
-    def __init__(self, name):
-        self.name = name    # instance variable unique to each instance
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>    <span class="c1"># instance variable unique to each instance</span>
 
-&gt;&gt;&gt; d = Dog(&#39;Fido&#39;)
-&gt;&gt;&gt; e = Dog(&#39;Buddy&#39;)
-&gt;&gt;&gt; d.kind                  # shared by all dogs
-&#39;canine&#39;
-&gt;&gt;&gt; e.kind                  # shared by all dogs
-&#39;canine&#39;
-&gt;&gt;&gt; d.name                  # unique to d
-&#39;Fido&#39;
-&gt;&gt;&gt; e.name                  # unique to e
-&#39;Buddy&#39;
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Fido&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Buddy&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">kind</span>                  <span class="c1"># shared by all dogs</span>
+<span class="s1">&#39;canine&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">kind</span>                  <span class="c1"># shared by all dogs</span>
+<span class="s1">&#39;canine&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">name</span>                  <span class="c1"># unique to d</span>
+<span class="s1">&#39;Fido&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">name</span>                  <span class="c1"># unique to e</span>
+<span class="s1">&#39;Buddy&#39;</span>
 </pre></div>
 </div>
-<p>正如在 <a class="reference internal" href="#tut-object"><span>术语相关</span></a> 讨论的， <a class="reference external" href="https://docs.python.org/3/glossary.html#term-mutable">可变</a> 对象，例如列表和字典，的共享数据可能带来意外的效果。例如，下面代码中的 <em>tricks</em> 列表不应该用作类变量，因为所有的 <em>Dog</em>  实例将共享同一个列表:</p>
-<div class="highlight-python"><div class="highlight"><pre>class Dog:
+<p>正如在 <a class="reference internal" href="#tut-object"><span class="std std-ref">术语相关</span></a> 讨论的， <a class="reference external" href="https://docs.python.org/3/glossary.html#term-mutable">可变</a> 对象，例如列表和字典，的共享数据可能带来意外的效果。例如，下面代码中的 <em>tricks</em> 列表不应该用作类变量，因为所有的 <em>Dog</em>  实例将共享同一个列表:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
 
-    tricks = []             # mistaken use of a class variable
+    <span class="n">tricks</span> <span class="o">=</span> <span class="p">[]</span>             <span class="c1"># mistaken use of a class variable</span>
 
-    def __init__(self, name):
-        self.name = name
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
-    def add_trick(self, trick):
-        self.tricks.append(trick)
+    <span class="k">def</span> <span class="nf">add_trick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trick</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tricks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trick</span><span class="p">)</span>
 
-&gt;&gt;&gt; d = Dog(&#39;Fido&#39;)
-&gt;&gt;&gt; e = Dog(&#39;Buddy&#39;)
-&gt;&gt;&gt; d.add_trick(&#39;roll over&#39;)
-&gt;&gt;&gt; e.add_trick(&#39;play dead&#39;)
-&gt;&gt;&gt; d.tricks                # unexpectedly shared by all dogs
-[&#39;roll over&#39;, &#39;play dead&#39;]
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Fido&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Buddy&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">add_trick</span><span class="p">(</span><span class="s1">&#39;roll over&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">add_trick</span><span class="p">(</span><span class="s1">&#39;play dead&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">tricks</span>                <span class="c1"># unexpectedly shared by all dogs</span>
+<span class="p">[</span><span class="s1">&#39;roll over&#39;</span><span class="p">,</span> <span class="s1">&#39;play dead&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>这个类的正确设计应该使用一个实例变量:</p>
-<div class="highlight-python"><div class="highlight"><pre>class Dog:
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
 
-    def __init__(self, name):
-        self.name = name
-        self.tricks = []    # creates a new empty list for each dog
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tricks</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># creates a new empty list for each dog</span>
 
-    def add_trick(self, trick):
-        self.tricks.append(trick)
+    <span class="k">def</span> <span class="nf">add_trick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trick</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tricks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trick</span><span class="p">)</span>
 
-&gt;&gt;&gt; d = Dog(&#39;Fido&#39;)
-&gt;&gt;&gt; e = Dog(&#39;Buddy&#39;)
-&gt;&gt;&gt; d.add_trick(&#39;roll over&#39;)
-&gt;&gt;&gt; e.add_trick(&#39;play dead&#39;)
-&gt;&gt;&gt; d.tricks
-[&#39;roll over&#39;]
-&gt;&gt;&gt; e.tricks
-[&#39;play dead&#39;]
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Fido&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Buddy&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">add_trick</span><span class="p">(</span><span class="s1">&#39;roll over&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">add_trick</span><span class="p">(</span><span class="s1">&#39;play dead&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">tricks</span>
+<span class="p">[</span><span class="s1">&#39;roll over&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">tricks</span>
+<span class="p">[</span><span class="s1">&#39;play dead&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -442,20 +442,20 @@ In global scope: global spam
 <p>从方法内部引用数据属性（或其他方法）并没有快捷方式。我觉得这实际上增加了方法的可读性：当浏览一个方法时，在局部变量和实例变量之间不会出现令人费解的情况。</p>
 <p>一般，方法的第一个参数被命名为 <code class="docutils literal"><span class="pre">self</span></code>。这仅仅是一个约定：对 Python 而言，名称 <code class="docutils literal"><span class="pre">self</span></code> 绝对没有任何特殊含义。（但是请注意：如果不遵循这个约定，对其他的 Python 程序员而言你的代码可读性就会变差，而且有些 <em>类查看器</em> 程序也可能是遵循此约定编写的。）</p>
 <p>类属性的任何函数对象都为那个类的实例定义了一个方法。函数定义代码不一定非得定义在类中：也可以将一个函数对象赋值给类中的一个局部变量。例如:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Function defined outside the class</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Function defined outside the class</span>
 <span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">f1</span>
     <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&#39;hello world&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;hello world&#39;</span>
     <span class="n">h</span> <span class="o">=</span> <span class="n">g</span>
 </pre></div>
 </div>
 <p>现在 <code class="docutils literal"><span class="pre">f</span></code>， <code class="docutils literal"><span class="pre">g</span></code> 和 <code class="docutils literal"><span class="pre">h</span></code> 都是类 <code class="xref py py-class docutils literal"><span class="pre">C</span></code> 的属性，引用的都是函数对象，因此它们都是 <code class="xref py py-class docutils literal"><span class="pre">C</span></code> 实例的方法－－ <code class="docutils literal"><span class="pre">h</span></code> 严格等于 <code class="docutils literal"><span class="pre">g</span></code> 。要注意的是这种习惯通常只会迷惑程序的读者。</p>
 <p>通过 <code class="docutils literal"><span class="pre">self</span></code> 参数的方法属性，方法可以调用其它的方法:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Bag</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Bag</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
@@ -471,16 +471,16 @@ In global scope: global spam
 <div class="section" id="tut-inheritance">
 <span id="id12"></span><h2>9.5. 继承<a class="headerlink" href="#tut-inheritance" title="Permalink to this headline">¶</a></h2>
 <p>当然，如果一种语言不支持继承就，“类”就没有什么意义。派生类的定义如下所示:</p>
-<div class="highlight-python"><div class="highlight"><pre>class DerivedClassName(BaseClassName):
-    &lt;statement-1&gt;
-    .
-    .
-    .
-    &lt;statement-N&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DerivedClassName</span><span class="p">(</span><span class="n">BaseClassName</span><span class="p">):</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="n">N</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>命名 <code class="xref py py-class docutils literal"><span class="pre">BaseClassName</span></code> （示例中的基类名）必须与派生类定义在一个作用域内。除了类，还可以用表达式，基类定义在另一个模块中时这一点非常有用:</p>
-<div class="highlight-python"><div class="highlight"><pre>class DerivedClassName(modname.BaseClassName):
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DerivedClassName</span><span class="p">(</span><span class="n">modname</span><span class="o">.</span><span class="n">BaseClassName</span><span class="p">):</span>
 </pre></div>
 </div>
 <p>派生类定义的执行过程和基类是一样的。构造派生类对象时，就记住了基类。这在解析属性引用的时候尤其有用：如果在类中找不到请求调用的属性，就搜索基类。如果基类是由别的类派生而来，这个规则会递归的应用上去。</p>
@@ -498,12 +498,12 @@ In global scope: global spam
 <div class="section" id="tut-multiple">
 <span id="id13"></span><h3>9.5.1. 多继承<a class="headerlink" href="#tut-multiple" title="Permalink to this headline">¶</a></h3>
 <p>Python 同样有限的支持多继承形式。多继承的类定义形如下例:</p>
-<div class="highlight-python"><div class="highlight"><pre>class DerivedClassName(Base1, Base2, Base3):
-    &lt;statement-1&gt;
-    .
-    .
-    .
-    &lt;statement-N&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DerivedClassName</span><span class="p">(</span><span class="n">Base1</span><span class="p">,</span> <span class="n">Base2</span><span class="p">,</span> <span class="n">Base3</span><span class="p">):</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="n">N</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>在大多数情况下，在最简单的情况下，你能想到的搜索属性从父类继承的深度优先，左到右，而不是搜索两次在同一个类层次结构中，其中有一个重叠。因此，如果在 <code class="xref py py-class docutils literal"><span class="pre">DerivedClassName</span></code> （示例中的派生类）中没有找到某个属性，就会搜索 <code class="xref py py-class docutils literal"><span class="pre">Base1</span></code>，然后（递归的）搜索其基类，如果最终没有找到，就搜索 <code class="xref py py-class docutils literal"><span class="pre">Base2</span></code>，以此类推。</p>
@@ -517,7 +517,7 @@ In global scope: global spam
 <p>只能从对像内部访问的“私有”实例变量，在 Python 中不存在。然而，也有一个变通的访问用于大多数 Python 代码：以一个下划线开头的命名（例如 <code class="docutils literal"><span class="pre">_spam</span></code> ）会被处理为 API 的非公开部分（无论它是一个函数、方法或数据成员）。它会被视为一个实现细节，无需公开。</p>
 <p>因为有一个正当的类私有成员用途（即避免子类里定义的命名与之冲突），Python 提供了对这种结构的有限支持，称为 <em class="dfn">name mangling</em> （命名编码） 。任何形如 <code class="docutils literal"><span class="pre">__spam</span></code> 的标识（前面至少两个下划线，后面至多一个），被替代为 <code class="docutils literal"><span class="pre">_classname__spam</span></code> ，去掉前导下划线的 <code class="docutils literal"><span class="pre">classname</span></code> 即当前的类名。此语法不关注标识的位置，只要求在类定义内。</p>
 <p>名称重整是有助于子类重写方法，而不会打破组内的方法调用。例如:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Mapping</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mapping</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">items_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__update</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
@@ -526,13 +526,13 @@ In global scope: global spam
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">items_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
-    <span class="n">__update</span> <span class="o">=</span> <span class="n">update</span>   <span class="c"># private copy of original update() method</span>
+    <span class="n">__update</span> <span class="o">=</span> <span class="n">update</span>   <span class="c1"># private copy of original update() method</span>
 
 <span class="k">class</span> <span class="nc">MappingSubclass</span><span class="p">(</span><span class="n">Mapping</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
-        <span class="c"># provides new signature for update()</span>
-        <span class="c"># but does not break __init__()</span>
+        <span class="c1"># provides new signature for update()</span>
+        <span class="c1"># but does not break __init__()</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">items_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </pre></div>
@@ -543,14 +543,14 @@ In global scope: global spam
 <div class="section" id="tut-odds">
 <span id="id15"></span><h2>9.7. 补充<a class="headerlink" href="#tut-odds" title="Permalink to this headline">¶</a></h2>
 <p>有时类似于 Pascal 中“记录（record）”或 C 中“结构（struct）”的数据类型很有用，它将一组已命名的数据项绑定在一起。一个空的类定义可以很好的实现它:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
     <span class="k">pass</span>
 
-<span class="n">john</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">()</span> <span class="c"># Create an empty employee record</span>
+<span class="n">john</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">()</span> <span class="c1"># Create an empty employee record</span>
 
-<span class="c"># Fill the fields of the record</span>
-<span class="n">john</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;John Doe&#39;</span>
-<span class="n">john</span><span class="o">.</span><span class="n">dept</span> <span class="o">=</span> <span class="s">&#39;computer lab&#39;</span>
+<span class="c1"># Fill the fields of the record</span>
+<span class="n">john</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;John Doe&#39;</span>
+<span class="n">john</span><span class="o">.</span><span class="n">dept</span> <span class="o">=</span> <span class="s1">&#39;computer lab&#39;</span>
 <span class="n">john</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="mi">1000</span>
 </pre></div>
 </div>
@@ -561,17 +561,17 @@ In global scope: global spam
 <span id="id16"></span><h2>9.8. 异常也是类<a class="headerlink" href="#tut-exceptionclasses" title="Permalink to this headline">¶</a></h2>
 <p>用户自定义异常也可以是类。利用这个机制可以创建可扩展的异常体系。</p>
 <p>以下是两种新的，有效的（语义上的）异常抛出形式，使用 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#raise">raise</a> 语句:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">raise</span> <span class="n">Class</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="n">Class</span>
 
 <span class="k">raise</span> <span class="n">Instance</span>
 </pre></div>
 </div>
 <p>第一种形式中，<code class="docutils literal"><span class="pre">instance</span></code> 必须是 <a class="reference external" href="https://docs.python.org/3/library/functions.html#type">type</a> 或其派生类的一个实例。第二种形式是以下形式的简写:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">raise</span> <span class="n">Class</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="n">Class</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>发生的异常其类型如果是 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#except">except</a> 子句中列出的类，或者是其派生类，那么它们就是相符的（反过来说－－发生的异常其类型如果是异常子句中列出的类的基类，它们就不相符）。例如，以下代码会按顺序打印 B，C，D:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="k">pass</span>
 <span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -582,11 +582,11 @@ In global scope: global spam
     <span class="k">try</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">cls</span><span class="p">()</span>
     <span class="k">except</span> <span class="n">D</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;D&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">C</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">B</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>要注意的是如果异常子句的顺序颠倒过来（ <code class="docutils literal"><span class="pre">execpt</span> <span class="pre">B</span></code> 在最前），它就会打印 B，B，B－－第一个匹配的异常被触发。</p>
@@ -595,20 +595,20 @@ In global scope: global spam
 <div class="section" id="tut-iterators">
 <span id="id17"></span><h2>9.9. 迭代器<a class="headerlink" href="#tut-iterators" title="Permalink to this headline">¶</a></h2>
 <p>现在你可能注意到大多数容器对象都可以用 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#for">for</a> 遍历:</p>
-<div class="highlight-python"><div class="highlight"><pre>for element in [1, 2, 3]:
-    print(element)
-for element in (1, 2, 3):
-    print(element)
-for key in {&#39;one&#39;:1, &#39;two&#39;:2}:
-    print(key)
-for char in &quot;123&quot;:
-    print(char)
-for line in open(&quot;myfile.txt&quot;):
-    print(line, end=&#39;&#39;)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s2">&quot;123&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;myfile.txt&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>这种形式的访问清晰、简洁、方便。迭代器的用法在 Python 中普遍而且统一。在后台， <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#for">for</a> 语句在容器对象中调用 <a class="reference external" href="https://docs.python.org/3/library/functions.html#iter">iter()</a> 。该函数返回一个定义了 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#iterator.__next__">__next__()</a> 方法的迭代器对象，它在容器中逐一访问元素。没有后续的元素时， <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#iterator.__next__">__next__()</a>  抛出一个 <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#StopIteration">StopIteration</a> 异常通知 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#for">for</a> 语句循环结束。你可以是用内建的 <a class="reference external" href="https://docs.python.org/3/library/functions.html#next">next()</a> 函数调用 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#iterator.__next__">__next__()</a> 方法；以下是其工作原理的示例:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s">&#39;abc&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">it</span>
 <span class="go">&lt;iterator object at 0x00A1DB50&gt;</span>
@@ -626,7 +626,7 @@ for line in open(&quot;myfile.txt&quot;):
 </pre></div>
 </div>
 <p>了解了迭代器协议的后台机制，就可以很容易的给自己的类添加迭代器行为。定义一个 <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__iter__">__iter__()</a> 方法，使其返回一个带有 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#iterator.__next__">__next__()</a> 方法的对象。如果这个类已经定义了 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#iterator.__next__">__next__()</a> ，那么 <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__iter__">__iter__()</a> 只需要返回 <code class="docutils literal"><span class="pre">self</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Reverse</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Reverse</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Iterator for looping over a sequence backwards.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
@@ -640,11 +640,11 @@ for line in open(&quot;myfile.txt&quot;):
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rev</span> <span class="o">=</span> <span class="n">Reverse</span><span class="p">(</span><span class="s">&#39;spam&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rev</span> <span class="o">=</span> <span class="n">Reverse</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">(</span><span class="n">rev</span><span class="p">)</span>
 <span class="go">&lt;__main__.Reverse object at 0x00A1DB50&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">rev</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">m</span>
 <span class="go">a</span>
@@ -656,13 +656,13 @@ for line in open(&quot;myfile.txt&quot;):
 <div class="section" id="tut-generators">
 <span id="id23"></span><h2>9.10. 生成器<a class="headerlink" href="#tut-generators" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.python.org/3/glossary.html#term-generator">Generator</a> 是创建迭代器的简单而强大的工具。它们写起来就像是正规的函数，需要返回数据的时候使用 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#yield">yield</a> 语句。每次 <a class="reference external" href="https://docs.python.org/3/library/functions.html#next">next()</a> 被调用时，生成器回复它脱离的位置（它记忆语句最后一次执行的位置和所有的数据值）。以下示例演示了生成器可以很简单的创建出来:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="k">yield</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&#39;golf&#39;</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;golf&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">f</span>
 <span class="go">l</span>
@@ -678,22 +678,22 @@ for line in open(&quot;myfile.txt&quot;):
 <span id="id26"></span><h2>9.11. 生成器表达式<a class="headerlink" href="#tut-genexps" title="Permalink to this headline">¶</a></h2>
 <p>有时简单的生成器可以用简洁的方式调用，就像不带中括号的链表推导式。这些表达式是为函数调用生成器而设计的。生成器表达式比完整的生成器定义更简洁，但是没有那么多变，而且通常比等价的链表推导式更容易记。</p>
 <p>例如:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>                 <span class="c"># sum of squares</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>                 <span class="c1"># sum of squares</span>
 <span class="go">285</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xvec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yvec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xvec</span><span class="p">,</span> <span class="n">yvec</span><span class="p">))</span>         <span class="c"># dot product</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xvec</span><span class="p">,</span> <span class="n">yvec</span><span class="p">))</span>         <span class="c1"># dot product</span>
 <span class="go">260</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sine_table</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">91</span><span class="p">)}</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">unique_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">word</span>  <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">page</span>  <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">valedictorian</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">student</span><span class="o">.</span><span class="n">gpa</span><span class="p">,</span> <span class="n">student</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">graduates</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s">&#39;golf&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;golf&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="go">[&#39;f&#39;, &#39;l&#39;, &#39;o&#39;, &#39;g&#39;]</span>
 </pre></div>
@@ -747,7 +747,7 @@ for line in open(&quot;myfile.txt&quot;):
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.1',
+            VERSION:'3.5.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. 模块 &mdash; Python tutorial 3.5.1 documentation</title>
+  <title>6. 模块 &mdash; Python tutorial 3.5.2 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.1 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.5.2 documentation" href="index.html"/>
         <link rel="next" title="7. 输入和输出" href="inputoutput.html"/>
         <link rel="prev" title="5. 数据结构" href="datastructures.html"/> 
 
@@ -95,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-comparing">5.8. 比较序列和其它类型</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">6. 模块</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. 模块</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tut-moremodules">6.1. 深入模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tut-standardmodules">6.2. 标准模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dir">6.3. dir() 函数</a></li>
@@ -159,7 +159,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="venv.html#id3">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id4">12.2. 创建虚拟环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
 </ul>
 </li>
@@ -218,30 +218,30 @@
 <p>如果你退出 Python 解释器并重新进入，你做的任何定义（变量和方法）都会丢失。因此，如果你想要编写一些更大的程序，为准备解释器输入使用一个文本编辑器会更好，并以那个文件替代作为输入执行。这就是传说中的 <em>脚本</em>。随着你的程序变得越来越长，你可能想要将它分割成几个更易于维护的文件。你也可能想在不同的程序中使用顺手的函数，而不是把代码在它们之间中拷来拷去。</p>
 <p>为了满足这些需要，Python 提供了一个方法可以从文件中获取定义，在脚本或者解释器的一个交互式实例中使用。这样的文件被称为 <em>模块</em>；模块中的定义可以 <em>导入</em> 到另一个模块或 <em>主模块</em> 中（在脚本执行时可以调用的变量集位于最高级，并且处于计算器模式）。</p>
 <p>模块是包括 Python 定义和声明的文件。文件名就是模块名加上 <code class="file docutils literal"><span class="pre">.py</span></code> 后缀。模块的模块名（做为一个字符串）可以由全局变量 <code class="docutils literal"><span class="pre">__name__</span></code> 得到。例如，你可以用自己惯用的文件编辑器在当前目录下创建一个叫 fibo.py 的文件，录入如下内容:</p>
-<div class="highlight-python"><div class="highlight"><pre># Fibonacci numbers module
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Fibonacci numbers module</span>
 
-def fib(n):    # write Fibonacci series up to n
-    a, b = 0, 1
-    while b &lt; n:
-        print(b, end=&#39; &#39;)
-        a, b = b, a+b
-    print()
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>    <span class="c1"># write Fibonacci series up to n</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="nb">print</span><span class="p">()</span>
 
-def fib2(n): # return Fibonacci series up to n
-    result = []
-    a, b = 0, 1
-    while b &lt; n:
-        result.append(b)
-        a, b = b, a+b
-    return result
+<span class="k">def</span> <span class="nf">fib2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="c1"># return Fibonacci series up to n</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
 <p>现在进入 Python 解释器并使用以下命令导入这个模块:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span>
 </pre></div>
 </div>
 <p>这样做不会直接把 <code class="docutils literal"><span class="pre">fibo</span></code> 中的函数导入当前的语义表；它只是引入了模块名 <code class="docutils literal"><span class="pre">fibo</span></code>。你可以通过模块名按如下方式访问这个函数:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span><span class="o">.</span><span class="n">fib</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span><span class="o">.</span><span class="n">fib</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 <span class="go">1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span><span class="o">.</span><span class="n">fib2</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="go">[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]</span>
@@ -250,7 +250,7 @@ def fib2(n): # return Fibonacci series up to n
 </pre></div>
 </div>
 <p>如果打算频繁使用一个函数，你可以将它赋予一个本地变量:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fib</span> <span class="o">=</span> <span class="n">fibo</span><span class="o">.</span><span class="n">fib</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fib</span> <span class="o">=</span> <span class="n">fibo</span><span class="o">.</span><span class="n">fib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fib</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
 <span class="go">1 1 2 3 5 8 13 21 34 55 89 144 233 377</span>
 </pre></div>
@@ -261,14 +261,14 @@ def fib2(n): # return Fibonacci series up to n
 <p>每个模块都有自己私有的符号表，被模块内所有的函数定义作为全局符号表使用。因此，模块的作者可以在模块内部使用全局变量，而无需担心它与某个用户的全局变量意外冲突。从另一个方面讲，如果你确切的知道自己在做什么，你可以使用引用模块函数的表示法访问模块的全局变量，<code class="docutils literal"><span class="pre">modname.itemname</span></code>。</p>
 <p>模块可以导入其他的模块。一个（好的）习惯是将所有的 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">import</a> 语句放在模块的开始（或者是脚本），这并非强制。被导入的模块名会放入当前模块的全局符号表中。</p>
 <p><a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">import</a> 语句的一个变体直接从被导入的模块中导入命名到本模块的语义表中。例如:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fibo</span> <span class="kn">import</span> <span class="n">fib</span><span class="p">,</span> <span class="n">fib2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fibo</span> <span class="k">import</span> <span class="n">fib</span><span class="p">,</span> <span class="n">fib2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fib</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
 <span class="go">1 1 2 3 5 8 13 21 34 55 89 144 233 377</span>
 </pre></div>
 </div>
 <p>这样不会从局域语义表中导入模块名（如上所示， <code class="docutils literal"><span class="pre">fibo</span></code> 没有定义）。</p>
 <p>甚至有种方式可以导入模块中的所有定义:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fibo</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fibo</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fib</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
 <span class="go">1 1 2 3 5 8 13 21 34 55 89 144 233 377</span>
 </pre></div>
@@ -282,22 +282,22 @@ def fib2(n): # return Fibonacci series up to n
 <div class="section" id="tut-modulesasscripts">
 <span id="id4"></span><h3>6.1.1. 作为脚本来执行模块<a class="headerlink" href="#tut-modulesasscripts" title="Permalink to this headline">¶</a></h3>
 <p>当你使用以下方式运行 Python 模块时，模块中的代码便会被执行:</p>
-<div class="highlight-python"><div class="highlight"><pre>python fibo.py &lt;arguments&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">fibo</span><span class="o">.</span><span class="n">py</span> <span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>模块中的代码会被执行，就像导入它一样，不过此时 <code class="docutils literal"><span class="pre">__name__</span></code> 被设置为 <code class="docutils literal"><span class="pre">&quot;__main__&quot;</span></code>。这相当于，如果你在模块后加入如下代码:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">sys</span>
     <span class="n">fib</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 </div>
 <p>就可以让此文件像作为模块导入时一样作为脚本执行。此代码只有在模块作为 “main” 文件执行时才被调用:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python fibo.py 50
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python fibo.py 50
 1 1 2 3 5 8 13 21 34
 </pre></div>
 </div>
 <p>如果模块被导入，不会执行这段代码:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span>
 <span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
@@ -319,7 +319,7 @@ def fib2(n): # return Fibonacci series up to n
 </div>
 </li>
 </ul>
-<p>实际上，解释器由 <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.path">sys.path</a> 变量指定的路径目录搜索模块，该变量初始化时默认包含了输入脚本（或者当前目录）， <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH">PYTHONPATH</a> 和安装目录。这样就允许 Python 程序了解如何修改或替换模块搜索目录。需要注意的是由于这些目录中包含有搜索路径中运行的脚本，所以这些脚本不应该和标准模块重名，否则在导入模块时 Python 会尝试把这些脚本当作模块来加载。这通常会引发错误。请参见 <a class="reference internal" href="#tut-standardmodules"><span>标准模块</span></a> 以了解更多的信息。</p>
+<p>实际上，解释器由 <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.path">sys.path</a> 变量指定的路径目录搜索模块，该变量初始化时默认包含了输入脚本（或者当前目录）， <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH">PYTHONPATH</a> 和安装目录。这样就允许 Python 程序了解如何修改或替换模块搜索目录。需要注意的是由于这些目录中包含有搜索路径中运行的脚本，所以这些脚本不应该和标准模块重名，否则在导入模块时 Python 会尝试把这些脚本当作模块来加载。这通常会引发错误。请参见 <a class="reference internal" href="#tut-standardmodules"><span class="std std-ref">标准模块</span></a> 以了解更多的信息。</p>
 </div>
 <div class="section" id="python">
 <h3>6.1.3. “编译的” Python 文件<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
@@ -343,12 +343,12 @@ def fib2(n): # return Fibonacci series up to n
 <div class="section" id="tut-standardmodules">
 <span id="id6"></span><h2>6.2. 标准模块<a class="headerlink" href="#tut-standardmodules" title="Permalink to this headline">¶</a></h2>
 <p id="index-2">Python 带有一个标准模块库，并发布有独立的文档，名为 Python 库参考手册（此后称其为“库参考手册”）。有一些模块内置于解释器之中，这些操作的访问接口不是语言内核的一部分，但是已经内置于解释器了。这既是为了提高效率，也是为了给系统调用等操作系统原生访问提供接口。这类模块集合是一个依赖于底层平台的配置选项。例如，<a class="reference external" href="https://docs.python.org/3/library/winreg.html#module-winreg">winreg</a> 模块只提供在 Windows 系统上才有。有一个具体的模块值得注意： <a class="reference external" href="https://docs.python.org/3/library/sys.html#module-sys">sys</a> ，这个模块内置于所有的 Python 解释器。变量 <code class="docutils literal"><span class="pre">sys.ps1</span></code> 和 <code class="docutils literal"><span class="pre">sys.ps2</span></code> 定义了主提示符和辅助提示符字符串:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">ps1</span>
 <span class="go">&#39;&gt;&gt;&gt; &#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">ps2</span>
 <span class="go">&#39;... &#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">ps1</span> <span class="o">=</span> <span class="s">&#39;C&gt; &#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">ps1</span> <span class="o">=</span> <span class="s1">&#39;C&gt; &#39;</span>
 <span class="go">C&gt; print(&#39;Yuck!&#39;)</span>
 <span class="go">Yuck!</span>
 <span class="go">C&gt;</span>
@@ -356,15 +356,15 @@ def fib2(n): # return Fibonacci series up to n
 </div>
 <p>这两个变量只在解释器的交互模式下有意义。</p>
 <p>变量 <code class="docutils literal"><span class="pre">sys.path</span></code> 是解释器模块搜索路径的字符串列表。它由环境变量 <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH">PYTHONPATH</a> 初始化，如果没有设定 <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH">PYTHONPATH</a> ，就由内置的默认值初始化。你可以用标准的字符串操作修改它:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;/ufs/guido/lib/python&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/ufs/guido/lib/python&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="dir">
 <span id="tut-dir"></span><h2>6.3. <a class="reference external" href="https://docs.python.org/3/library/functions.html#dir">dir()</a> 函数<a class="headerlink" href="#dir" title="Permalink to this headline">¶</a></h2>
 <p>内置函数 <a class="reference external" href="https://docs.python.org/3/library/functions.html#dir">dir()</a> 用于按模块名搜索模块定义，它返回一个字符串类型的存储列表:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span><span class="o">,</span> <span class="nn">sys</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">fibo</span><span class="p">)</span>
 <span class="go">[&#39;__name__&#39;, &#39;fib&#39;, &#39;fib2&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>  
@@ -388,7 +388,7 @@ def fib2(n): # return Fibonacci series up to n
 </pre></div>
 </div>
 <p>无参数调用时，<a class="reference external" href="https://docs.python.org/3/library/functions.html#dir">dir()</a> 函数返回当前定义的命名:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fib</span> <span class="o">=</span> <span class="n">fibo</span><span class="o">.</span><span class="n">fib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">()</span>
@@ -397,7 +397,7 @@ def fib2(n): # return Fibonacci series up to n
 </div>
 <p>注意该列表列出了所有类型的名称：变量，模块，函数，等等。</p>
 <p id="index-3"><a class="reference external" href="https://docs.python.org/3/library/functions.html#dir">dir()</a> 不会列出内置函数和变量名。如果你想列出这些内容，它们在标准模块 <a class="reference external" href="https://docs.python.org/3/library/builtins.html#module-builtins">builtins</a> 中定义:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">builtins</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">builtins</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">builtins</span><span class="p">)</span>  
 <span class="go">[&#39;ArithmeticError&#39;, &#39;AssertionError&#39;, &#39;AttributeError&#39;, &#39;BaseException&#39;,</span>
 <span class="go"> &#39;BlockingIOError&#39;, &#39;BrokenPipeError&#39;, &#39;BufferError&#39;, &#39;BytesWarning&#39;,</span>
@@ -436,7 +436,7 @@ def fib2(n): # return Fibonacci series up to n
 <p>包通常是使用用“圆点模块名”的结构化模块命名空间。例如，名为 <code class="xref py py-mod docutils literal"><span class="pre">A.B</span></code> 的模块表示了名为 <code class="docutils literal"><span class="pre">A</span></code> 的包中名为 <code class="docutils literal"><span class="pre">B</span></code> 的子模块。正如同用模块来保存不同的模块架构可以避免全局变量之间的相互冲突，使用圆点模块名保存像 NumPy 或 Python Imaging Library 之类的不同类库架构可以避免模块之间的命名冲突。</p>
 <p>假设你现在想要设计一个模块集（一个“包”）来统一处理声音文件和声音数据。存在几种不同的声音格式（通常由它们的扩展名来标识，例如：<code class="file docutils literal"><span class="pre">.wav</span></code>，
 <code class="file docutils literal"><span class="pre">.aiff</span></code>，<code class="file docutils literal"><span class="pre">.au</span></code> ），于是，为了在不同类型的文件格式之间转换，你需要维护一个不断增长的包集合。可能你还想要对声音数据做很多不同的操作（例如混音，添加回声，应用平衡 功能，创建一个人造效果），所以你要加入一个无限流模块来执行这些操作。你的包可能会是这个样子（通过分级的文件体系来进行分组）:</p>
-<div class="highlight-text"><div class="highlight"><pre>sound/                          Top-level package
+<div class="highlight-text"><div class="highlight"><pre><span></span>sound/                          Top-level package
       __init__.py               Initialize the sound package
       formats/                  Subpackage for file format conversions
               __init__.py
@@ -464,27 +464,27 @@ def fib2(n): # return Fibonacci series up to n
 <p>当导入这个包时，Python 通过 <code class="docutils literal"><span class="pre">sys.path</span></code> 搜索路径查找包含这个包的子目录。</p>
 <p>为了让 Python 将目录当做内容包，目录中必须包含 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 文件。这是为了避免一个含有烂俗名字的目录无意中隐藏了稍后在模块搜索路径中出现的有效模块，比如 string。最简单的情况下，只需要一个空的 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 文件即可。当然它也可以执行包的初始化代码，或者定义稍后介绍的 <code class="docutils literal"><span class="pre">__all__</span></code> 变量。</p>
 <p>用户可以每次只导入包里的特定模块，例如:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sound.effects.echo</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sound.effects.echo</span>
 </pre></div>
 </div>
 <p>这样就导入了 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects.echo</span></code> 子模块。它必需通过完整的名称来引用:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sound</span><span class="o">.</span><span class="n">effects</span><span class="o">.</span><span class="n">echo</span><span class="o">.</span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sound</span><span class="o">.</span><span class="n">effects</span><span class="o">.</span><span class="n">echo</span><span class="o">.</span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>导入包时有一个可以选择的方式:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="n">echo</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sound.effects</span> <span class="k">import</span> <span class="n">echo</span>
 </pre></div>
 </div>
 <p>这样就加载了 <code class="xref py py-mod docutils literal"><span class="pre">echo</span></code> 子模块，并且使得它在没有包前缀的情况下也可以使用，所以它可以如下方式调用:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">echo</span><span class="o">.</span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span><span class="o">.</span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>还有另一种变体用于直接导入函数或变量:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sound.effects.echo</span> <span class="kn">import</span> <span class="n">echofilter</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sound.effects.echo</span> <span class="k">import</span> <span class="n">echofilter</span>
 </pre></div>
 </div>
 <p>这样就又一次加载了 <code class="xref py py-mod docutils literal"><span class="pre">echo</span></code> 子模块，但这样就可以直接调用它的 <code class="xref py py-func docutils literal"><span class="pre">echofilter()</span></code> 函数:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>需要注意的是使用 <code class="docutils literal"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">item</span></code> 方式导入包时，这个子项（item）既可以是包中的一个子模块（或一个子包），也可以是包中定义的其它命名，像函数、类或变量。<code class="docutils literal"><span class="pre">import</span></code> 语句首先核对是否包中有这个子项，如果没有，它假定这是一个模块，并尝试加载它。如果没有找到它，会引发一个  <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ImportError">ImportError</a> 异常。</p>
@@ -493,14 +493,14 @@ def fib2(n): # return Fibonacci series up to n
 <span id="id8"></span><h3>6.4.1. 从 * 导入包<a class="headerlink" href="#tut-pkg-import-star" title="Permalink to this headline">¶</a></h3>
 <p id="index-4">那么当用户写下 <code class="docutils literal"><span class="pre">from</span> <span class="pre">sound.Effects</span> <span class="pre">import</span> <span class="pre">*</span></code> 时会发生什么事？理想中，总是希望在文件系统中找出包中所有的子模块，然后导入它们。这可能会花掉委有长时间，并且出现期待之外的边界效应，导出了希望只能显式导入的包。</p>
 <p>对于包的作者来说唯一的解决方案就是给提供一个明确的包索引。<a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">import</a> 语句按如下条件进行转换：执行 <code class="docutils literal"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">*</span></code> 时，如果包中的 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 代码定义了一个名为 <code class="docutils literal"><span class="pre">__all__</span></code> 的列表，就会按照列表中给出的模块名进行导入。新版本的包发布时作者可以任意更新这个列表。如果包作者不想 import * 的时候导入他们的包中所有模块，那么也可能会决定不支持它（ import * ）。例如， <code class="file docutils literal"><span class="pre">sound/effects/__init__.py</span></code> 这个文件可能包括如下代码:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;echo&quot;</span><span class="p">,</span> <span class="s">&quot;surround&quot;</span><span class="p">,</span> <span class="s">&quot;reverse&quot;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;surround&quot;</span><span class="p">,</span> <span class="s2">&quot;reverse&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>这意味着 <code class="docutils literal"><span class="pre">from</span> <span class="pre">Sound.Effects</span> <span class="pre">import</span> <span class="pre">*</span></code> 语句会从 <code class="xref py py-mod docutils literal"><span class="pre">sound</span></code> 包中导入以上三个已命名的子模块。</p>
 <p>如果没有定义 <code class="docutils literal"><span class="pre">__all__</span></code> ， <code class="docutils literal"><span class="pre">from</span> <span class="pre">Sound.Effects</span> <span class="pre">import</span> <span class="pre">*</span></code> 语句 <em>不会</em> 从 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code> 包中导入所有的子模块。无论包中定义多少命名，只能确定的是导入了 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code>  包（可能会运行 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 中的初始化代码）以及包中定义的所有命名会随之导入。这样就从 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 中导入了每一个命名（以及明确导入的子模块）。同样也包括了前述的 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">import</a> 语句从包中明确导入的子模块，考虑以下代码:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sound.effects.echo</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sound.effects.echo</span>
 <span class="kn">import</span> <span class="nn">sound.effects.surround</span>
-<span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">sound.effects</span> <span class="k">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 <p>在这个例子中，<code class="xref py py-mod docutils literal"><span class="pre">echo</span></code> 和 <code class="xref py py-mod docutils literal"><span class="pre">surround</span></code> 模块导入了当前的命名空间，这是因为执行 <code class="docutils literal"><span class="pre">from...import</span></code> 语句时它们已经定义在 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code> 包中了（定义了 <code class="docutils literal"><span class="pre">__all__</span></code> 时也会同样工作）。</p>
@@ -511,9 +511,9 @@ def fib2(n): # return Fibonacci series up to n
 <h3>6.4.2. 包内引用<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>如果包中使用了子包结构（就像示例中的 <code class="xref py py-mod docutils literal"><span class="pre">sound</span></code> 包），可以按绝对位置从相邻的包中引入子模块。例如，如果 <code class="xref py py-mod docutils literal"><span class="pre">sound.filters.vocoder</span></code> 包需要使用 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code> 包中的 <code class="xref py py-mod docutils literal"><span class="pre">echo</span></code> 模块，它可以 <code class="docutils literal"><span class="pre">from</span> <span class="pre">Sound.Effects</span> <span class="pre">import</span> <span class="pre">echo</span></code>。</p>
 <p>你可以用这样的形式 <code class="docutils literal"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">name</span></code> 来写显式的相对位置导入。那些显式相对导入用点号标明关联导入当前和上级包。以 <code class="xref py py-mod docutils literal"><span class="pre">surround</span></code> 模块为例，你可以这样用:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">echo</span>
-<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">formats</span>
-<span class="kn">from</span> <span class="nn">..filters</span> <span class="kn">import</span> <span class="n">equalizer</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">echo</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">formats</span>
+<span class="kn">from</span> <span class="nn">..filters</span> <span class="k">import</span> <span class="n">equalizer</span>
 </pre></div>
 </div>
 <p>需要注意的是显式或隐式相对位置导入都基于当前模块的命名。因为主模块的名字总是 <code class="docutils literal"><span class="pre">&quot;__main__&quot;</span></code>，Python 应用程序的主模块应该总是用绝对导入。</p>
@@ -572,7 +572,7 @@ def fib2(n): # return Fibonacci series up to n
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.1',
+            VERSION:'3.5.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
