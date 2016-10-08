@@ -12,7 +12,7 @@
 Tab 补全和历史记录
 ==================================
 
-变量和模块名的补全在解释器启动时 `自动打开 <https://docs.python.org/3/library/site.html#rlcompleter-config>`_ 以便 :kbd:`Tab` 键调用补全功能；它会查看Python语句的名字，当前局部变量以及可以访问的模块名。对于点分表达式如 ``string.a``，它将求出表达式最后一个 ``'.'`` 之前的值，然后根据结果的属性给出补全的建议。注意，如果一个具有 `__getattr__() <https://docs.python.org/3/reference/datamodel.html#object.__getattr__>`_ 方法的对象是表达式的某部分，这可能执行应用程序定义的代码。默认的配置同时会把历史记录保存在你的用户目录下一个名为 :file:`.python_history` 的文件中。在下次与交互式解释器的回话中，历史记录将还可以访问。
+变量和模块名的补全在解释器启动时 `自动打开 <https://docs.python.org/3/library/site.html#rlcompleter-config>`_ 以便 :kbd:`Tab` 键调用补全功能；它会查看Python语句的名字，当前局部变量以及可以访问的模块名。对于点分表达式如 ``string.a``，它将求出表达式最后一个 ``'.'`` 之前的值，然后根据结果的属性给出补全的建议。注意，如果一个具有 `__getattr__() <https://docs.python.org/3/reference/datamodel.html#object.__getattr__>`_ 方法的对象是表达式的某部分，这可能执行应用程序定义的代码。默认的配置同时会把历史记录保存在你的用户目录下一个名为 :file:`.python_history` 的文件中。在下次与交互式解释器的会话中，历史记录将还可以访问。
 
 
 .. _tut-commentary:
