@@ -15,9 +15,9 @@
 错误处理
 --------------
 
-当错误发生时，解释器打印一个错误信息和堆栈跟踪。在交互模式下，它返回主提示符；当输入来自文件的时候，在打印堆栈跟踪后以非零退出状态退出。（在 `try <https://docs.python.org/3/reference/compound_stmts.html#try>`_ 声明中被 `except <https://docs.python.org/3/reference/compound_stmts.html#except>`_ 子句捕捉到的异常在这种情况下不是错误。）有些错误是非常致命的会导致一个非零状态的退出；这也适用于内部错误以及某些情况的内存耗尽。所有的错误信息都写入到标准错误流；来自执行的命令的普通输出写入到标准输出。
+当错误发生时，解释器打印一个错误信息和堆栈跟踪。在交互模式下，它返回主提示符；当输入来自文件的时候，在打印堆栈跟踪后以非零退出(a nonzero exit)状态退出。（在 `try <https://docs.python.org/3/reference/compound_stmts.html#try>`_ 声明中被 `except <https://docs.python.org/3/reference/compound_stmts.html#except>`_ 子句捕捉到的异常在这种情况下不是错误。）有些错误是非常致命的会导致一个非零状态的退出；这也适用于内部错误以及某些情况的内存耗尽。所有的错误信息都写入到标准错误流；来自执行的命令的普通输出写入到标准输出。
 
-输入中断符（通常是 Control-C 或者 DEL）到主或者从提示符中慧取消输入并且返回到主提示。[#]_ 当命令执行中输入中断符会引起 `KeyboardInterrupt <https://docs.python.org/3/library/exceptions.html#KeyboardInterrupt>`_ 异常，这个异常能够被一个 `try <https://docs.python.org/3/reference/compound_stmts.html#try>`_ 声明处理。
+输入中断符（通常是 Control-C 或者 DEL）到主或者从提示符中会取消输入并且返回到主提示。[#]_ 当命令执行中输入中断符会引起 `KeyboardInterrupt <https://docs.python.org/3/library/exceptions.html#KeyboardInterrupt>`_ 异常，这个异常能够被一个 `try <https://docs.python.org/3/reference/compound_stmts.html#try>`_ 声明处理。
 
 
 .. _tut-scripts:
@@ -37,7 +37,7 @@
 
    $ chmod +x myscript.py
 
-在 Windows 系统上，没有一个 “可执行模式” 的概念。Python 安装器会自动地把 ``.py``  文件和 ``python.exe`` 关联起来，因此双击 Python 分拣将会把它当成一个脚本运行。文件扩展名也可以是 ``.pyw``，在这种情况下，运行时不会出现控制台窗口。
+在 Windows 系统上，没有一个 “可执行模式” 的概念。Python 安装器会自动地把 ``.py``  文件和 ``python.exe`` 关联起来，因此双击 Python 将会把它当成一个脚本运行。文件扩展名也可以是 ``.pyw``，在这种情况下，运行时不会出现控制台窗口。
 
 
 .. _tut-startup:

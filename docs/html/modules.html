@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. 模块 &mdash; Python tutorial 3.5.2 documentation</title>
+  <title>6. 模块 &mdash; Python tutorial 3.6.0 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.2 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.6.0 documentation" href="index.html"/>
         <link rel="next" title="7. 输入和输出" href="inputoutput.html"/>
         <link rel="prev" title="5. 数据结构" href="datastructures.html"/> 
 
@@ -491,25 +491,25 @@
 <p>相反，使用类似 <code class="docutils literal"><span class="pre">import</span> <span class="pre">item.subitem.subsubitem</span></code> 这样的语法时，这些子项必须是包，最后的子项可以是包或模块，但不能是前面子项中定义的类、函数或变量。</p>
 <div class="section" id="tut-pkg-import-star">
 <span id="id8"></span><h3>6.4.1. 从 * 导入包<a class="headerlink" href="#tut-pkg-import-star" title="Permalink to this headline">¶</a></h3>
-<p id="index-4">那么当用户写下 <code class="docutils literal"><span class="pre">from</span> <span class="pre">sound.Effects</span> <span class="pre">import</span> <span class="pre">*</span></code> 时会发生什么事？理想中，总是希望在文件系统中找出包中所有的子模块，然后导入它们。这可能会花掉委有长时间，并且出现期待之外的边界效应，导出了希望只能显式导入的包。</p>
+<p id="index-4">那么当用户写下 <code class="docutils literal"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">*</span></code> 时会发生什么事？理想中，总是希望在文件系统中找出包中所有的子模块，然后导入它们。这可能会花掉很长时间，并且出现期待之外的边界效应，导出了希望只能显式导入的包。</p>
 <p>对于包的作者来说唯一的解决方案就是给提供一个明确的包索引。<a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">import</a> 语句按如下条件进行转换：执行 <code class="docutils literal"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">*</span></code> 时，如果包中的 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 代码定义了一个名为 <code class="docutils literal"><span class="pre">__all__</span></code> 的列表，就会按照列表中给出的模块名进行导入。新版本的包发布时作者可以任意更新这个列表。如果包作者不想 import * 的时候导入他们的包中所有模块，那么也可能会决定不支持它（ import * ）。例如， <code class="file docutils literal"><span class="pre">sound/effects/__init__.py</span></code> 这个文件可能包括如下代码:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;surround&quot;</span><span class="p">,</span> <span class="s2">&quot;reverse&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>这意味着 <code class="docutils literal"><span class="pre">from</span> <span class="pre">Sound.Effects</span> <span class="pre">import</span> <span class="pre">*</span></code> 语句会从 <code class="xref py py-mod docutils literal"><span class="pre">sound</span></code> 包中导入以上三个已命名的子模块。</p>
-<p>如果没有定义 <code class="docutils literal"><span class="pre">__all__</span></code> ， <code class="docutils literal"><span class="pre">from</span> <span class="pre">Sound.Effects</span> <span class="pre">import</span> <span class="pre">*</span></code> 语句 <em>不会</em> 从 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code> 包中导入所有的子模块。无论包中定义多少命名，只能确定的是导入了 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code>  包（可能会运行 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 中的初始化代码）以及包中定义的所有命名会随之导入。这样就从 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 中导入了每一个命名（以及明确导入的子模块）。同样也包括了前述的 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">import</a> 语句从包中明确导入的子模块，考虑以下代码:</p>
+<p>这意味着 <code class="docutils literal"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">*</span></code> 语句会从 <code class="xref py py-mod docutils literal"><span class="pre">sound</span></code> 包中导入以上三个已命名的子模块。</p>
+<p>如果没有定义 <code class="docutils literal"><span class="pre">__all__</span></code> ， <code class="docutils literal"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">*</span></code> 语句 <em>不会</em> 从 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code> 包中导入所有的子模块。无论包中定义多少命名，只能确定的是导入了 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code>  包（可能会运行 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 中的初始化代码）以及包中定义的所有命名会随之导入。这样就从 <code class="file docutils literal"><span class="pre">__init__.py</span></code> 中导入了每一个命名（以及明确导入的子模块）。同样也包括了前述的 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">import</a> 语句从包中明确导入的子模块，考虑以下代码:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sound.effects.echo</span>
 <span class="kn">import</span> <span class="nn">sound.effects.surround</span>
 <span class="kn">from</span> <span class="nn">sound.effects</span> <span class="k">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 <p>在这个例子中，<code class="xref py py-mod docutils literal"><span class="pre">echo</span></code> 和 <code class="xref py py-mod docutils literal"><span class="pre">surround</span></code> 模块导入了当前的命名空间，这是因为执行 <code class="docutils literal"><span class="pre">from...import</span></code> 语句时它们已经定义在 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code> 包中了（定义了 <code class="docutils literal"><span class="pre">__all__</span></code> 时也会同样工作）。</p>
-<p>尽管某些模块设计为使用 <code class="docutils literal"><span class="pre">import</span> <span class="pre">*</span></code> 时它只导出符全某种模式的命名，仍然不建议在生产代码中使用这种写法。</p>
+<p>尽管某些模块设计为使用 <code class="docutils literal"><span class="pre">import</span> <span class="pre">*</span></code> 时它只导出符合某种规范/模式的命名，仍然不建议在生产代码中使用这种写法。</p>
 <p>记住，<code class="docutils literal"><span class="pre">from</span> <span class="pre">Package</span> <span class="pre">import</span> <span class="pre">specific_submodule</span></code> 没有错误！事实上，除非导入的模块需要使用其它包中的同名子模块，否则这是推荐的写法。</p>
 </div>
 <div class="section" id="id9">
 <h3>6.4.2. 包内引用<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>如果包中使用了子包结构（就像示例中的 <code class="xref py py-mod docutils literal"><span class="pre">sound</span></code> 包），可以按绝对位置从相邻的包中引入子模块。例如，如果 <code class="xref py py-mod docutils literal"><span class="pre">sound.filters.vocoder</span></code> 包需要使用 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code> 包中的 <code class="xref py py-mod docutils literal"><span class="pre">echo</span></code> 模块，它可以 <code class="docutils literal"><span class="pre">from</span> <span class="pre">Sound.Effects</span> <span class="pre">import</span> <span class="pre">echo</span></code>。</p>
+<p>如果包中使用了子包结构（就像示例中的 <code class="xref py py-mod docutils literal"><span class="pre">sound</span></code> 包），可以按绝对位置从相邻的包中引入子模块。例如，如果 <code class="xref py py-mod docutils literal"><span class="pre">sound.filters.vocoder</span></code> 包需要使用 <code class="xref py py-mod docutils literal"><span class="pre">sound.effects</span></code> 包中的 <code class="xref py py-mod docutils literal"><span class="pre">echo</span></code> 模块，它可以 <code class="docutils literal"><span class="pre">from</span> <span class="pre">sound.Effects</span> <span class="pre">import</span> <span class="pre">echo</span></code>。</p>
 <p>你可以用这样的形式 <code class="docutils literal"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">name</span></code> 来写显式的相对位置导入。那些显式相对导入用点号标明关联导入当前和上级包。以 <code class="xref py py-mod docutils literal"><span class="pre">surround</span></code> 模块为例，你可以这样用:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">echo</span>
 <span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">formats</span>
@@ -572,7 +572,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.2',
+            VERSION:'3.6.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

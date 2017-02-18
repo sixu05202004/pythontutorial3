@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. 类 &mdash; Python tutorial 3.5.2 documentation</title>
+  <title>9. 类 &mdash; Python tutorial 3.6.0 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.2 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.6.0 documentation" href="index.html"/>
         <link rel="next" title="10. Python 标准库概览" href="stdlib.html"/>
         <link rel="prev" title="8. 错误和异常" href="errors.html"/> 
 
@@ -220,7 +220,7 @@
 <p>在讨论类时，没有足够的得到共识的术语，我会偶尔从 Smalltalk 和 C++ 借用一些。我比较喜欢用 Modula-3 的用语，因为比起 C++，Python 的面向对象语法更像它，但是我想很少有读者听过这个。</p>
 <div class="section" id="tut-object">
 <span id="id2"></span><h2>9.1. 术语相关<a class="headerlink" href="#tut-object" title="Permalink to this headline">¶</a></h2>
-<p>对象具有特性，并且多个名称（在多个作用于中）可以绑定在同一个对象上。在其它语言中被称为别名。在对 Python 的第一印象中这通常会被忽略，并且当处理不可变基础类型（数字，字符串，元组）时可以被放心的忽略。但是，在调用列表、字典这类可变对象，或者大多数程序外部类型（文件，窗体等）描述实体时，别名对 Python 代码的语义便具有（有意而为）影响。这通常有助于程序的优化，因为在某些方面别名表现的就像是指针。例如，你可以轻易的传递一个对象，因为通过继承只是传递一个指针。并且如果一个方法修改了一个作为参数传递的对象，调用者可以接收这一变化——这消除了两种不同的参数传递机制的需要，像 Pascal 语言。</p>
+<p>对象具有特性，并且多个名称（在多个作用域中）可以绑定在同一个对象上。在其它语言中被称为别名。在对 Python 的第一印象中这通常会被忽略，并且当处理不可变基础类型（数字，字符串，元组）时可以被放心的忽略。但是，在调用列表、字典这类可变对象，或者大多数程序外部类型（文件，窗体等）描述实体时，别名对 Python 代码的语义便具有（有意而为）影响。这通常有助于程序的优化，因为在某些方面别名表现的就像是指针。例如，你可以轻易的传递一个对象，因为通过继承只是传递一个指针。并且如果一个方法修改了一个作为参数传递的对象，调用者可以接收这一变化——这消除了两种不同的参数传递机制的需要，像 Pascal 语言。</p>
 </div>
 <div class="section" id="python">
 <span id="tut-scopes"></span><h2>9.2. Python 作用域和命名空间<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
@@ -246,7 +246,7 @@
 <p>如果一个命名声明为全局的，那么对它的所有引用和赋值会直接搜索包含这个模块全局命名的作用域。如果要重新绑定最里层作用域之外的变量，可以使用 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#nonlocal">nonlocal</a> 语句；如果不声明为 nonlocal，这些变量将是只读的（对这样的变量赋值会在最里面的作用域创建一个新的局部变量，外部具有相同命名的那个变量不会改变）。</p>
 <p>通常，局部作用域引用当前函数的命名。在函数之外，局部作用域与全局使用域引用同一命名空间：模块命名空间。类定义也是局部作用域中的另一个命名空间。</p>
 <p>重要的是作用域决定于源程序的意义：一个定义于某模块中的函数的全局作用域是该模块的命名空间，而不是该函数的别名被定义或调用的位置，了解这一点非常重要。另一方面，命名的实际搜索过程是动态的，在运行时确定的——然而，Python 语言也在不断发展，以后有可能会成为静态的“编译”时确定，所以不要依赖动态解析！（事实上，局部变量已经是静态确定了。）</p>
-<p>Python 的一个特别之处在于：如果没有使用 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#global">global</a> 语法，其赋值操作总是在最里层的作用域。赋值不会复制数据，只是将命名绑定到对象。删除也是如此：<code class="docutils literal"><span class="pre">del</span> <span class="pre">x</span></code> 只是从局部作用域的命名空间中删除命名 <code class="docutils literal"><span class="pre">x</span></code> 。事实上，所有引入新命名的操作都作用于局部作用域。特别是 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">import</a> 语句和函数定将模块名或函数绑定于局部作用域（可以使用 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#global">global</a> 语句将变量引入到全局作用域）。</p>
+<p>Python 的一个特别之处在于：如果没有使用 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#global">global</a> 语法，其赋值操作总是在最里层的作用域。赋值不会复制数据，只是将命名绑定到对象。删除也是如此：<code class="docutils literal"><span class="pre">del</span> <span class="pre">x</span></code> 只是从局部作用域的命名空间中删除命名 <code class="docutils literal"><span class="pre">x</span></code> 。事实上，所有引入新命名的操作都作用于局部作用域。特别是 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">import</a> 语句和函数定义将模块名或函数绑定于局部作用域（可以使用 <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#global">global</a> 语句将变量引入到全局作用域）。</p>
 <p><a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#global">global</a> 语句用以指明某个特定的变量为全局作用域，并重新绑定它。<a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#nonlocal">nonlocal</a> 语句用以指明某个特定的变量为封闭作用域，并重新绑定它。</p>
 <div class="section" id="tut-scopeexample">
 <span id="id4"></span><h3>9.2.1. 作用域和命名空间示例<a class="headerlink" href="#tut-scopeexample" title="Permalink to this headline">¶</a></h3>
@@ -566,7 +566,7 @@ In global scope: global spam
 <span class="k">raise</span> <span class="n">Instance</span>
 </pre></div>
 </div>
-<p>第一种形式中，<code class="docutils literal"><span class="pre">instance</span></code> 必须是 <a class="reference external" href="https://docs.python.org/3/library/functions.html#type">type</a> 或其派生类的一个实例。第二种形式是以下形式的简写:</p>
+<p>第一种形式中，<code class="docutils literal"><span class="pre">Class</span></code> 必须是 <a class="reference external" href="https://docs.python.org/3/library/functions.html#type">type</a> 或其派生类的一个实例。第二种形式是以下形式的简写:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="n">Class</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -747,7 +747,7 @@ In global scope: global spam
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.2',
+            VERSION:'3.6.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

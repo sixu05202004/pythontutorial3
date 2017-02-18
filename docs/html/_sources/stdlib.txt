@@ -63,7 +63,7 @@ Python 标准库概览
    >>> print(sys.argv)
    ['demo.py', 'one', 'two', 'three']
 
-`getopt`_ 模块使用 Unix `getopt()`_ 函处理 *sys.argv*。更多的复杂命令行处理由 `argparse`_ 模块提供。
+`getopt`_ 模块使用 Unix `getopt()`_ 函数处理 *sys.argv*。更多的复杂命令行处理由 `argparse`_ 模块提供。
 
 
 .. _tut-stderr:
@@ -76,7 +76,7 @@ Python 标准库概览
    >>> sys.stderr.write('Warning, log file not found starting a new one\n')
    Warning, log file not found starting a new one
 
-大多脚本的定向终止都使用 ``sys.exit()``。
+大多脚本的直接终止都使用 ``sys.exit()``。
 
 
 .. _tut-string-pattern-matching:

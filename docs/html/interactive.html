@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>14. 交互式输入行编辑历史回溯 &mdash; Python tutorial 3.5.2 documentation</title>
+  <title>14. 交互式输入行编辑历史回溯 &mdash; Python tutorial 3.6.0 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.5.2 documentation" href="index.html"/>
+    <link rel="top" title="Python tutorial 3.6.0 documentation" href="index.html"/>
         <link rel="next" title="15. 浮点数算法：争议和限制" href="floatingpoint.html"/>
         <link rel="prev" title="13. 接下来？" href="whatnow.html"/> 
 
@@ -218,7 +218,7 @@
 <p>某些版本的 Python 解释器支持编辑当前的输入行和历史记录，类似于在 Korn shell 和 GNU Bash shell 中看到的功能。这是使用 <a class="reference external" href="http://tiswww.case.edu/php/chet/readline/rltop.html">GNU Readline</a> 库实现的，它支持各种编辑风格。 这个库有它自己的文档，在这里我们不就重复了。</p>
 <div class="section" id="tab">
 <span id="tut-keybindings"></span><h2>14.1. Tab 补全和历史记录<a class="headerlink" href="#tab" title="Permalink to this headline">¶</a></h2>
-<p>变量和模块名的补全在解释器启动时 <a class="reference external" href="https://docs.python.org/3/library/site.html#rlcompleter-config">自动打开</a> 以便 <code class="kbd docutils literal"><span class="pre">Tab</span></code> 键调用补全功能；它会查看Python语句的名字，当前局部变量以及可以访问的模块名。对于点分表达式如 <code class="docutils literal"><span class="pre">string.a</span></code>，它将求出表达式最后一个 <code class="docutils literal"><span class="pre">'.'</span></code> 之前的值，然后根据结果的属性给出补全的建议。注意，如果一个具有 <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__getattr__">__getattr__()</a> 方法的对象是表达式的某部分，这可能执行应用程序定义的代码。默认的配置同时会把历史记录保存在你的用户目录下一个名为 <code class="file docutils literal"><span class="pre">.python_history</span></code> 的文件中。在下次与交互式解释器的回话中，历史记录将还可以访问。</p>
+<p>变量和模块名的补全在解释器启动时 <a class="reference external" href="https://docs.python.org/3/library/site.html#rlcompleter-config">自动打开</a> 以便 <code class="kbd docutils literal"><span class="pre">Tab</span></code> 键调用补全功能；它会查看Python语句的名字，当前局部变量以及可以访问的模块名。对于点分表达式如 <code class="docutils literal"><span class="pre">string.a</span></code>，它将求出表达式最后一个 <code class="docutils literal"><span class="pre">'.'</span></code> 之前的值，然后根据结果的属性给出补全的建议。注意，如果一个具有 <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__getattr__">__getattr__()</a> 方法的对象是表达式的某部分，这可能执行应用程序定义的代码。默认的配置同时会把历史记录保存在你的用户目录下一个名为 <code class="file docutils literal"><span class="pre">.python_history</span></code> 的文件中。在下次与交互式解释器的会话中，历史记录将还可以访问。</p>
 </div>
 <div class="section" id="tut-commentary">
 <span id="id3"></span><h2>14.2. 其它交互式解释器<a class="headerlink" href="#tut-commentary" title="Permalink to this headline">¶</a></h2>
@@ -266,7 +266,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.5.2',
+            VERSION:'3.6.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

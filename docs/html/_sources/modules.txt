@@ -338,15 +338,15 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 
 .. index:: single: __all__
 
-那么当用户写下 ``from sound.Effects import *`` 时会发生什么事？理想中，总是希望在文件系统中找出包中所有的子模块，然后导入它们。这可能会花掉委有长时间，并且出现期待之外的边界效应，导出了希望只能显式导入的包。 
+那么当用户写下 ``from sound.effects import *`` 时会发生什么事？理想中，总是希望在文件系统中找出包中所有的子模块，然后导入它们。这可能会花掉很长时间，并且出现期待之外的边界效应，导出了希望只能显式导入的包。 
 
 对于包的作者来说唯一的解决方案就是给提供一个明确的包索引。`import`_ 语句按如下条件进行转换：执行 ``from package import *`` 时，如果包中的 :file:`__init__.py` 代码定义了一个名为 ``__all__`` 的列表，就会按照列表中给出的模块名进行导入。新版本的包发布时作者可以任意更新这个列表。如果包作者不想 import \* 的时候导入他们的包中所有模块，那么也可能会决定不支持它（ import \* ）。例如， :file:`sound/effects/__init__.py` 这个文件可能包括如下代码::
 
    __all__ = ["echo", "surround", "reverse"]
 
-这意味着 ``from Sound.Effects import *`` 语句会从 :mod:`sound` 包中导入以上三个已命名的子模块。 
+这意味着 ``from sound.effects import *`` 语句会从 :mod:`sound` 包中导入以上三个已命名的子模块。 
 
-如果没有定义 ``__all__`` ， ``from Sound.Effects import *`` 语句 *不会* 从 :mod:`sound.effects` 包中导入所有的子模块。无论包中定义多少命名，只能确定的是导入了 :mod:`sound.effects`  包（可能会运行 :file:`__init__.py` 中的初始化代码）以及包中定义的所有命名会随之导入。这样就从 :file:`__init__.py` 中导入了每一个命名（以及明确导入的子模块）。同样也包括了前述的 `import`_ 语句从包中明确导入的子模块，考虑以下代码::
+如果没有定义 ``__all__`` ， ``from sound.effects import *`` 语句 *不会* 从 :mod:`sound.effects` 包中导入所有的子模块。无论包中定义多少命名，只能确定的是导入了 :mod:`sound.effects`  包（可能会运行 :file:`__init__.py` 中的初始化代码）以及包中定义的所有命名会随之导入。这样就从 :file:`__init__.py` 中导入了每一个命名（以及明确导入的子模块）。同样也包括了前述的 `import`_ 语句从包中明确导入的子模块，考虑以下代码::
 
    import sound.effects.echo
    import sound.effects.surround
@@ -354,7 +354,7 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 
 在这个例子中，:mod:`echo` 和 :mod:`surround` 模块导入了当前的命名空间，这是因为执行 ``from...import`` 语句时它们已经定义在 :mod:`sound.effects` 包中了（定义了 ``__all__`` 时也会同样工作）。 
 
-尽管某些模块设计为使用 ``import *`` 时它只导出符全某种模式的命名，仍然不建议在生产代码中使用这种写法。 
+尽管某些模块设计为使用 ``import *`` 时它只导出符合某种规范/模式的命名，仍然不建议在生产代码中使用这种写法。 
 
 记住，``from Package import specific_submodule`` 没有错误！事实上，除非导入的模块需要使用其它包中的同名子模块，否则这是推荐的写法。
 
@@ -362,7 +362,7 @@ Python 带有一个标准模块库，并发布有独立的文档，名为 Python
 包内引用
 ------------------------
 
-如果包中使用了子包结构（就像示例中的 :mod:`sound` 包），可以按绝对位置从相邻的包中引入子模块。例如，如果 :mod:`sound.filters.vocoder` 包需要使用 :mod:`sound.effects` 包中的 :mod:`echo` 模块，它可以 ``from Sound.Effects import echo``。 
+如果包中使用了子包结构（就像示例中的 :mod:`sound` 包），可以按绝对位置从相邻的包中引入子模块。例如，如果 :mod:`sound.filters.vocoder` 包需要使用 :mod:`sound.effects` 包中的 :mod:`echo` 模块，它可以 ``from sound.Effects import echo``。 
 
 你可以用这样的形式 ``from module import name`` 来写显式的相对位置导入。那些显式相对导入用点号标明关联导入当前和上级包。以 :mod:`surround` 模块为例，你可以这样用::
 
