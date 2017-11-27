@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10. Python 标准库概览 &mdash; Python tutorial 3.6.0 documentation</title>
+  <title>10. Python 标准库概览 &mdash; Python tutorial 3.6.3 documentation</title>
   
 
   
@@ -28,7 +28,10 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.6.0 documentation" href="index.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python tutorial 3.6.3 documentation" href="index.html"/>
         <link rel="next" title="11. 标准库浏览 – Part II" href="stdlib2.html"/>
         <link rel="prev" title="9. 类" href="classes.html"/> 
 
@@ -146,7 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#tut-batteries-included">10.12. “瑞士军刀”</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 &#8211; Part II</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 – Part II</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-output-formatting">11.1. 输出格式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-templating">11.2. 模板</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-binary-formats">11.3. 使用二进制数据记录布局</a></li>
@@ -205,7 +208,7 @@
     <li>10. Python 标准库概览</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/stdlib.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/stdlib.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -276,9 +279,9 @@
 <span id="id5"></span><h2>10.5. 字符串正则匹配<a class="headerlink" href="#tut-string-pattern-matching" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.python.org/3/library/re.html#module-re">re</a> 模块为高级字符串处理提供了正则表达式工具。对于复杂的匹配和处理，正则表达式提供了简洁、优化的解决方案:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">r&#39;\bf[a-z]*&#39;</span><span class="p">,</span> <span class="s1">&#39;which foot or hand fell fastest&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\bf[a-z]*&#39;</span><span class="p">,</span> <span class="s1">&#39;which foot or hand fell fastest&#39;</span><span class="p">)</span>
 <span class="go">[&#39;foot&#39;, &#39;fell&#39;, &#39;fastest&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;(\b[a-z]+) \1&#39;</span><span class="p">,</span> <span class="s1">r&#39;\1&#39;</span><span class="p">,</span> <span class="s1">&#39;cat in the the hat&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\b[a-z]+) \1&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1&#39;</span><span class="p">,</span> <span class="s1">&#39;cat in the the hat&#39;</span><span class="p">)</span>
 <span class="go">&#39;cat in the hat&#39;</span>
 </pre></div>
 </div>
@@ -360,7 +363,7 @@
 <p>以下模块直接支持通用的数据打包和压缩格式：<a class="reference external" href="https://docs.python.org/3/library/zlib.html#module-zlib">zlib</a>， <a class="reference external" href="https://docs.python.org/3/library/gzip.html#module-gzip">gzip</a>， <a class="reference external" href="https://docs.python.org/3/library/bz2.html#module-bz2">bz2</a>， <a class="reference external" href="https://docs.python.org/3/library/lzma.html#module-lzma">lzma</a>， <a class="reference external" href="https://docs.python.org/3/library/zipfile.html#module-zipfile">zipfile</a> 以及
 <a class="reference external" href="https://docs.python.org/3/library/tarfile.html#module-tarfile">tarfile</a>。</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">zlib</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">b</span><span class="s1">&#39;witch which has which witches wrist watch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;witch which has which witches wrist watch&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="go">41</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
@@ -476,7 +479,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.6.0',
+            VERSION:'3.6.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

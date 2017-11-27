@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>15. 浮点数算法：争议和限制 &mdash; Python tutorial 3.6.0 documentation</title>
+  <title>15. 浮点数算法：争议和限制 &mdash; Python tutorial 3.6.3 documentation</title>
   
 
   
@@ -28,7 +28,10 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.6.0 documentation" href="index.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python tutorial 3.6.3 documentation" href="index.html"/>
         <link rel="next" title="16. 附录" href="appendix.html"/>
         <link rel="prev" title="14. 交互式输入行编辑历史回溯" href="interactive.html"/> 
 
@@ -146,7 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-batteries-included">10.12. “瑞士军刀”</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 &#8211; Part II</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 – Part II</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-output-formatting">11.1. 输出格式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-templating">11.2. 模板</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-binary-formats">11.3. 使用二进制数据记录布局</a></li>
@@ -205,7 +208,7 @@
     <li>15. 浮点数算法：争议和限制</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/floatingpoint.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/floatingpoint.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -284,7 +287,7 @@
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>二进制浮点数计算有很多这样意想不到的结果。“0.1”的问题在下面&#8221;误差的表示&#8221;一节中有准确详细的解释。更完整的常见怪异现象请参见 <a class="reference external" href="http://www.lahey.com/float.htm">浮点数的危险</a>。</p>
+<p>二进制浮点数计算有很多这样意想不到的结果。“0.1”的问题在下面”误差的表示”一节中有准确详细的解释。更完整的常见怪异现象请参见 <a class="reference external" href="http://www.lahey.com/float.htm">浮点数的危险</a>。</p>
 <p>最后我要说，“没有简单的答案”。也不要过分小心浮点数！Python 浮点数计算中的误差源之于浮点数硬件，大多数机器上每次计算误差不超过 2**53 分之一。对于大多数任务这已经足够了，但是你要在心中记住这不是十进制算法，每个浮点数计算可能会带来一个新的舍入错误。</p>
 <p>虽然确实有问题存在，对于大多数平常的浮点数运算，你只要简单地将最终显示的结果舍入到你期望的十进制位数，你就会得到你期望的最终结果。<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str">str()</a> 通常已经足够用了，对于更好的控制可以参阅 <a class="reference external" href="https://docs.python.org/3/library/string.html#formatstrings">格式化字符串语法</a> 中 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format">str.format()</a> 方法的格式说明符。</p>
 <p>对于需要精确十进制表示的情况，可以尝试使用 <a class="reference external" href="https://docs.python.org/3/library/decimal.html#module-decimal">decimal</a> 模块，它实现的十进制运算适合会计方面的应用和高精度要求的应用。</p>
@@ -430,7 +433,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.6.0',
+            VERSION:'3.6.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

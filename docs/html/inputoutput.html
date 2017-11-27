@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7. 输入和输出 &mdash; Python tutorial 3.6.0 documentation</title>
+  <title>7. 输入和输出 &mdash; Python tutorial 3.6.3 documentation</title>
   
 
   
@@ -28,7 +28,10 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.6.0 documentation" href="index.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python tutorial 3.6.3 documentation" href="index.html"/>
         <link rel="next" title="8. 错误和异常" href="errors.html"/>
         <link rel="prev" title="6. 模块" href="modules.html"/> 
 
@@ -146,7 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-batteries-included">10.12. “瑞士军刀”</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 &#8211; Part II</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 – Part II</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-output-formatting">11.1. 输出格式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-templating">11.2. 模板</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-binary-formats">11.3. 使用二进制数据记录布局</a></li>
@@ -205,7 +208,7 @@
     <li>7. 输入和输出</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/inputoutput.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/inputoutput.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -414,7 +417,7 @@
 </div>
 <p><code class="docutils literal"><span class="pre">f.tell()</span></code> 返回一个整数，代表文件对象在文件中的指针位置，该数值计量了自文件开头到指针处的比特数。需要改变文件对象指针话话，使用 <code class="docutils literal"><span class="pre">f.seek(offset,from_what)</span></code>。指针在该操作中从指定的引用位置移动 <em>offset</em> 比特，引用位置由 <em>from_what</em> 参数指定。 <em>from_what</em> 值为 0 表示自文件起始处开始，1 表示自当前文件指针位置开始，2 表示自文件末尾开始。<em>from_what</em> 可以忽略，其默认值为零，此时从文件头开始:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;workfile&#39;</span><span class="p">,</span> <span class="s1">&#39;rb+&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;0123456789abcdef&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;0123456789abcdef&#39;</span><span class="p">)</span>
 <span class="go">16</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>     <span class="c1"># Go to the 6th byte in the file</span>
 <span class="go">5</span>
@@ -514,7 +517,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.6.0',
+            VERSION:'3.6.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

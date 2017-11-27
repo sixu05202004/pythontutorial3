@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4. 深入 Python 流程控制 &mdash; Python tutorial 3.6.0 documentation</title>
+  <title>4. 深入 Python 流程控制 &mdash; Python tutorial 3.6.3 documentation</title>
   
 
   
@@ -28,7 +28,10 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.6.0 documentation" href="index.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python tutorial 3.6.3 documentation" href="index.html"/>
         <link rel="next" title="5. 数据结构" href="datastructures.html"/>
         <link rel="prev" title="3. Python 简介" href="introduction.html"/> 
 
@@ -146,7 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-batteries-included">10.12. “瑞士军刀”</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 &#8211; Part II</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 – Part II</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-output-formatting">11.1. 输出格式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-templating">11.2. 模板</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-binary-formats">11.3. 使用二进制数据记录布局</a></li>
@@ -205,7 +208,7 @@
     <li>4. 深入 Python 流程控制</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/controlflow.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/controlflow.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -234,7 +237,7 @@
 <span class="go">More</span>
 </pre></div>
 </div>
-<p>可能会有零到多个 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#elif">elif</a> 部分，<a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#else">else</a> 是可选的。关键字 &#8216;<a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#elif">elif</a>&#8216; 是 ’else if’ 的缩写，这个可以有效地避免过深的缩进。<a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#if">if</a> ... <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#elif">elif</a> ... <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#elif">elif</a> ... 序列用于替代其它语言中的 <code class="docutils literal"><span class="pre">switch</span></code> 或 <code class="docutils literal"><span class="pre">case</span></code> 语句。</p>
+<p>可能会有零到多个 <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#elif">elif</a> 部分，<a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#else">else</a> 是可选的。关键字 ‘<a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#elif">elif</a>’ 是 ’else if’ 的缩写，这个可以有效地避免过深的缩进。<a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#if">if</a> … <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#elif">elif</a> … <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#elif">elif</a> … 序列用于替代其它语言中的 <code class="docutils literal"><span class="pre">switch</span></code> 或 <code class="docutils literal"><span class="pre">case</span></code> 语句。</p>
 </div>
 <div class="section" id="for">
 <span id="tut-for"></span><h2>4.2. <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#for">for</a> 语句<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
@@ -644,7 +647,7 @@ sketch : Cheese Shop Sketch
 <span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
 <span class="gp">... </span>    <span class="k">pass</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_function</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_function</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 <span class="go">Do nothing, but document it.</span>
 
 <span class="go">    No, really, it doesn&#39;t do anything.</span>
@@ -657,7 +660,7 @@ sketch : Cheese Shop Sketch
 <p>注解是以字典形式存储在函数的 <code class="xref py py-attr docutils literal"><span class="pre">__annotations__</span></code> 属性中，对函数的其它部分没有任何影响。参数注解（Parameter
 annotations）是定义在参数名称的冒号后面，紧随着一个用来表示注解的值得表达式。返回注释（Return annotations）是定义在一个 <code class="docutils literal"><span class="pre">-&gt;</span></code> 后面，紧随着一个表达式，在冒号与 <code class="docutils literal"><span class="pre">-&gt;</span></code> 之间。下面的示例包含一个位置参数，一个关键字参数，和没有意义的返回值注释:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">ham</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="n">eggs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="s1">&#39;spam&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Nothing to see here&quot;</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Annotations:&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">__annotations__</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Annotations:&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="vm">__annotations__</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Arguments:&quot;</span><span class="p">,</span> <span class="n">ham</span><span class="p">,</span> <span class="n">eggs</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="s1">&#39;wonderful&#39;</span><span class="p">)</span>
@@ -743,7 +746,7 @@ annotations）是定义在参数名称的冒号后面，紧随着一个用来表
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.6.0',
+            VERSION:'3.6.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

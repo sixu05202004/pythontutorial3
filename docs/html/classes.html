@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. 类 &mdash; Python tutorial 3.6.0 documentation</title>
+  <title>9. 类 &mdash; Python tutorial 3.6.3 documentation</title>
   
 
   
@@ -28,7 +28,10 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.6.0 documentation" href="index.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python tutorial 3.6.3 documentation" href="index.html"/>
         <link rel="next" title="10. Python 标准库概览" href="stdlib.html"/>
         <link rel="prev" title="8. 错误和异常" href="errors.html"/> 
 
@@ -146,7 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-batteries-included">10.12. “瑞士军刀”</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 &#8211; Part II</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 – Part II</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-output-formatting">11.1. 输出格式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-templating">11.2. 模板</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-binary-formats">11.3. 使用二进制数据记录布局</a></li>
@@ -205,7 +208,7 @@
     <li>9. 类</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/classes.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/classes.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -578,9 +581,9 @@ In global scope: global spam
 <span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
     <span class="k">pass</span>
 
-<span class="k">for</span> <span class="n">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">]:</span>
+<span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">]:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">cls</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="bp">cls</span><span class="p">()</span>
     <span class="k">except</span> <span class="n">D</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">C</span><span class="p">:</span>
@@ -747,7 +750,7 @@ In global scope: global spam
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.6.0',
+            VERSION:'3.6.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

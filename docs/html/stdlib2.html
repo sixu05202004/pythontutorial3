@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>11. 标准库浏览 – Part II &mdash; Python tutorial 3.6.0 documentation</title>
+  <title>11. 标准库浏览 – Part II &mdash; Python tutorial 3.6.3 documentation</title>
   
 
   
@@ -28,7 +28,10 @@
   
 
   
-    <link rel="top" title="Python tutorial 3.6.0 documentation" href="index.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python tutorial 3.6.3 documentation" href="index.html"/>
         <link rel="next" title="12. 虚拟环境和包" href="venv.html"/>
         <link rel="prev" title="10. Python 标准库概览" href="stdlib.html"/> 
 
@@ -146,7 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-batteries-included">10.12. “瑞士军刀”</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">11. 标准库浏览 &#8211; Part II</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. 标准库浏览 – Part II</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tut-output-formatting">11.1. 输出格式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tut-templating">11.2. 模板</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tut-binary-formats">11.3. 使用二进制数据记录布局</a></li>
@@ -202,10 +205,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>11. 标准库浏览 &#8211; Part II</li>
+    <li>11. 标准库浏览 – Part II</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/stdlib2.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/stdlib2.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -214,7 +217,7 @@
           <div role="main" class="document">
             
   <div class="section" id="part-ii">
-<span id="tut-brieftourtwo"></span><h1>11. 标准库浏览 &#8211; Part II<a class="headerlink" href="#part-ii" title="Permalink to this headline">¶</a></h1>
+<span id="tut-brieftourtwo"></span><h1>11. 标准库浏览 – Part II<a class="headerlink" href="#part-ii" title="Permalink to this headline">¶</a></h1>
 <p>第二部分包含了支持专业编程工作所需的更高级的模块，这些模块很少出现在小脚本中。</p>
 <div class="section" id="tut-output-formatting">
 <span id="id1"></span><h2>11.1. 输出格式<a class="headerlink" href="#tut-output-formatting" title="Permalink to this headline">¶</a></h2>
@@ -339,7 +342,7 @@
 
 <span class="k">class</span> <span class="nc">AsyncZip</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">infile</span><span class="p">,</span> <span class="n">outfile</span><span class="p">):</span>
-        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">infile</span> <span class="o">=</span> <span class="n">infile</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">outfile</span> <span class="o">=</span> <span class="n">outfile</span>
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -541,7 +544,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.6.0',
+            VERSION:'3.6.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
