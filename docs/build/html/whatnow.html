@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>13. 接下来？ &mdash; Python tutorial 3.6.3 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python tutorial 3.6.3 documentation" href="index.html"/>
+        <link rel="next" title="14. 交互式输入行编辑历史回溯" href="interactive.html"/>
+        <link rel="prev" title="12. 虚拟环境和包" href="venv.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python tutorial</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="appetite.html">1. 开胃菜</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpreter.html">2. 使用 Python 解释器</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interpreter.html#tut-invoking">2.1. 调用 Python 解释器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpreter.html#tut-interp">2.2. 解释器及其环境</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">3. Python 简介</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#tut-calculator">3.1. 将 Python 当做计算器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#tut-firststeps">3.2. 编程的第一步</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="controlflow.html">4. 深入 Python 流程控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#if">4.1. if 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#for">4.2. for 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#range">4.3. range() 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#break-continue-else">4.4. break 和 continue 语句, 以及循环中的 else 子句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#pass">4.5. pass 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-functions">4.6. 定义函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-defining">4.7. 深入 Python 函数定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-codingstyle">4.8. 插曲：编码风格</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datastructures.html">5. 数据结构</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-morelists">5.1. 关于列表更多的内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#del">5.2. del 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-tuples">5.3. 元组和序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-sets">5.4. 集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-dictionaries">5.5. 字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-loopidioms">5.6. 循环技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-conditions">5.7. 深入条件控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-comparing">5.8. 比较序列和其它类型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">6. 模块</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tut-moremodules">6.1. 深入模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tut-standardmodules">6.2. 标准模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#dir">6.3. dir() 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tut-packages">6.4. 包</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inputoutput.html">7. 输入和输出</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inputoutput.html#tut-formatting">7.1. 格式化输出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputoutput.html#tut-files">7.2. 文件读写</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">8. 错误和异常</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-syntaxerrors">8.1. 语法错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-exceptions">8.2. 异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-handling">8.3. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-raising">8.4. 抛出异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-userexceptions">8.5. 用户自定义异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-cleanup">8.6. 定义清理行为</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-cleanup-with">8.7. 预定义清理行为</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">9. 类</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-object">9.1. 术语相关</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#python">9.2. Python 作用域和命名空间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-firstclasses">9.3. 初识类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-remarks">9.4. 一些说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-inheritance">9.5. 继承</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-private">9.6. 私有变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-odds">9.7. 补充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-exceptionclasses">9.8. 异常也是类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-iterators">9.9. 迭代器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-generators">9.10. 生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-genexps">9.11. 生成器表达式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stdlib.html">10. Python 标准库概览</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-os-interface">10.1. 操作系统接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-file-wildcards">10.2. 文件通配符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-command-line-arguments">10.3. 命令行参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-stderr">10.4. 错误输出重定向和程序终止</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-string-pattern-matching">10.5. 字符串正则匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-mathematics">10.6. 数学</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-internet-access">10.7. 互联网访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-dates-and-times">10.8. 日期和时间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-data-compression">10.9. 数据压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-performance-measurement">10.10. 性能度量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-quality-control">10.11. 质量控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-batteries-included">10.12. “瑞士军刀”</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 – Part II</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-output-formatting">11.1. 输出格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-templating">11.2. 模板</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-binary-formats">11.3. 使用二进制数据记录布局</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-multi-threading">11.4. 多线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-logging">11.5. 日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-weak-references">11.6. 弱引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-list-tools">11.7. 列表工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-decimal-fp">11.8. 十进制浮点数算法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="venv.html">12. 虚拟环境和包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id2">12.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#id4">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#pip">12.3. 使用 pip 管理包</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. 接下来？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">14. 交互式输入行编辑历史回溯</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">14.1. Tab 补全和历史记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">14.2. 其它交互式解释器</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="floatingpoint.html">15. 浮点数算法：争议和限制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">15.1. 表达错误</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. 附录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">16.1. 交互模式</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+          &nbsp;
+        &nbsp;
+      <div>
+        <script type="text/javascript"><!--
+google_ad_client = "ca-pub-3421553373953599";
+/* 首页侧边 */
+google_ad_slot = "3551838308";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+      </div>
+      &nbsp;
+
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python tutorial</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>13. 接下来？</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/whatnow.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="tut-whatnow">
+<span id="id1"></span><h1>13. 接下来？<a class="headerlink" href="#tut-whatnow" title="Permalink to this headline">¶</a></h1>
+<p>读过这本指南应该会让你有兴趣使用 Python —— 可能你已经期待着用 Python 解决你的实际问题了。可以在哪里进行一步学习？</p>
+<p>入门指南是 Python 文档集的一部分。其中的另一些文档包括：</p>
+<ul>
+<li><p class="first"><a class="reference external" href="https://docs.python.org/3/library/index.html#library-index">Python 标准库</a>：</p>
+<p>应该浏览一下这份文档，它为标准库中的类型、函数和模块提供了完整（尽管很简略）的参考资料。标准的 Python 发布版包括了 大量 的附加模块。其中有针对读取 Unix 邮箱、接收 HTTP 文档、生成随机数、解析命令行选项、写 CGI 程序、压缩数据以及很多其它任务的模块。略读一下库参考会给你很多解决问题的思路。</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://docs.python.org/3/installing/index.html#installing-index">安装 Python 模块</a> 展示了如何安装其他 Python 用户编写的附加模块。</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://docs.python.org/3/reference/index.html#reference-index">Python 语言参考</a>： 詳細说明了 Python 语法和语义。</p>
+<p>它读起来很累，不过对于语言本身，有份完整的手册很有用。</p>
+</li>
+</ul>
+<p>其它 Python 资源：</p>
+<ul>
+<li><p class="first"><a class="reference external" href="http://www.python.org">http://www.python.org</a>： Python 官方网站。它包含代码、文档和 Web 上与 Python 有关的页面链接该网站镜像于全世界的几处其它问题，类似欧洲、日本和澳大利亚。</p>
+<p>镜像可能会比主站快，这取决于你的地理位置。</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://docs.python.org">http://docs.python.org</a>： 快速访问 Python 的文档。</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://pypi.python.org">http://pypi.python.org</a>： Python 包索引，以前昵称为奶酪店，索引了可供下载的，用户创建的 Python 模块。如果你发布了代码，可以注册到这里，这样别人可以找到它。</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://code.activestate.com/recipes/langs/python/">http://code.activestate.com/recipes/langs/python/</a>： Python 食谱是大量的示例代码、大型的集合，和有用的脚本。</p>
+<p>值得关注的是这次资源已经结集成书，名为《Python 食谱》（O’Reilly &amp; Associates, ISBN 0-596-00797-3。）</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://scipy.org">http://scipy.org</a>: The Scientific Python 项目包括数组快速计算和处理模块，和大量线性代数、傅里叶变换、非线性solvers、随机数分布，统计分析以及类似的包。</p>
+</li>
+</ul>
+<p>与 Python 有关的问题，以及问题报告，可以发到新闻组 <em class="newsgroup">comp.lang.python</em> ，或者发送到邮件组 <a class="reference external" href="mailto:python-list&#37;&#52;&#48;python&#46;org">python-list<span>&#64;</span>python<span>&#46;</span>org</a> 。新闻组和邮件组是开放的，所以发送的消息可以自动的跟到另一个之后。每天有超过 120 个投递（高峰时有数百）,提问（以及回答）问题，为新功能提建议，发布新模块。在发信之前，请查阅 <a class="reference external" href="http://www.python.org/doc/faq/">常见问题</a> (亦称 FAQ)，或者在 Python 源码发布包的 <code class="file docutils literal"><span class="pre">Misc/</span></code> 目录中查阅。邮件组也可以在 <a class="reference external" href="http://mail.python.org/pipermail/">http://mail.python.org/pipermail/</a> 访问。FAQ回答了很多被反复提到的问题，很可能已经解答了你的问题。</p>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="interactive.html" class="btn btn-neutral float-right" title="14. 交互式输入行编辑历史回溯">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="venv.html" class="btn btn-neutral" title="12. 虚拟环境和包"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, D.D.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+    &nbsp;
+  &nbsp;
+  <div class="footer-ad">
+<!--谷歌广告-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- pythondoc 首页下方测试版 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3421553373953599"
+     data-ad-slot="2952943639"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9adc7a1c86496c8e2bc61c4f8fc92d30";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</div>
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.6.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

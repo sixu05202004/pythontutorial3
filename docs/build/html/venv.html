@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>12. 虚拟环境和包 &mdash; Python tutorial 3.6.3 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python tutorial 3.6.3 documentation" href="index.html"/>
+        <link rel="next" title="13. 接下来？" href="whatnow.html"/>
+        <link rel="prev" title="11. 标准库浏览 – Part II" href="stdlib2.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python tutorial</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="appetite.html">1. 开胃菜</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpreter.html">2. 使用 Python 解释器</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interpreter.html#tut-invoking">2.1. 调用 Python 解释器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpreter.html#tut-interp">2.2. 解释器及其环境</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">3. Python 简介</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#tut-calculator">3.1. 将 Python 当做计算器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#tut-firststeps">3.2. 编程的第一步</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="controlflow.html">4. 深入 Python 流程控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#if">4.1. if 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#for">4.2. for 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#range">4.3. range() 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#break-continue-else">4.4. break 和 continue 语句, 以及循环中的 else 子句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#pass">4.5. pass 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-functions">4.6. 定义函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-defining">4.7. 深入 Python 函数定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlflow.html#tut-codingstyle">4.8. 插曲：编码风格</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datastructures.html">5. 数据结构</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-morelists">5.1. 关于列表更多的内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#del">5.2. del 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-tuples">5.3. 元组和序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-sets">5.4. 集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-dictionaries">5.5. 字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-loopidioms">5.6. 循环技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-conditions">5.7. 深入条件控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastructures.html#tut-comparing">5.8. 比较序列和其它类型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">6. 模块</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tut-moremodules">6.1. 深入模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tut-standardmodules">6.2. 标准模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#dir">6.3. dir() 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#tut-packages">6.4. 包</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inputoutput.html">7. 输入和输出</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inputoutput.html#tut-formatting">7.1. 格式化输出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputoutput.html#tut-files">7.2. 文件读写</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">8. 错误和异常</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-syntaxerrors">8.1. 语法错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-exceptions">8.2. 异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-handling">8.3. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-raising">8.4. 抛出异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-userexceptions">8.5. 用户自定义异常</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-cleanup">8.6. 定义清理行为</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#tut-cleanup-with">8.7. 预定义清理行为</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">9. 类</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-object">9.1. 术语相关</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#python">9.2. Python 作用域和命名空间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-firstclasses">9.3. 初识类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-remarks">9.4. 一些说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-inheritance">9.5. 继承</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-private">9.6. 私有变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-odds">9.7. 补充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-exceptionclasses">9.8. 异常也是类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-iterators">9.9. 迭代器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-generators">9.10. 生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#tut-genexps">9.11. 生成器表达式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stdlib.html">10. Python 标准库概览</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-os-interface">10.1. 操作系统接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-file-wildcards">10.2. 文件通配符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-command-line-arguments">10.3. 命令行参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-stderr">10.4. 错误输出重定向和程序终止</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-string-pattern-matching">10.5. 字符串正则匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-mathematics">10.6. 数学</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-internet-access">10.7. 互联网访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-dates-and-times">10.8. 日期和时间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-data-compression">10.9. 数据压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-performance-measurement">10.10. 性能度量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-quality-control">10.11. 质量控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#tut-batteries-included">10.12. “瑞士军刀”</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stdlib2.html">11. 标准库浏览 – Part II</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-output-formatting">11.1. 输出格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-templating">11.2. 模板</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-binary-formats">11.3. 使用二进制数据记录布局</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-multi-threading">11.4. 多线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-logging">11.5. 日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-weak-references">11.6. 弱引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-list-tools">11.7. 列表工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib2.html#tut-decimal-fp">11.8. 十进制浮点数算法</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">12. 虚拟环境和包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">12.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">12.2. 创建虚拟环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pip">12.3. 使用 pip 管理包</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="whatnow.html">13. 接下来？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">14. 交互式输入行编辑历史回溯</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tab">14.1. Tab 补全和历史记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html#tut-commentary">14.2. 其它交互式解释器</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="floatingpoint.html">15. 浮点数算法：争议和限制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html#tut-fp-error">15.1. 表达错误</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. 附录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix.html#tut-interac">16.1. 交互模式</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+          &nbsp;
+        &nbsp;
+      <div>
+        <script type="text/javascript"><!--
+google_ad_client = "ca-pub-3421553373953599";
+/* 首页侧边 */
+google_ad_slot = "3551838308";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+      </div>
+      &nbsp;
+
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python tutorial</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>12. 虚拟环境和包</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/venv.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="tut-venv">
+<span id="id1"></span><h1>12. 虚拟环境和包<a class="headerlink" href="#tut-venv" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>12.1. 简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Python 应用程序经常会使用一些不属于标准库的包和模块。应用程序有时候需要某个特定版本的库，因为它需要一个特定的 bug 已得到修复的库或者它是使用了一个过时版本的库的接口编写的。</p>
+<p>这就意味着可能无法安装一个 Python 来满足每个应用程序的要求。如果应用程序 A 需要一个特定模块的 1.0 版本但是应用程序 B 需要该模块的 2.0 版本，这两个应用程序的要求是冲突的，安装版本 1.0 或者版本 2.0 将会导致其中一个应用程序不能运行。</p>
+<p>这个问题的解决方案就是创建一个 <a class="reference external" href="https://docs.python.org/3/glossary.html#term-virtual-environment">虚拟环境</a> （通常简称为 “virtualenv”），包含一个特定版本的 Python，以及一些附加的包的独立的目录树。</p>
+<p>不同的应用程序可以使用不同的虚拟环境。为了解决前面例子中的冲突，应用程序 A 可以有自己的虚拟环境，其中安装了特定模块的 1.0 版本。而应用程序 B 拥有另外一个安装了特定模块 2.0 版本的虚拟环境。如果应用程序 B 需求一个库升级到 3.0 的话，这也不会影响到应用程序 A 的环境。</p>
+</div>
+<div class="section" id="id4">
+<h2>12.2. 创建虚拟环境<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>用于创建和管理虚拟环境的脚本叫做 <strong class="program">pyvenv</strong>。<strong class="program">pyvenv</strong> 通常会安装你可用的 Python 中最新的版本。这个脚本也能指定安装一个特定的版本的 Python，因此如果在你的系统中有多个版本的 Python 的话，你可以运行 <code class="docutils literal"><span class="pre">pyvenv-3.5</span></code> 或者你想要的任何版本来选择一个指定的 Python 版本。</p>
+<p>要创建一个 virtualenv，首先决定一个你想要存放的目录接着运行 <strong class="program">pyvenv</strong> 后面携带着目录名:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="n">tutorial</span><span class="o">-</span><span class="n">env</span>
+</pre></div>
+</div>
+<p>如果目录不存在的话，这将会创建一个 <code class="docutils literal"><span class="pre">tutorial-env</span></code> 目录，并且也在目录里面创建一个包含 Python 解释器，标准库，以及各种配套文件的 Python “副本”。</p>
+<p>一旦你已经创建了一个虚拟环境，你必须激活它。</p>
+<p>在 Windows 上，运行:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="n">Scripts</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>在 Unix 或者 MacOS 上，运行:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>（这个脚本是用 bash shell 编写的。如果你使用 <strong class="program">csh</strong> 或者 <strong class="program">fish</strong> shell，你应该使用 <code class="docutils literal"><span class="pre">activate.csh</span></code> 和 <code class="docutils literal"><span class="pre">activate.fish</span></code> 来替代。）</p>
+<p>激活了虚拟环境会改变你的 shell 提示符，显示你正在使用的虚拟环境，并且修改了环境以致运行 <code class="docutils literal"><span class="pre">python</span></code> 将会让你得到了特定的 Python 版本。例如:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-&gt;</span> <span class="n">source</span> <span class="o">~/</span><span class="n">envs</span><span class="o">/</span><span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">python</span>
+<span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="o">+</span> <span class="p">(</span><span class="mf">3.4</span><span class="p">:</span><span class="n">c7b9645a6f35</span><span class="o">+</span><span class="p">,</span> <span class="n">May</span> <span class="mi">22</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">09</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">25</span><span class="p">)</span>
+  <span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/local/lib/python35.zip&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span>
+<span class="s1">&#39;~/envs/tutorial-env/lib/python3.5/site-packages&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pip">
+<h2>12.3. 使用 pip 管理包<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
+<p>一旦你激活了一个虚拟环境，可以使用一个叫做 <strong class="program">pip</strong> 程序来安装，升级以及删除包。默认情况下 <code class="docutils literal"><span class="pre">pip</span></code> 将会从 Python Package Index，&lt;<a class="reference external" href="https://pypi.python.org/pypi">https://pypi.python.org/pypi</a>&gt;， 中安装包。你可以通过 web 浏览器浏览它们，或者你也能使用 <code class="docutils literal"><span class="pre">pip</span></code> 有限的搜索功能:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pip</span> <span class="n">search</span> <span class="n">astronomy</span>
+<span class="n">skyfield</span>               <span class="o">-</span> <span class="n">Elegant</span> <span class="n">astronomy</span> <span class="k">for</span> <span class="n">Python</span>
+<span class="n">gary</span>                   <span class="o">-</span> <span class="n">Galactic</span> <span class="n">astronomy</span> <span class="ow">and</span> <span class="n">gravitational</span> <span class="n">dynamics</span><span class="o">.</span>
+<span class="n">novas</span>                  <span class="o">-</span> <span class="n">The</span> <span class="n">United</span> <span class="n">States</span> <span class="n">Naval</span> <span class="n">Observatory</span> <span class="n">NOVAS</span> <span class="n">astronomy</span> <span class="n">library</span>
+<span class="n">astroobs</span>               <span class="o">-</span> <span class="n">Provides</span> <span class="n">astronomy</span> <span class="n">ephemeris</span> <span class="n">to</span> <span class="n">plan</span> <span class="n">telescope</span> <span class="n">observations</span>
+<span class="n">PyAstronomy</span>            <span class="o">-</span> <span class="n">A</span> <span class="n">collection</span> <span class="n">of</span> <span class="n">astronomy</span> <span class="n">related</span> <span class="n">tools</span> <span class="k">for</span> <span class="n">Python</span><span class="o">.</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">pip</span></code> 有许多子命令：“搜索”，“安装”，“卸载”，“freeze”（译者注：这个词语暂时没有合适的词语来翻译），等等。（请参考 <a class="reference external" href="https://docs.python.org/3/installing/index.html#installing-index">installing-index</a> 指南获取 <code class="docutils literal"><span class="pre">pip</span></code> 更多完整的文档。）</p>
+<p>你可以安装一个包最新的版本，通过指定包的名称:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">novas</span>
+<span class="n">Collecting</span> <span class="n">novas</span>
+  <span class="n">Downloading</span> <span class="n">novas</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mf">1.3</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="p">(</span><span class="mi">136</span><span class="n">kB</span><span class="p">)</span>
+<span class="n">Installing</span> <span class="n">collected</span> <span class="n">packages</span><span class="p">:</span> <span class="n">novas</span>
+  <span class="n">Running</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="k">for</span> <span class="n">novas</span>
+<span class="n">Successfully</span> <span class="n">installed</span> <span class="n">novas</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mf">1.3</span>
+</pre></div>
+</div>
+<p>你也能安装一个指定版本的包，通过给出包名后面紧跟着 <code class="docutils literal"><span class="pre">==</span></code> 和版本号:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">requests</span><span class="o">==</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">Collecting</span> <span class="n">requests</span><span class="o">==</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span>
+  <span class="n">Using</span> <span class="n">cached</span> <span class="n">requests</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py2</span><span class="o">.</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="nb">any</span><span class="o">.</span><span class="n">whl</span>
+<span class="n">Installing</span> <span class="n">collected</span> <span class="n">packages</span><span class="p">:</span> <span class="n">requests</span>
+<span class="n">Successfully</span> <span class="n">installed</span> <span class="n">requests</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>如果你重新运行命令（pip install requests==2.6.0），<code class="docutils literal"><span class="pre">pip</span></code> 会注意到要求的版本已经安装，不会去做任何事情。你也可以提供一个不同的版本号来安装，或者运行 <code class="docutils literal"><span class="pre">pip</span>
+<span class="pre">install</span> <span class="pre">--upgrade</span></code> 来升级包到最新版本:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">requests</span>
+<span class="n">Collecting</span> <span class="n">requests</span>
+<span class="n">Installing</span> <span class="n">collected</span> <span class="n">packages</span><span class="p">:</span> <span class="n">requests</span>
+  <span class="n">Found</span> <span class="n">existing</span> <span class="n">installation</span><span class="p">:</span> <span class="n">requests</span> <span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span>
+    <span class="n">Uninstalling</span> <span class="n">requests</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span><span class="p">:</span>
+      <span class="n">Successfully</span> <span class="n">uninstalled</span> <span class="n">requests</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">Successfully</span> <span class="n">installed</span> <span class="n">requests</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">uninstall</span></code> 后跟一个或者多个包名将会从虚拟环境中移除这些包。</p>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">show</span></code> 将会显示一个指定的包的信息:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pip</span> <span class="n">show</span> <span class="n">requests</span>
+<span class="o">---</span>
+<span class="n">Metadata</span><span class="o">-</span><span class="n">Version</span><span class="p">:</span> <span class="mf">2.0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">requests</span>
+<span class="n">Version</span><span class="p">:</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">Summary</span><span class="p">:</span> <span class="n">Python</span> <span class="n">HTTP</span> <span class="k">for</span> <span class="n">Humans</span><span class="o">.</span>
+<span class="n">Home</span><span class="o">-</span><span class="n">page</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">python</span><span class="o">-</span><span class="n">requests</span><span class="o">.</span><span class="n">org</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Kenneth</span> <span class="n">Reitz</span>
+<span class="n">Author</span><span class="o">-</span><span class="n">email</span><span class="p">:</span> <span class="n">me</span><span class="nd">@kennethreitz</span><span class="o">.</span><span class="n">com</span>
+<span class="n">License</span><span class="p">:</span> <span class="n">Apache</span> <span class="mf">2.0</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">akuchling</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">4</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+<span class="n">Requires</span><span class="p">:</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">list</span></code> 将会列出所有安装在虚拟环境中的包:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pip</span> <span class="nb">list</span>
+<span class="n">novas</span> <span class="p">(</span><span class="mf">3.1</span><span class="o">.</span><span class="mf">1.3</span><span class="p">)</span>
+<span class="n">numpy</span> <span class="p">(</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pip</span> <span class="p">(</span><span class="mf">7.0</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">requests</span> <span class="p">(</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">setuptools</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">freeze</span></code> 将会生成一个类似需要安装的包的列表，但是输出采用了 <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code> 期望的格式。常见的做法就是把它们放在一个 <code class="docutils literal"><span class="pre">requirements.txt</span></code> 文件:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pip</span> <span class="n">freeze</span> <span class="o">&gt;</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">(</span><span class="n">tutorial</span><span class="o">-</span><span class="n">env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">cat</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">novas</span><span class="o">==</span><span class="mf">3.1</span><span class="o">.</span><span class="mf">1.3</span>
+<span class="n">numpy</span><span class="o">==</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">requests</span><span class="o">==</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">requirements.txt</span></code> 能够被提交到版本控制中并且作为一个应用程序的一部分。用户们可以使用 <code class="docutils literal"><span class="pre">install</span> <span class="pre">-r</span></code> 安装所有必须的包:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">Collecting</span> <span class="n">novas</span><span class="o">==</span><span class="mf">3.1</span><span class="o">.</span><span class="mf">1.3</span> <span class="p">(</span><span class="kn">from</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="p">(</span><span class="n">line</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="o">...</span>
+<span class="n">Collecting</span> <span class="n">numpy</span><span class="o">==</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">2</span> <span class="p">(</span><span class="kn">from</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="p">(</span><span class="n">line</span> <span class="mi">2</span><span class="p">))</span>
+  <span class="o">...</span>
+<span class="n">Collecting</span> <span class="n">requests</span><span class="o">==</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">0</span> <span class="p">(</span><span class="kn">from</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="p">(</span><span class="n">line</span> <span class="mi">3</span><span class="p">))</span>
+  <span class="o">...</span>
+<span class="n">Installing</span> <span class="n">collected</span> <span class="n">packages</span><span class="p">:</span> <span class="n">novas</span><span class="p">,</span> <span class="n">numpy</span><span class="p">,</span> <span class="n">requests</span>
+  <span class="n">Running</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="k">for</span> <span class="n">novas</span>
+<span class="n">Successfully</span> <span class="n">installed</span> <span class="n">novas</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mf">1.3</span> <span class="n">numpy</span><span class="o">-</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">2</span> <span class="n">requests</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">pip</span></code> 还有更多的选项。请参考 <a class="reference external" href="https://docs.python.org/3/installing/index.html#installing-index">installing-index</a> 指南获取关于 <code class="docutils literal"><span class="pre">pip</span></code> 完整的文档。当你编写一个包并且在 Python Package Index 中也出现的话，请参考 <a class="reference external" href="https://docs.python.org/3/distributing/index.html#distributing-index">distributing-index</a> 指南。</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="whatnow.html" class="btn btn-neutral float-right" title="13. 接下来？">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="stdlib2.html" class="btn btn-neutral" title="11. 标准库浏览 – Part II"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, D.D.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+    &nbsp;
+  &nbsp;
+  <div class="footer-ad">
+<!--谷歌广告-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- pythondoc 首页下方测试版 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3421553373953599"
+     data-ad-slot="2952943639"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9adc7a1c86496c8e2bc61c4f8fc92d30";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</div>
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.6.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
