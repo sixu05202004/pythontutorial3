@@ -460,7 +460,7 @@ Python 中的 `for`_ 语句和 C 或 Pascal 中的略有不同。通常的循环
 .. index::
   statement: **
 
-以同样的方式，可以使用 ``**`` 操作符分拆关键字参数为字典::
+以同样的方式，可以使用 ``**`` 操作符将字典拆分为关键字参数::
 
    >>> def parrot(voltage, state='a stiff', action='voom'):
    ...     print("-- This parrot wouldn't", action, end=' ')
